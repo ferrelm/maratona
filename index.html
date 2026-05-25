@@ -88,6 +88,20 @@
     .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
     .done{position:relative;padding:18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 20px rgba(15,23,42,.05)}
     .year{font-weight:900;color:var(--brand3);font-size:1.45rem;margin-bottom:6px}
+    .race-date{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:.95rem;color:#334155}
+    .date-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:.72rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe}
+    .date-cell{line-height:1.4}
+    .date-cell .date-badge{margin-right:8px}
+    .info .date-badge{margin-right:6px}
+    .growth{margin-top:16px;border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px 16px 8px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
+    .growth h3{margin:0 0 6px}
+    .growth .note{max-width:none;margin-bottom:12px}
+    .growth-row{display:grid;grid-template-columns:70px 1fr auto;gap:10px;align-items:center;margin:0 0 10px}
+    .growth-row .label{font-weight:800;color:#334155}
+    .growth-bar{height:12px;border-radius:999px;background:#e2e8f0;overflow:hidden;position:relative}
+    .growth-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#22c55e)}
+    .growth-bar.pending{background:repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0 8px,#f1f5f9 8px,#f1f5f9 16px)}
+    .growth-value{font-weight:800;color:#0f172a;white-space:nowrap}
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:white;box-shadow:0 8px 22px rgba(15,23,42,.05)}
     table{border-collapse:collapse;width:100%;min-width:920px;background:white}
     th,td{padding:14px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
@@ -194,6 +208,7 @@
       <nav class="toc" aria-label="Navegação da página">
         <a href="#historico">Histórico</a>
         <a href="#shortlist">Shortlist 2027</a>
+        <a href="#custovida">Custo de vida</a>
         <a href="#destinos">Candidatas principais</a>
         <a href="#viagens">Modelos de viagem</a>
         <a href="#recomendacao">Recomendação</a>
@@ -214,24 +229,71 @@
         <article class="done">
           <div class="year">2023</div>
           <h3>Atenas</h3>
-          <p>Prova histórica e simbólica. Muito forte para quem queria correr a “maratona original”. Programa com maratona, 10 km, 5 km e prova infantil.</p>
+          <p class="race-date"><span class="date-badge">Data</span>12 de novembro de 2023</p>
+          <p>Prova histórica e simbólica. Muito forte para quem queria correr a “maratona original”. Programa com maratona, 10 km, 5 km e prova infantil. O balanço do Projeto #2 refere esta edição com 22 participantes (atletas e acompanhantes).</p>
         </article>
         <article class="done">
           <div class="year">2024</div>
           <h3>Budapeste</h3>
-          <p>Excelente para grupo: festival de corrida com várias distâncias, cidade acessível, bons transportes e forte componente turística.</p>
+          <p class="race-date"><span class="date-badge">Data</span>13 de outubro de 2024</p>
+          <p>Excelente para grupo: festival inclusivo com 5 km, 10 km, 14 km, maratona e estafetas. A comitiva subiu para 50 pessoas (33 membros RUN 4 FUN e 17 convidados), com forte presença de acompanhantes.</p>
         </article>
         <article class="done">
           <div class="year">2025</div>
           <h3>Riga</h3>
+          <p class="race-date"><span class="date-badge">Data</span>18 de maio de 2025</p>
           <p>Cidade compacta e muito prática. Evento com maratona, meia, 10 km, 6 km, milha e provas infantis.</p>
         </article>
         <article class="done">
           <div class="year">2026</div>
           <h3>Edimburgo</h3>
+          <p class="race-date"><span class="date-badge">Data</span>24 de maio de 2026</p>
           <p>Festival muito completo: maratona, meia, estafeta, 10 km, 5 km e provas júnior. Excelente para acompanhantes, embora mais exigente em custos de alojamento.</p>
         </article>
       </div>
+      <div class="cards" style="margin-top:14px">
+        <article class="card pad">
+          <h3>Participação 2023</h3>
+          <p><strong>22 pessoas</strong> entre atletas e acompanhantes em Atenas.</p>
+        </article>
+        <article class="card pad">
+          <h3>Participação 2024</h3>
+          <p><strong>50 pessoas</strong> em Budapeste (33 membros + 17 convidados).</p>
+        </article>
+        <article class="card pad">
+          <h3>Evolução</h3>
+          <p><strong>+28 participantes</strong> de 2023 para 2024 (aprox. <strong>+127%</strong>).</p>
+        </article>
+        <article class="card pad">
+          <h3>Sinal de maturidade</h3>
+          <p><strong>12 participantes</strong> viajaram só pela componente social “4 FUN”, reforçando o modelo inclusivo da iniciativa.</p>
+        </article>
+      </div>
+      <div class="growth" aria-label="Evolução anual de participantes do Projeto Maratona">
+        <h3>Evolução de participantes por edição</h3>
+        <p class="note">Valores confirmados para 2023 e 2024. Para 2025 e 2026, o clube reporta crescimento significativo, mas sem total oficial consolidado nas fontes aqui listadas.</p>
+        <div class="growth-row">
+          <span class="label">2023</span>
+          <div class="growth-bar" role="img" aria-label="2023 com 22 participantes"><span style="width:44%"></span></div>
+          <span class="growth-value">22</span>
+        </div>
+        <div class="growth-row">
+          <span class="label">2024</span>
+          <div class="growth-bar" role="img" aria-label="2024 com 50 participantes"><span style="width:100%"></span></div>
+          <span class="growth-value">50</span>
+        </div>
+        <div class="growth-row">
+          <span class="label">2025</span>
+          <div class="growth-bar pending" role="img" aria-label="2025 em consolidação"></div>
+          <span class="growth-value">sem total oficial</span>
+        </div>
+        <div class="growth-row">
+          <span class="label">2026</span>
+          <div class="growth-bar pending" role="img" aria-label="2026 em consolidação"></div>
+          <span class="growth-value">sem total oficial</span>
+        </div>
+      </div>
+      <p class="note" style="margin-top:12px">Dados de participação extraídos dos relatos oficiais do clube para o Projeto Maratona #1 (Atenas 2023) e #2 (Budapeste 2024). Enquanto não houver total oficial de 2025 e 2026, esta página evita calcular percentagens desses anos.</p>
     </section>
 
     <section id="shortlist">
@@ -268,7 +330,7 @@
             <tr data-tags="favorita outono economica ferias">
               <td><strong>1</strong></td>
               <td><strong>NLB Ljubljana Marathon</strong><br><span class="note">Ljubljana, Eslovénia</span></td>
-              <td>Outubro. Data 2027 ainda a confirmar; a edição 2026 está anunciada para 17–18 outubro.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>Outubro. Calendário 2027 ainda a confirmar; a edição 2026 está anunciada para 17-18 outubro.</td>
               <td>Maratona, meia-maratona, 10 km e kids run.</td>
               <td>Normalmente com escala. Opções via Zurique, Frankfurt, Munique, Paris, Amesterdão ou cidades próximas.</td>
               <td>Cidade compacta; boa para 3 dias e excelente porta de entrada para Lake Bled, Postojna e Alpes Julianos.</td>
@@ -277,7 +339,7 @@
             <tr data-tags="favorita primavera ferias">
               <td><strong>2</strong></td>
               <td><strong>Salzburg Marathon</strong><br><span class="note">Salzburg, Áustria</span></td>
-              <td>23 maio 2027 confirmado no site oficial.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>23 maio 2027 confirmado no site oficial.</td>
               <td>Maratona, meia, 10 km, estafeta, corrida feminina, júnior e inclusão.</td>
               <td>Sem voo direto regular forte desde Lisboa; normalmente via Frankfurt, Munique, Zurique ou Viena + comboio.</td>
               <td>Cidade belíssima e muito turística. Hotéis devem ser reservados cedo.</td>
@@ -286,7 +348,7 @@
             <tr data-tags="favorita primavera economica">
               <td><strong>3</strong></td>
               <td><strong>European Running Championships 2027</strong><br><span class="note">Belgrado, Sérvia</span></td>
-              <td>17–18 abril 2027 confirmado.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>17-18 abril 2027 confirmado.</td>
               <td>Maratona, meia-maratona, 10 km, meia em estafeta e fun run.</td>
               <td>Melhor opção aérea: Air Serbia tem ligações diretas Lisboa–Belgrado em alguns períodos.</td>
               <td>Boa relação custo/benefício; cidade intensa, histórica e diferente das anteriores.</td>
@@ -295,7 +357,7 @@
             <tr data-tags="favorita primavera ferias">
               <td><strong>4</strong></td>
               <td><strong>XM Limassol Marathon</strong><br><span class="note">Limassol, Chipre</span></td>
-              <td>3–4 abril 2027 anunciado na plataforma de inscrição.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>3-4 abril 2027 anunciado na plataforma de inscrição.</td>
               <td>Maratona, meia-maratona, 10 km e 5 km.</td>
               <td>Voar para Larnaca ou Paphos e seguir de shuttle/transfer para Limassol.</td>
               <td>Excelente para juntar prova, sol, costa, gastronomia e semana de férias.</td>
@@ -304,7 +366,7 @@
             <tr data-tags="primavera">
               <td><strong>5</strong></td>
               <td><strong>Vienna City Marathon</strong><br><span class="note">Viena, Áustria</span></td>
-              <td>Abril 2027; confirmar calendário final.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>Abril 2027; confirmar calendário final.</td>
               <td>Maratona, meia, estafeta e provas curtas no fim de semana.</td>
               <td>Viagem simples para Viena; custos de hotel podem subir muito no fim de semana da prova.</td>
               <td>Turismo fortíssimo: Ringstrasse, Schönbrunn, museus, cafés e música.</td>
@@ -313,7 +375,7 @@
             <tr data-tags="primavera ferias">
               <td><strong>6</strong></td>
               <td><strong>Helsinki City Run</strong><br><span class="note">Helsínquia, Finlândia</span></td>
-              <td>Maio 2027 a confirmar em fontes agregadoras; site oficial mostra 2026.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>Maio 2027 a confirmar em fontes agregadoras; site oficial mostra 2026.</td>
               <td>Maratona, meia, estafeta, 5 km e formatos familiares.</td>
               <td>Normalmente com escala; país mais caro para alimentação e hotelaria.</td>
               <td>Boa cidade para quem quer uma experiência nórdica, limpa e organizada.</td>
@@ -322,7 +384,7 @@
             <tr data-tags="outono economica">
               <td><strong>7</strong></td>
               <td><strong>Tallinn Marathon</strong><br><span class="note">Tallinn, Estónia</span></td>
-              <td>Setembro. AIMS confirma 2026; edição 2027 a confirmar.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>Setembro. AIMS confirma 2026; edição 2027 a confirmar.</td>
               <td>Maratona, estafeta, meia, 10 km e 5 km.</td>
               <td>Normalmente com escala; alternativa báltica sem repetir Riga.</td>
               <td>Cidade medieval compacta e muito boa para fim de semana prolongado.</td>
@@ -331,7 +393,7 @@
             <tr data-tags="outono economica">
               <td><strong>8</strong></td>
               <td><strong>Bucharest Marathon</strong><br><span class="note">Bucareste, Roménia</span></td>
-              <td>Normalmente outubro; calendário 2027 a confirmar.</td>
+              <td class="date-cell"><span class="date-badge">Data</span>Normalmente outubro; calendário 2027 a confirmar.</td>
               <td>42 km, estafeta 4x, 21 km, 10 km e fun race.</td>
               <td>Normalmente com escala. Pode ter bom custo total se reservado cedo.</td>
               <td>Menos “postal turístico”, mas potencialmente económica para grupo grande.</td>
@@ -340,6 +402,167 @@
           </tbody>
         </table>
       </div>
+    </section>
+
+    <section id="custovida">
+      <div class="section-title">
+        <div>
+          <h2>Custo de vida por cidade (referência para decisão)</h2>
+          <p class="note">Estimativas indicativas para viagem de grupo em regime turístico (maio de 2026). Devem ser validadas 8-12 semanas antes da reserva, porque variam com época, câmbio e eventos locais.</p>
+        </div>
+      </div>
+
+      <div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:14px">
+        <article class="card pad">
+          <h3>Métricas recomendadas</h3>
+          <ul>
+            <li><strong>Alojamento:</strong> hotel 3* bem localizado (quarto duplo/noite).</li>
+            <li><strong>Refeições:</strong> menu económico + jantar casual (sem luxo).</li>
+            <li><strong>Mobilidade:</strong> passe 24h ou custo médio diário de transportes.</li>
+            <li><strong>Essenciais:</strong> água 1,5 L, café e snack simples.</li>
+            <li><strong>Índice total:</strong> Lisboa = 100 para comparação rápida.</li>
+          </ul>
+        </article>
+        <article class="card pad">
+          <h3>Como usar na votação</h3>
+          <ul>
+            <li><strong>Viagem curta (3 dias):</strong> usar custo diário x 3 + inscrição.</li>
+            <li><strong>Viagem longa (7 dias):</strong> usar custo diário x 7 + inscrição.</li>
+            <li><strong>Cenário conservador:</strong> aplicar margem de risco de 10%-15%.</li>
+            <li><strong>Regra de decisão:</strong> cruzar custo com adequação desportiva.</li>
+            <li><strong>Atualização:</strong> rever preços de 30 em 30 dias.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Cidade</th>
+              <th>Índice vs Lisboa</th>
+              <th>Hotel 3* (duplo/noite)</th>
+              <th>Alimentação/dia</th>
+              <th>Transportes/dia</th>
+              <th>Custo diário total (sem voo)</th>
+              <th>Inscrição (estim.)</th>
+              <th>Total/pessoa 3 dias</th>
+              <th>Total/pessoa 7 dias</th>
+              <th>Total com voo (estim.)</th>
+              <th>Leitura rápida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Belgrado</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:74%"></span></span>74</span></td>
+              <td>55-95 EUR</td>
+              <td>22-36 EUR</td>
+              <td>3-7 EUR</td>
+              <td><strong>80-138 EUR</strong></td>
+              <td>45-75 EUR</td>
+              <td><strong>314-562 EUR</strong></td>
+              <td><strong>666-1208 EUR</strong></td>
+              <td><strong>3 dias:</strong> 454-862 EUR<br><strong>7 dias:</strong> 806-1508 EUR</td>
+              <td>Mais económica da shortlist principal.</td>
+            </tr>
+            <tr>
+              <td><strong>Bucareste</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:76%"></span></span>76</span></td>
+              <td>50-90 EUR</td>
+              <td>24-38 EUR</td>
+              <td>3-7 EUR</td>
+              <td><strong>77-135 EUR</strong></td>
+              <td>45-75 EUR</td>
+              <td><strong>304-552 EUR</strong></td>
+              <td><strong>642-1173 EUR</strong></td>
+              <td><strong>3 dias:</strong> 454-872 EUR<br><strong>7 dias:</strong> 792-1493 EUR</td>
+              <td>Boa relação custo total para grupo grande.</td>
+            </tr>
+            <tr>
+              <td><strong>Ljubljana</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:96%"></span></span>96</span></td>
+              <td>75-125 EUR</td>
+              <td>28-45 EUR</td>
+              <td>3-8 EUR</td>
+              <td><strong>106-178 EUR</strong></td>
+              <td>55-95 EUR</td>
+              <td><strong>410-723 EUR</strong></td>
+              <td><strong>877-1542 EUR</strong></td>
+              <td><strong>3 dias:</strong> 590-1083 EUR<br><strong>7 dias:</strong> 1057-1902 EUR</td>
+              <td>Próxima de Lisboa no dia a dia.</td>
+            </tr>
+            <tr>
+              <td><strong>Tallinn</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:104%"></span></span>104</span></td>
+              <td>80-135 EUR</td>
+              <td>30-48 EUR</td>
+              <td>3-8 EUR</td>
+              <td><strong>113-191 EUR</strong></td>
+              <td>55-90 EUR</td>
+              <td><strong>433-762 EUR</strong></td>
+              <td><strong>931-1641 EUR</strong></td>
+              <td><strong>3 dias:</strong> 623-1142 EUR<br><strong>7 dias:</strong> 1121-2021 EUR</td>
+              <td>Ligeiramente acima de Lisboa.</td>
+            </tr>
+            <tr>
+              <td><strong>Viena</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:118%"></span></span>118</span></td>
+              <td>95-170 EUR</td>
+              <td>34-55 EUR</td>
+              <td>5-11 EUR</td>
+              <td><strong>134-236 EUR</strong></td>
+              <td>70-120 EUR</td>
+              <td><strong>519-952 EUR</strong></td>
+              <td><strong>1109-2038 EUR</strong></td>
+              <td><strong>3 dias:</strong> 659-1232 EUR<br><strong>7 dias:</strong> 1249-2318 EUR</td>
+              <td>Confortável, mas mais cara ao fim de semana.</td>
+            </tr>
+            <tr>
+              <td><strong>Limassol</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:121%"></span></span>121</span></td>
+              <td>90-175 EUR</td>
+              <td>34-56 EUR</td>
+              <td>6-14 EUR</td>
+              <td><strong>130-245 EUR</strong></td>
+              <td>60-100 EUR</td>
+              <td><strong>495-960 EUR</strong></td>
+              <td><strong>1067-2087 EUR</strong></td>
+              <td><strong>3 dias:</strong> 715-1410 EUR<br><strong>7 dias:</strong> 1287-2537 EUR</td>
+              <td>Boa para férias, penaliza em estadias longas.</td>
+            </tr>
+            <tr>
+              <td><strong>Salzburg</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:129%"></span></span>129</span></td>
+              <td>110-210 EUR</td>
+              <td>36-62 EUR</td>
+              <td>5-12 EUR</td>
+              <td><strong>151-284 EUR</strong></td>
+              <td>75-130 EUR</td>
+              <td><strong>581-1129 EUR</strong></td>
+              <td><strong>1245-2436 EUR</strong></td>
+              <td><strong>3 dias:</strong> 761-1489 EUR<br><strong>7 dias:</strong> 1425-2796 EUR</td>
+              <td>Excelente turismo, custo elevado.</td>
+            </tr>
+            <tr>
+              <td><strong>Helsínquia</strong></td>
+              <td><span class="score"><span class="bar"><span style="width:138%"></span></span>138</span></td>
+              <td>115-220 EUR</td>
+              <td>40-68 EUR</td>
+              <td>6-14 EUR</td>
+              <td><strong>161-302 EUR</strong></td>
+              <td>70-120 EUR</td>
+              <td><strong>608-1180 EUR</strong></td>
+              <td><strong>1317-2569 EUR</strong></td>
+              <td><strong>3 dias:</strong> 828-1600 EUR<br><strong>7 dias:</strong> 1537-2989 EUR</td>
+              <td>Mais cara da lista para orçamento diário.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note" style="margin-top:12px">Método sugerido: recolher 10 amostras por cidade (5 hotéis + 5 restaurantes), usar mediana em vez de média e recalcular o índice com Lisboa=100 para reduzir distorções.</p>
+      <p class="note">Cálculo dos totais: custo diário x 3 ou x 7 + inscrição estimada, com margem de risco incluída (10% no limite inferior e 15% no limite superior). Não inclui voo internacional.</p>
+      <p class="note">Voo (estimativa Lisboa ida e volta): Belgrado 140-300 EUR, Bucareste 150-320 EUR, Ljubljana 180-360 EUR, Tallinn 190-380 EUR, Viena 140-280 EUR, Limassol 220-450 EUR, Salzburg 180-360 EUR, Helsínquia 220-420 EUR.</p>
     </section>
 
     <section id="destinos">
@@ -357,7 +580,7 @@
             <div class="meta"><span class="pill good">Recomendação racional</span><span class="pill blue">Outono</span><span class="pill good">Cidade compacta</span></div>
             <p>É provavelmente a opção mais equilibrada: cidade bonita, dimensão humana, boa experiência para acompanhantes e um programa de prova que encaixa quase perfeitamente no modelo RUN 4 FUN.</p>
             <div class="info-grid">
-              <div class="info"><strong>Prova</strong>Maratona, meia-maratona, 10 km e kids run. Data 2027 ainda a confirmar.</div>
+              <div class="info"><strong>Prova</strong>Maratona, meia-maratona, 10 km e kids run. <span class="date-badge">Data</span>2027 ainda a confirmar.</div>
               <div class="info"><strong>Voos</strong>Lisboa–Ljubljana deverá exigir escala. Também é possível estudar voos para Veneza, Trieste, Zagreb ou Viena e transporte terrestre.</div>
               <div class="info"><strong>Estadia</strong>Procurar hotéis/apart-hotéis no centro, perto da estação ou zona Old Town–Tivoli. Ideal para 3–5 noites.</div>
               <div class="info"><strong>Acompanhantes</strong>Centro histórico, castelo, rio Ljubljanica, mercados, cafés, Lake Bled e Postojna.</div>
@@ -372,7 +595,7 @@
             <div class="meta"><span class="pill good">Data 2027 confirmada</span><span class="pill blue">Primavera</span><span class="pill warn">Reservar cedo</span></div>
             <p>Excelente para uma viagem com acompanhantes. A cidade é pequena, muito caminhável e tem uma combinação rara de património, música, paisagem e ambiente de prova.</p>
             <div class="info-grid">
-              <div class="info"><strong>Prova</strong>23 maio 2027. Maratona, meia, 10 km, estafeta, provas júnior e inclusão.</div>
+              <div class="info"><strong>Prova</strong><span class="date-badge">Data</span>23 maio 2027. Maratona, meia, 10 km, estafeta, provas júnior e inclusão.</div>
               <div class="info"><strong>Voos</strong>Lisboa–Salzburg normalmente requer escala. Alternativas: Munique ou Viena + comboio.</div>
               <div class="info"><strong>Estadia</strong>Centro histórico, Hauptbahnhof, Elisabeth-Vorstadt ou Lehen. Hotéis podem esgotar/subir no fim de semana.</div>
               <div class="info"><strong>Acompanhantes</strong>Fortaleza Hohensalzburg, Mirabell, Getreidegasse, casa de Mozart, Hallstatt ou lagos próximos.</div>
@@ -387,7 +610,7 @@
             <div class="meta"><span class="pill good">Evento especial</span><span class="pill blue">Primavera</span><span class="pill good">Potencialmente económica</span></div>
             <p>A oportunidade de correr num Campeonato Europeu aberto a populares torna esta opção especialmente memorável para a história do clube.</p>
             <div class="info-grid">
-              <div class="info"><strong>Prova</strong>17–18 abril 2027. Maratona, meia, 10 km, meia em estafeta e fun run.</div>
+              <div class="info"><strong>Prova</strong><span class="date-badge">Data</span>17-18 abril 2027. Maratona, meia, 10 km, meia em estafeta e fun run.</div>
               <div class="info"><strong>Voos</strong>Verificar Air Serbia para ligação direta Lisboa–Belgrado. Caso contrário, procurar escala via hubs europeus.</div>
               <div class="info"><strong>Estadia</strong>Stari Grad, Vračar ou zona Knez Mihailova/Kalemegdan. Boa relação preço/localização.</div>
               <div class="info"><strong>Acompanhantes</strong>Kalemegdan, Fortaleza, Skadarlija, Templo de São Sava, Zemun, museus e vida noturna.</div>
@@ -402,7 +625,7 @@
             <div class="meta"><span class="pill good">Boa para semana longa</span><span class="pill blue">Primavera</span><span class="pill warn">Transfer aeroporto</span></div>
             <p>Ideal para quem quiser transformar a maratona numa semana de descanso mediterrânico. A logística exige mais atenção por não haver aeroporto em Limassol.</p>
             <div class="info-grid">
-              <div class="info"><strong>Prova</strong>3–4 abril 2027. Maratona, meia, 10 km e 5 km em percurso costeiro.</div>
+              <div class="info"><strong>Prova</strong><span class="date-badge">Data</span>3-4 abril 2027. Maratona, meia, 10 km e 5 km em percurso costeiro.</div>
               <div class="info"><strong>Voos</strong>Voar para Larnaca ou Paphos. Usar Limassol Airport Express, Kapnos ou transfer privado.</div>
               <div class="info"><strong>Estadia</strong>Centro antigo, Marina, Molos/Promenade ou Germasogeia para praia e restaurantes.</div>
               <div class="info"><strong>Acompanhantes</strong>Marina, Promenade, Kourion, Kolossi, praias, aldeias vinícolas e possível aluguer de carro.</div>
@@ -481,8 +704,8 @@
       <div class="decision">
         <div class="winner">
           <h2>Recomendação final</h2>
-          <p class="note">Para votação interna, eu apresentaria quatro opções e deixaria a escolha final depender de preços reais de voos/hotéis quando as datas estiverem totalmente confirmadas.</p>
-          <div class="quote"><strong>Escolha racional:</strong> Ljubljana 2027, se a data encaixar e os custos de voo/hotel forem bons.</div>
+          <p class="note">Para votação interna, eu apresentaria quatro opções e deixaria a escolha final depender de preços reais de voos/hotéis quando as <span class="date-badge">Datas</span> estiverem totalmente confirmadas.</p>
+          <div class="quote"><strong>Escolha racional:</strong> Ljubljana 2027, se a <span class="date-badge">Data</span> de 2027 encaixar e os custos de voo/hotel forem bons.</div>
           <div class="quote"><strong>Escolha emocional/histórica:</strong> Belgrado 2027, pela participação no European Running Championships.</div>
           <div class="matrix">
             <div><strong>Melhor cidade turística</strong><br>Salzburg</div>
@@ -494,7 +717,7 @@
         <div class="checklist">
           <h2>Próximos passos</h2>
           <ol>
-            <li>Confirmar datas oficiais 2027 de Ljubljana, Tallinn e Bucharest.</li>
+            <li>Confirmar <span class="date-badge">Datas</span> oficiais 2027 de Ljubljana, Tallinn e Bucharest.</li>
             <li>Simular voos para 25–40 pessoas, com e sem bagagem de porão.</li>
             <li>Pedir propostas de alojamento com cancelamento flexível.</li>
             <li>Verificar preços de inscrição por fases e eventuais descontos de grupo.</li>
@@ -513,6 +736,8 @@
         </div>
       </div>
       <ol>
+        <li><a href="https://run4f.blogspot.com/2023/11/projeto-maratona-1-maratona-de-atenas.html" target="_blank" rel="noopener">RUN 4 FUN — Projeto Maratona #1: Atenas 2023</a></li>
+        <li><a href="https://run4f.blogspot.com/2024/10/projeto-maratona-2-maratona-de.html" target="_blank" rel="noopener">RUN 4 FUN — Projeto Maratona #2: Budapeste 2024</a></li>
         <li><a href="https://www.athensauthenticmarathon.gr/en" target="_blank" rel="noopener">Athens Marathon — The Authentic</a></li>
         <li><a href="https://marathon.runinbudapest.com/" target="_blank" rel="noopener">SPAR Budapest Marathon</a></li>
         <li><a href="https://rimirigamarathon.com/en/" target="_blank" rel="noopener">Rimi Riga Marathon</a></li>
