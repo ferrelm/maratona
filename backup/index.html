@@ -3,31 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>RUN 4 FUN — Maratona Internacional 2027 · página de apoio à decisão</title>
-  <meta name="description" content="Página de apoio à decisão do RUN 4 FUN para escolher a maratona internacional de 2027: histórico do clube, shortlist comparada, custos de vida, voos, estadia, turismo e recomendação." />
-  <meta name="theme-color" content="#0f172a" />
-  <meta name="color-scheme" content="light" />
-
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:locale" content="pt_PT" />
-  <meta property="og:title" content="RUN 4 FUN — Maratona Internacional 2027" />
-  <meta property="og:description" content="Apoio à decisão do clube para escolher a maratona de 2027: shortlist comparada, custos, voos, estadia, turismo e recomendação." />
-  <meta property="og:site_name" content="RUN 4 FUN" />
-
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="RUN 4 FUN — Maratona Internacional 2027" />
-  <meta name="twitter:description" content="Apoio à decisão do clube para escolher a maratona de 2027." />
-
-  <!-- Favicon SVG (emoji) -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E" />
-
-  <!-- Tipografia: Inter (carregada explicitamente, com fallback de sistema) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
-
+  <title>RUN 4 FUN — Maratona Internacional 2027</title>
+  <meta name="description" content="Página de apoio à decisão RUN 4 FUN para escolher a maratona internacional de 2027: provas já realizadas, shortlist, voos, estadia, turismo e recomendação." />
   <style>
     :root{
       --bg:#0f172a;
@@ -47,8 +24,6 @@
       --shadow:0 20px 45px rgba(15,23,42,.18);
       --radius:22px;
       --max:1520px;
-      --index-max:150;          /* escala máxima do índice vs Lisboa */
-      --index-lisbon:66.67%;    /* 100/150 → posição do marcador Lisboa=100 */
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
@@ -61,23 +36,6 @@
     }
     a{color:#1d4ed8;text-decoration:none}
     a:hover{text-decoration:underline}
-
-    /* Foco visível e consistente para teclado */
-    :focus-visible{outline:3px solid #f97316;outline-offset:2px;border-radius:6px}
-    .toc a:focus-visible,.action-btn:focus-visible,.filters button:focus-visible{outline-offset:3px}
-
-    /* Skip link (acessibilidade por teclado/leitor de ecrã) */
-    .skip-link{
-      position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
-    }
-    .skip-link:focus{
-      position:fixed;left:16px;top:16px;width:auto;height:auto;
-      padding:10px 14px;background:#0f172a;color:#fff;border-radius:10px;
-      font-weight:800;z-index:100;text-decoration:none;
-    }
-    /* Visualmente escondido, mas legível por leitores de ecrã */
-    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-
     .hero{
       color:white;
       background:
@@ -93,38 +51,29 @@
       position:absolute; inset:auto -12% -40% 35%; height:260px;
       background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);
       transform:rotate(-10deg);
-      pointer-events:none;
     }
     .wrap{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
     .topline{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
-    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);padding:7px 12px;border-radius:999px;font-size:.9rem;color:#fff}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);padding:7px 12px;border-radius:999px;font-size:.9rem;color:#fff}
     .badge.dark{border-color:#dbeafe;background:#eff6ff;color:#1e3a8a}
     .badge.green{border-color:#bbf7d0;background:#f0fdf4;color:#166534}
     .badge.orange{border-color:#fed7aa;background:#fff7ed;color:#9a3412}
     h1{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.98;margin:0 0 18px;letter-spacing:-.06em;max-width:980px}
-    .lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:900px;color:#e0e7ff;margin:0 0 28px}
+    .lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:900px;color:#dbeafe;margin:0 0 28px}
     .hero-grid{display:grid;grid-template-columns:1.45fr .85fr;gap:22px;align-items:stretch;margin-top:28px}
     .hero-panel{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:22px;backdrop-filter:blur(8px)}
     .hero-panel h2{margin:0 0 8px;font-size:1.15rem;color:#fff;letter-spacing:-.02em}
     .criteria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
-    .criterion{background:rgba(255,255,255,.12);border-radius:16px;padding:12px;color:#f1f5f9;font-size:.95rem}
+    .criterion{background:rgba(255,255,255,.10);border-radius:16px;padding:12px;color:#e5e7eb;font-size:.95rem}
     .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
-    .toc a{color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.10);font-size:.95rem}
-    .toc a:hover{background:rgba(255,255,255,.20);text-decoration:none}
-
+    .toc a{color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.08);font-size:.95rem}
+    .toc a:hover{background:rgba(255,255,255,.18);text-decoration:none}
     main{padding:34px 20px 70px}
     section{max-width:var(--max);margin:0 auto 46px}
-    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
     h2{font-size:clamp(1.55rem,3vw,2.35rem);letter-spacing:-.04em;line-height:1.05;margin:0;color:#0f172a}
     h3{font-size:1.2rem;letter-spacing:-.02em;margin:0 0 8px;color:#111827}
     .note{color:var(--muted);font-size:.96rem;margin:0;max-width:760px}
-
-    /* Utilitários (substituem styles inline) */
-    .mt-12{margin-top:12px}
-    .mt-14{margin-top:14px}
-    .mb-14{margin-bottom:14px}
-    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
-
     .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 24px rgba(15,23,42,.06);overflow:hidden}
     .card.pad{padding:18px}
@@ -136,7 +85,6 @@
     .pill.warn{background:#fef3c7;color:#92400e;border-color:#fde68a}
     .pill.blue{background:#dbeafe;color:#1e40af;border-color:#bfdbfe}
     .pill.red{background:#fee2e2;color:#991b1b;border-color:#fecaca}
-
     .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
     .done{position:relative;padding:18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 20px rgba(15,23,42,.05)}
     .year{font-weight:900;color:var(--brand3);font-size:1.45rem;margin-bottom:6px}
@@ -145,7 +93,6 @@
     .date-cell{line-height:1.4}
     .date-cell .date-badge{margin-right:8px}
     .info .date-badge{margin-right:6px}
-
     .growth{margin-top:16px;border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px 16px 8px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
     .growth h3{margin:0 0 6px}
     .growth .note{max-width:none;margin-bottom:12px}
@@ -155,42 +102,23 @@
     .growth-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#22c55e)}
     .growth-bar.pending{background:repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0 8px,#f1f5f9 8px,#f1f5f9 16px)}
     .growth-value{font-weight:800;color:#0f172a;white-space:nowrap}
-
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:white;box-shadow:0 8px 22px rgba(15,23,42,.05)}
     table{border-collapse:collapse;width:100%;min-width:920px;background:white}
-    caption{caption-side:top;text-align:left;font-weight:700;color:#334155;padding:14px 16px;border-bottom:1px solid var(--line)}
     th,td{padding:14px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
     th{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;background:#f8fafc;color:#334155;position:sticky;top:0;z-index:1}
     tr:last-child td{border-bottom:0}
-    .cost-table{min-width:1660px;font-size:.97rem}
+    .cost-table{min-width:1560px;font-size:.97rem}
     .cost-table th,.cost-table td{padding:12px 10px}
     .cost-table th{font-size:.74rem;line-height:1.25;white-space:normal}
     .cost-table td{line-height:1.35}
     .cost-table td:first-child{white-space:nowrap}
-    .cost-table th:nth-child(10),.cost-table td:nth-child(10){width:230px;min-width:230px;max-width:230px}
-    .cost-table td:nth-child(10){white-space:nowrap}
-    .cost-table th:nth-child(11),.cost-table td:nth-child(11){width:200px;min-width:200px;max-width:200px}
-    .cost-table th:nth-child(10),.cost-table td:nth-child(10),
-    .cost-table th:nth-child(11),.cost-table td:nth-child(11){padding-left:6px;padding-right:6px}
-
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){min-width:210px}
     .score{display:inline-grid;grid-template-columns:80px auto;gap:8px;align-items:center;white-space:nowrap}
-    .bar{width:80px;height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden;position:relative}
-    .bar > span{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#f97316);border-radius:999px}
-    /* Barras do índice vs Lisboa: escala 0–150, marcador a 100 */
-    .bar.index{overflow:visible}
-    .bar.index > span{background:linear-gradient(90deg,#2563eb,#f97316)}
-    .bar.index::before{
-      content:"";position:absolute;top:-3px;bottom:-3px;left:var(--index-lisbon);
-      width:2px;background:#0f172a;border-radius:2px;
-    }
-    .index-legend{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:#475569;margin:0 0 10px}
-    .index-legend::before{content:"";display:inline-block;width:2px;height:14px;background:#0f172a;border-radius:2px}
-
+    .bar{width:80px;height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+    .bar span{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#f97316);border-radius:999px}
     .filters{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
     .filters button{border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:700;color:#334155}
     .filters button.active,.filters button:hover{background:#0f172a;color:#fff;border-color:#0f172a}
-    .filters button[aria-pressed="true"]{background:#0f172a;color:#fff;border-color:#0f172a}
-
     .resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
     .resource{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
     .resource h3{margin:0 0 6px}
@@ -202,19 +130,17 @@
     .action-btn.hotel:hover{background:#dcfce7}
     .action-btn.transfer{color:#7c2d12;border-color:#fdba74;background:#fff7ed}
     .action-btn.transfer:hover{background:#ffedd5}
-
     .destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
     .dest{display:grid;grid-template-columns:260px 1fr;gap:0;min-height:360px}
     .dest-media{display:grid;grid-template-rows:repeat(3,minmax(0,1fr));min-height:360px}
     .photo-tile{position:relative;min-height:0;margin:0}
     .dest-media img{width:100%;height:100%;object-fit:cover;display:block;background:#e2e8f0}
-    .photo-label{position:absolute;left:8px;bottom:8px;margin:0;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.02em;color:#f1f5f9;background:rgba(15,23,42,.78);border:1px solid rgba(226,232,240,.35)}
+    .photo-label{position:absolute;left:8px;bottom:8px;margin:0;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.02em;color:#e2e8f0;background:rgba(15,23,42,.72);border:1px solid rgba(226,232,240,.35)}
     .dest .card-body{padding:22px}
     .rank{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;background:#0f172a;color:#fff;font-weight:900;margin-right:8px}
     .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
     .info{border:1px solid var(--line);background:#f8fafc;border-radius:16px;padding:13px}
     .info strong{display:block;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:5px}
-
     .quote{border-left:5px solid var(--brand);padding:16px 18px;background:#fff7ed;border-radius:0 18px 18px 0;margin:16px 0;color:#431407}
     .plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
     .plan{border:1px solid var(--line);background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
@@ -222,7 +148,6 @@
     .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#dbeafe;color:#1e40af;font-weight:900;font-size:.85rem}
     ul{margin:9px 0 0 20px;padding:0}
     li{margin:5px 0}
-
     .decision{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
     .decision .winner{background:linear-gradient(135deg,#022c22,#064e3b);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
     .winner h2{color:white}
@@ -231,27 +156,18 @@
     .winner .quote{background:#f8fafc;color:#1f2937;border-left-color:#f97316}
     .winner .quote strong{color:#166534}
     .matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
-    .matrix div{border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;background:rgba(255,255,255,.10);color:#ecfdf5}
-    .matrix strong{color:#bbf7d0}
+    .matrix div{border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px;background:rgba(255,255,255,.08)}
     .checklist{background:#0f172a;color:#e5e7eb;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
     .checklist h2{color:white}
     .checklist li{margin-bottom:8px}
-
     .sources{font-size:.92rem;color:#475569}
     .sources ol{columns:2;column-gap:35px;padding-left:21px}
     .sources li{break-inside:avoid;margin:0 0 9px}
-
-    .credits{font-size:.86rem;color:#64748b;margin-top:14px;border:1px dashed var(--line);border-radius:14px;padding:14px 16px;background:#fafafa}
-    .credits h3{font-size:.95rem;margin:0 0 6px;color:#334155}
-    .credits ul{list-style:disc;margin:6px 0 0 18px}
-    .credits a{color:#475569;text-decoration:underline}
-
     .footer{max-width:var(--max);margin:30px auto 0;padding:24px 20px 44px;color:#64748b;text-align:center;border-top:1px solid var(--line)}
     .print-only{display:none}
-
     @media (min-width:1800px){
       :root{--max:1600px}
-      .cost-table{min-width:1720px}
+      .cost-table{min-width:1640px}
     }
     @media (max-width:980px){
       .hero-grid,.decision{grid-template-columns:1fr}
@@ -267,31 +183,23 @@
       .cards,.timeline{grid-template-columns:1fr}
       .hero{padding-top:34px}
       main{padding-left:14px;padding-right:14px}
-      .section-title{align-items:flex-start;flex-direction:column}
-    }
-    @media (prefers-reduced-motion: reduce){
-      html{scroll-behavior:auto}
-      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+      .section-title{align-items:start;flex-direction:column}
     }
     @media print{
       body{background:white;font-size:11pt}
       .hero{background:white;color:#111827;padding:20px 0;border-bottom:2px solid #111827}
       .hero *{color:#111827!important}
-      .toc,.filters,.footer,.skip-link{display:none}
+      .toc,.filters,.footer{display:none}
       main{padding:16px 0}
       section{break-inside:avoid;margin-bottom:22px}
       .card,.done,.plan,.table-wrap{box-shadow:none}
       .dest img,.card img{display:none}
       .sources ol{columns:1}
       .print-only{display:block}
-      a[href]:after{content:" ("attr(href)")";font-size:9pt;color:#475569}
-      .toc a:after,.action-btn:after{content:""}
     }
   </style>
 </head>
 <body>
-  <a class="skip-link" href="#conteudo">Saltar para o conteúdo principal</a>
-
   <header class="hero">
     <div class="wrap">
       <div class="topline">
@@ -323,25 +231,24 @@
           <p><strong>Escolha sol/férias:</strong> Limassol, ideal para quem quiser juntar prova e semana de descanso.</p>
         </div>
       </div>
-      <nav class="toc" aria-label="Índice da página">
+      <nav class="toc" aria-label="Navegação da página">
         <a href="#historico">Histórico</a>
         <a href="#shortlist">Shortlist 2027</a>
         <a href="#custovida">Custo de vida</a>
         <a href="#voosehoteis">Voos e hotéis</a>
         <a href="#destinos">Candidatas principais</a>
         <a href="#viagens">Modelos de viagem</a>
-        <a href="#alojamento">Estadia</a>
         <a href="#recomendacao">Recomendação</a>
         <a href="#fontes">Fontes</a>
       </nav>
     </div>
   </header>
 
-  <main id="conteudo">
-    <section id="historico" aria-labelledby="t-historico">
+  <main>
+    <section id="historico">
       <div class="section-title">
         <div>
-          <h2 id="t-historico">Maratonas internacionais já realizadas</h2>
+          <h2>Maratonas internacionais já realizadas</h2>
           <p class="note">O padrão RUN 4 FUN tem sido escolher capitais/cidades europeias com boa componente turística e logística aceitável para diferentes durações de estadia.</p>
         </div>
       </div>
@@ -371,7 +278,7 @@
           <p>Festival muito completo: maratona, meia, estafeta, 10 km, 5 km e provas júnior. Excelente para acompanhantes, embora mais exigente em custos de alojamento.</p>
         </article>
       </div>
-      <div class="cards mt-14">
+      <div class="cards" style="margin-top:14px">
         <article class="card pad">
           <h3>Participação 2023</h3>
           <p><strong>22 pessoas</strong> entre atletas e acompanhantes em Atenas.</p>
@@ -394,57 +301,56 @@
         <p class="note">Valores confirmados para 2023 e 2024. Para 2025 e 2026, o clube reporta crescimento significativo, mas sem total oficial consolidado nas fontes aqui listadas.</p>
         <div class="growth-row">
           <span class="label">2023</span>
-          <div class="growth-bar" role="img" aria-label="2023: 22 participantes"><span style="width:44%"></span></div>
+          <div class="growth-bar" role="img" aria-label="2023 com 22 participantes"><span style="width:44%"></span></div>
           <span class="growth-value">22</span>
         </div>
         <div class="growth-row">
           <span class="label">2024</span>
-          <div class="growth-bar" role="img" aria-label="2024: 50 participantes"><span style="width:100%"></span></div>
+          <div class="growth-bar" role="img" aria-label="2024 com 50 participantes"><span style="width:100%"></span></div>
           <span class="growth-value">50</span>
         </div>
         <div class="growth-row">
           <span class="label">2025</span>
-          <div class="growth-bar pending" role="img" aria-label="2025: total ainda não consolidado"></div>
+          <div class="growth-bar pending" role="img" aria-label="2025 em consolidação"></div>
           <span class="growth-value">sem total oficial</span>
         </div>
         <div class="growth-row">
           <span class="label">2026</span>
-          <div class="growth-bar pending" role="img" aria-label="2026: total ainda não consolidado"></div>
+          <div class="growth-bar pending" role="img" aria-label="2026 em consolidação"></div>
           <span class="growth-value">sem total oficial</span>
         </div>
       </div>
-      <p class="note mt-12">Dados de participação extraídos dos relatos oficiais do clube para o Projeto Maratona #1 (Atenas 2023) e #2 (Budapeste 2024). Enquanto não houver total oficial de 2025 e 2026, esta página evita calcular percentagens desses anos.</p>
+      <p class="note" style="margin-top:12px">Dados de participação extraídos dos relatos oficiais do clube para o Projeto Maratona #1 (Atenas 2023) e #2 (Budapeste 2024). Enquanto não houver total oficial de 2025 e 2026, esta página evita calcular percentagens desses anos.</p>
     </section>
 
-    <section id="shortlist" aria-labelledby="t-shortlist">
+    <section id="shortlist">
       <div class="section-title">
         <div>
-          <h2 id="t-shortlist">Shortlist 2027</h2>
+          <h2>Shortlist 2027</h2>
           <p class="note">A pontuação combina adequação desportiva, logística, custos prováveis, interesse turístico e flexibilidade para estadias curtas ou longas. As datas devem ser sempre reconfirmadas antes de reservas não reembolsáveis.</p>
         </div>
       </div>
 
-      <div class="filters" role="group" aria-label="Filtros da shortlist">
-        <button type="button" class="active" data-filter="all" aria-pressed="true">Todas</button>
-        <button type="button" data-filter="favorita" aria-pressed="false">Favoritas</button>
-        <button type="button" data-filter="primavera" aria-pressed="false">Primavera</button>
-        <button type="button" data-filter="outono" aria-pressed="false">Outono</button>
-        <button type="button" data-filter="economica" aria-pressed="false">Custo mais controlável</button>
-        <button type="button" data-filter="ferias" aria-pressed="false">Boa para férias</button>
+      <div class="filters" aria-label="Filtros da shortlist">
+        <button class="active" data-filter="all">Todas</button>
+        <button data-filter="favorita">Favoritas</button>
+        <button data-filter="primavera">Primavera</button>
+        <button data-filter="outono">Outono</button>
+        <button data-filter="economica">Custo mais controlável</button>
+        <button data-filter="ferias">Boa para férias</button>
       </div>
 
       <div class="table-wrap">
         <table id="shortlist-table">
-          <caption class="sr-only">Shortlist 2027: prioridade, prova, datas, distâncias, logística e pontuação de adequação.</caption>
           <thead>
             <tr>
-              <th scope="col">Prioridade</th>
-              <th scope="col">Prova</th>
-              <th scope="col">Data / estado</th>
-              <th scope="col">Distâncias</th>
-              <th scope="col">Viagem desde Lisboa</th>
-              <th scope="col">Estadia / turismo</th>
-              <th scope="col">Adequação</th>
+              <th>Prioridade</th>
+              <th>Prova</th>
+              <th>Data / estado</th>
+              <th>Distâncias</th>
+              <th>Viagem desde Lisboa</th>
+              <th>Estadia / turismo</th>
+              <th>Adequação</th>
             </tr>
           </thead>
           <tbody>
@@ -455,7 +361,7 @@
               <td>Maratona, meia-maratona, 10 km e kids run.</td>
               <td>Normalmente com escala. Opções via Zurique, Frankfurt, Munique, Paris, Amesterdão ou cidades próximas.</td>
               <td>Cidade compacta; boa para 3 dias e excelente porta de entrada para Lake Bled, Postojna e Alpes Julianos.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 94 em 100"><span style="width:94%"></span></span>94/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:94%"></span></span>94/100</span></td>
             </tr>
             <tr data-tags="favorita primavera ferias">
               <td><strong>2</strong></td>
@@ -464,7 +370,7 @@
               <td>Maratona, meia, 10 km, estafeta, corrida feminina, júnior e inclusão.</td>
               <td>Sem voo direto regular forte desde Lisboa; normalmente via Frankfurt, Munique, Zurique ou Viena + comboio.</td>
               <td>Cidade belíssima e muito turística. Hotéis devem ser reservados cedo.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 91 em 100"><span style="width:91%"></span></span>91/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:91%"></span></span>91/100</span></td>
             </tr>
             <tr data-tags="favorita primavera economica">
               <td><strong>3</strong></td>
@@ -473,7 +379,7 @@
               <td>Maratona, meia-maratona, 10 km, meia em estafeta e fun run.</td>
               <td>Melhor opção aérea: Air Serbia tem ligações diretas Lisboa–Belgrado em alguns períodos.</td>
               <td>Boa relação custo/benefício; cidade intensa, histórica e diferente das anteriores.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 90 em 100"><span style="width:90%"></span></span>90/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:90%"></span></span>90/100</span></td>
             </tr>
             <tr data-tags="favorita primavera ferias">
               <td><strong>4</strong></td>
@@ -482,7 +388,7 @@
               <td>Maratona, meia-maratona, 10 km e 5 km.</td>
               <td>Voar para Larnaca ou Paphos e seguir de shuttle/transfer para Limassol.</td>
               <td>Excelente para juntar prova, sol, costa, gastronomia e semana de férias.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 88 em 100"><span style="width:88%"></span></span>88/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:88%"></span></span>88/100</span></td>
             </tr>
             <tr data-tags="primavera">
               <td><strong>5</strong></td>
@@ -491,16 +397,16 @@
               <td>Maratona, meia, estafeta e provas curtas no fim de semana.</td>
               <td>Viagem simples para Viena; custos de hotel podem subir muito no fim de semana da prova.</td>
               <td>Turismo fortíssimo: Ringstrasse, Schönbrunn, museus, cafés e música.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 84 em 100"><span style="width:84%"></span></span>84/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:84%"></span></span>84/100</span></td>
             </tr>
             <tr data-tags="primavera ferias">
               <td><strong>6</strong></td>
               <td><strong>Helsinki City Run</strong><br><span class="note">Helsínquia, Finlândia</span></td>
               <td class="date-cell"><span class="date-badge">Data</span>Maio 2027 a confirmar em fontes agregadoras; site oficial mostra 2026.</td>
-              <td>Meia-maratona, 10 km e formatos familiares (não inclui maratona completa).</td>
+              <td>Maratona, meia, estafeta, 5 km e formatos familiares.</td>
               <td>Normalmente com escala; país mais caro para alimentação e hotelaria.</td>
               <td>Boa cidade para quem quer uma experiência nórdica, limpa e organizada.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 77 em 100"><span style="width:77%"></span></span>77/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:77%"></span></span>77/100</span></td>
             </tr>
             <tr data-tags="outono economica">
               <td><strong>7</strong></td>
@@ -509,7 +415,7 @@
               <td>Maratona, estafeta, meia, 10 km e 5 km.</td>
               <td>Normalmente com escala; alternativa báltica sem repetir Riga.</td>
               <td>Cidade medieval compacta e muito boa para fim de semana prolongado.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 82 em 100"><span style="width:82%"></span></span>82/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:82%"></span></span>82/100</span></td>
             </tr>
             <tr data-tags="outono economica">
               <td><strong>8</strong></td>
@@ -518,22 +424,22 @@
               <td>42 km, estafeta 4x, 21 km, 10 km e fun race.</td>
               <td>Normalmente com escala. Pode ter bom custo total se reservado cedo.</td>
               <td>Menos “postal turístico”, mas potencialmente económica para grupo grande.</td>
-              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 78 em 100"><span style="width:78%"></span></span>78/100</span></td>
+              <td><span class="score"><span class="bar"><span style="width:78%"></span></span>78/100</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <section id="custovida" aria-labelledby="t-custovida">
+    <section id="custovida">
       <div class="section-title">
         <div>
-          <h2 id="t-custovida">Custo de vida por cidade (referência para decisão)</h2>
+          <h2>Custo de vida por cidade (referência para decisão)</h2>
           <p class="note">Estimativas indicativas para viagem de grupo em regime turístico (maio de 2026). Devem ser validadas 8-12 semanas antes da reserva, porque variam com época, câmbio e eventos locais.</p>
         </div>
       </div>
 
-      <div class="cards grid-2 mb-14">
+      <div class="cards" style="grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:14px">
         <article class="card pad">
           <h3>Métricas recomendadas</h3>
           <ul>
@@ -556,30 +462,27 @@
         </article>
       </div>
 
-      <p class="index-legend">Linha vertical = Lisboa = 100 (escala 0–150)</p>
-
       <div class="table-wrap">
         <table class="cost-table">
-          <caption class="sr-only">Custo de vida estimado por cidade, com índice vs Lisboa, hotel, alimentação, transportes, inscrição e totais para 3 e 7 dias.</caption>
           <thead>
             <tr>
-              <th scope="col">Cidade</th>
-              <th scope="col">Índice vs Lisboa</th>
-              <th scope="col">Hotel 3* (duplo/noite)</th>
-              <th scope="col">Alimentação/dia</th>
-              <th scope="col">Transportes/dia</th>
-              <th scope="col">Custo diário total (sem voo)</th>
-              <th scope="col">Inscrição (estim.)</th>
-              <th scope="col">Total/pessoa 3 dias</th>
-              <th scope="col">Total/pessoa 7 dias</th>
-              <th scope="col">Total com voo (estim.)</th>
-              <th scope="col">Leitura rápida</th>
+              <th>Cidade</th>
+              <th>Índice vs Lisboa</th>
+              <th>Hotel 3* (duplo/noite)</th>
+              <th>Alimentação/dia</th>
+              <th>Transportes/dia</th>
+              <th>Custo diário total (sem voo)</th>
+              <th>Inscrição (estim.)</th>
+              <th>Total/pessoa 3 dias</th>
+              <th>Total/pessoa 7 dias</th>
+              <th>Total com voo (estim.)</th>
+              <th>Leitura rápida</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td><strong>Belgrado</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 74 vs Lisboa 100"><span style="width:49%"></span></span>74</span></td>
+              <td><span class="score"><span class="bar"><span style="width:74%"></span></span>74</span></td>
               <td>55-95 EUR</td>
               <td>22-36 EUR</td>
               <td>3-7 EUR</td>
@@ -592,7 +495,7 @@
             </tr>
             <tr>
               <td><strong>Bucareste</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 76 vs Lisboa 100"><span style="width:51%"></span></span>76</span></td>
+              <td><span class="score"><span class="bar"><span style="width:76%"></span></span>76</span></td>
               <td>50-90 EUR</td>
               <td>24-38 EUR</td>
               <td>3-7 EUR</td>
@@ -605,7 +508,7 @@
             </tr>
             <tr>
               <td><strong>Ljubljana</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 96 vs Lisboa 100"><span style="width:64%"></span></span>96</span></td>
+              <td><span class="score"><span class="bar"><span style="width:96%"></span></span>96</span></td>
               <td>75-125 EUR</td>
               <td>28-45 EUR</td>
               <td>3-8 EUR</td>
@@ -618,7 +521,7 @@
             </tr>
             <tr>
               <td><strong>Tallinn</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 104 vs Lisboa 100"><span style="width:69%"></span></span>104</span></td>
+              <td><span class="score"><span class="bar"><span style="width:104%"></span></span>104</span></td>
               <td>80-135 EUR</td>
               <td>30-48 EUR</td>
               <td>3-8 EUR</td>
@@ -631,7 +534,7 @@
             </tr>
             <tr>
               <td><strong>Viena</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 118 vs Lisboa 100"><span style="width:79%"></span></span>118</span></td>
+              <td><span class="score"><span class="bar"><span style="width:118%"></span></span>118</span></td>
               <td>95-170 EUR</td>
               <td>34-55 EUR</td>
               <td>5-11 EUR</td>
@@ -644,7 +547,7 @@
             </tr>
             <tr>
               <td><strong>Limassol</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 121 vs Lisboa 100"><span style="width:81%"></span></span>121</span></td>
+              <td><span class="score"><span class="bar"><span style="width:121%"></span></span>121</span></td>
               <td>90-175 EUR</td>
               <td>34-56 EUR</td>
               <td>6-14 EUR</td>
@@ -657,7 +560,7 @@
             </tr>
             <tr>
               <td><strong>Salzburg</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 129 vs Lisboa 100"><span style="width:86%"></span></span>129</span></td>
+              <td><span class="score"><span class="bar"><span style="width:129%"></span></span>129</span></td>
               <td>110-210 EUR</td>
               <td>36-62 EUR</td>
               <td>5-12 EUR</td>
@@ -670,7 +573,7 @@
             </tr>
             <tr>
               <td><strong>Helsínquia</strong></td>
-              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 138 vs Lisboa 100"><span style="width:92%"></span></span>138</span></td>
+              <td><span class="score"><span class="bar"><span style="width:138%"></span></span>138</span></td>
               <td>115-220 EUR</td>
               <td>40-68 EUR</td>
               <td>6-14 EUR</td>
@@ -684,15 +587,15 @@
           </tbody>
         </table>
       </div>
-      <p class="note mt-12">Método sugerido: recolher 10 amostras por cidade (5 hotéis + 5 restaurantes), usar mediana em vez de média e recalcular o índice com Lisboa=100 para reduzir distorções.</p>
+      <p class="note" style="margin-top:12px">Método sugerido: recolher 10 amostras por cidade (5 hotéis + 5 restaurantes), usar mediana em vez de média e recalcular o índice com Lisboa=100 para reduzir distorções.</p>
       <p class="note">Cálculo dos totais: custo diário x 3 ou x 7 + inscrição estimada, com margem de risco incluída (10% no limite inferior e 15% no limite superior). Não inclui voo internacional.</p>
       <p class="note">Voo (estimativa Lisboa ida e volta): Belgrado 140-300 EUR, Bucareste 150-320 EUR, Ljubljana 180-360 EUR, Tallinn 190-380 EUR, Viena 140-280 EUR, Limassol 220-450 EUR, Salzburg 180-360 EUR, Helsínquia 220-420 EUR.</p>
     </section>
 
-    <section id="voosehoteis" aria-labelledby="t-voosehoteis">
+    <section id="voosehoteis">
       <div class="section-title">
         <div>
-          <h2 id="t-voosehoteis">Pesquisa rápida de voos e hotéis</h2>
+          <h2>Pesquisa rápida de voos e hotéis</h2>
           <p class="note">Botões diretos para comparar preços a partir de Lisboa, procurar alojamento por destino e validar o transfer aeroporto-centro. Para Limassol, pesquisar voos para Larnaca ou Paphos.</p>
         </div>
       </div>
@@ -702,9 +605,9 @@
           <h3>Ljubljana, Eslovénia</h3>
           <p class="note">Aeroporto principal: LJU.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/lju/" target="_blank" rel="noopener noreferrer">Voos LIS-LJU</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Ljubljana" target="_blank" rel="noopener noreferrer">Hotéis em Ljubljana</a>
-            <a class="action-btn transfer" href="https://www.lju-airport.si/en/transport/bus/" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/lju/" target="_blank" rel="noopener">Voos LIS-LJU</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Ljubljana" target="_blank" rel="noopener">Hotéis em Ljubljana</a>
+            <a class="action-btn transfer" href="https://www.lju-airport.si/en/transport/bus/" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -712,9 +615,9 @@
           <h3>Salzburg, Áustria</h3>
           <p class="note">Aeroporto principal: SZG.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/szg/" target="_blank" rel="noopener noreferrer">Voos LIS-SZG</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Salzburg" target="_blank" rel="noopener noreferrer">Hotéis em Salzburg</a>
-            <a class="action-btn transfer" href="https://www.salzburg-airport.com/en/flights-arrival/arrival-to-the-airport/public-transportation" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/szg/" target="_blank" rel="noopener">Voos LIS-SZG</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Salzburg" target="_blank" rel="noopener">Hotéis em Salzburg</a>
+            <a class="action-btn transfer" href="https://www.salzburg-airport.com/en/flights-arrival/arrival-to-the-airport/public-transportation" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -722,9 +625,9 @@
           <h3>Belgrado, Sérvia</h3>
           <p class="note">Aeroporto principal: BEG.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/beg/" target="_blank" rel="noopener noreferrer">Voos LIS-BEG</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Belgrade" target="_blank" rel="noopener noreferrer">Hotéis em Belgrado</a>
-            <a class="action-btn transfer" href="https://beg.aero/eng/practical-informations/public-transportation" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/beg/" target="_blank" rel="noopener">Voos LIS-BEG</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Belgrade" target="_blank" rel="noopener">Hotéis em Belgrado</a>
+            <a class="action-btn transfer" href="https://beg.aero/eng/practical-informations/public-transportation" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -732,10 +635,10 @@
           <h3>Limassol, Chipre</h3>
           <p class="note">Aeroportos úteis: LCA (Larnaca) e PFO (Paphos).</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/lca/" target="_blank" rel="noopener noreferrer">Voos LIS-LCA</a>
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/pfo/" target="_blank" rel="noopener noreferrer">Voos LIS-PFO</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Limassol" target="_blank" rel="noopener noreferrer">Hotéis em Limassol</a>
-            <a class="action-btn transfer" href="https://limassolairportexpress.eu/" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/lca/" target="_blank" rel="noopener">Voos LIS-LCA</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/pfo/" target="_blank" rel="noopener">Voos LIS-PFO</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Limassol" target="_blank" rel="noopener">Hotéis em Limassol</a>
+            <a class="action-btn transfer" href="https://limassolairportexpress.eu/" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -743,9 +646,9 @@
           <h3>Viena, Áustria</h3>
           <p class="note">Aeroporto principal: VIE.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/vie/" target="_blank" rel="noopener noreferrer">Voos LIS-VIE</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Vienna" target="_blank" rel="noopener noreferrer">Hotéis em Viena</a>
-            <a class="action-btn transfer" href="https://www.viennaairport.com/en/passengers/arrival__parking/arrival/by_public_transportation" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/vie/" target="_blank" rel="noopener">Voos LIS-VIE</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Vienna" target="_blank" rel="noopener">Hotéis em Viena</a>
+            <a class="action-btn transfer" href="https://www.viennaairport.com/en/passengers/arrival__parking/arrival/by_public_transportation" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -753,9 +656,9 @@
           <h3>Helsínquia, Finlândia</h3>
           <p class="note">Aeroporto principal: HEL.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/hel/" target="_blank" rel="noopener noreferrer">Voos LIS-HEL</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Helsinki" target="_blank" rel="noopener noreferrer">Hotéis em Helsínquia</a>
-            <a class="action-btn transfer" href="https://www.finavia.fi/en/airports/helsinki-airport/access" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/hel/" target="_blank" rel="noopener">Voos LIS-HEL</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Helsinki" target="_blank" rel="noopener">Hotéis em Helsínquia</a>
+            <a class="action-btn transfer" href="https://www.finavia.fi/en/airports/helsinki-airport/access" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -763,9 +666,9 @@
           <h3>Tallinn, Estónia</h3>
           <p class="note">Aeroporto principal: TLL.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/tll/" target="_blank" rel="noopener noreferrer">Voos LIS-TLL</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Tallinn" target="_blank" rel="noopener noreferrer">Hotéis em Tallinn</a>
-            <a class="action-btn transfer" href="https://airport.ee/en/transport/public-transport/" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/tll/" target="_blank" rel="noopener">Voos LIS-TLL</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Tallinn" target="_blank" rel="noopener">Hotéis em Tallinn</a>
+            <a class="action-btn transfer" href="https://airport.ee/en/transport/public-transport/" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
 
@@ -773,34 +676,34 @@
           <h3>Bucareste, Roménia</h3>
           <p class="note">Aeroporto principal: OTP.</p>
           <div class="actions">
-            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/otp/" target="_blank" rel="noopener noreferrer">Voos LIS-OTP</a>
-            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Bucharest" target="_blank" rel="noopener noreferrer">Hotéis em Bucareste</a>
-            <a class="action-btn transfer" href="https://www.bucharestairports.ro/en/transport/public-transport" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/otp/" target="_blank" rel="noopener">Voos LIS-OTP</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Bucharest" target="_blank" rel="noopener">Hotéis em Bucareste</a>
+            <a class="action-btn transfer" href="https://www.bucharestairports.ro/en/transport/public-transport" target="_blank" rel="noopener">Transfer aeroporto-centro</a>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="destinos" aria-labelledby="t-destinos">
+    <section id="destinos">
       <div class="section-title">
         <div>
-          <h2 id="t-destinos">Candidatas principais em detalhe</h2>
-          <p class="note">As quatro melhores opções para votação interna. As fotografias são ilustrativas e provêm da Wikimedia Commons (ver créditos no fim).</p>
+          <h2>Candidatas principais em detalhe</h2>
+          <p class="note">As quatro melhores opções para votação interna. As fotografias são apenas ilustrativas e usam ficheiros públicos/Wikimedia quando possível.</p>
         </div>
       </div>
       <div class="destination-grid">
         <article class="card dest" data-tags="favorita outono economica ferias">
           <div class="dest-media">
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Ljubljana_Old_Town%2C_Slovenia_%28Old_Camera%29_%2833286165680%29.jpg/960px-Ljubljana_Old_Town%2C_Slovenia_%28Old_Camera%29_%2833286165680%29.jpg" alt="Vista do centro histórico de Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
-              <figcaption class="photo-label">Centro histórico</figcaption>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Ljubljana_Old_Town%2C_Slovenia_%28Old_Camera%29_%2833286165680%29.jpg/3840px-Ljubljana_Old_Town%2C_Slovenia_%28Old_Camera%29_%2833286165680%29.jpg" alt="Vista de Ljubljana a partir do castelo" loading="lazy" />
+              <figcaption class="photo-label">Centro historico</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Ljubljanski_grad_in_Grajski_gri%C4%8D.jpg/960px-Ljubljanski_grad_in_Grajski_gri%C4%8D.jpg" alt="Castelo de Ljubljana sobre a colina" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/6/67/Ljubljanski_grad_in_Grajski_gri%C4%8D.jpg" alt="Castelo de Ljubljana" loading="lazy" />
               <figcaption class="photo-label">Castelo de Ljubljana</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Lake_Bled_from_the_Mountain.jpg/960px-Lake_Bled_from_the_Mountain.jpg" alt="Lake Bled visto do alto, perto de Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Lake_Bled_from_the_Mountain.jpg/3840px-Lake_Bled_from_the_Mountain.jpg" alt="Lake Bled, perto de Ljubljana" loading="lazy" />
               <figcaption class="photo-label">Lake Bled</figcaption>
             </figure>
           </div>
@@ -820,16 +723,16 @@
         <article class="card dest" data-tags="favorita primavera ferias">
           <div class="dest-media">
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Salzburg_%2848489551981%29.jpg/960px-Salzburg_%2848489551981%29.jpg" alt="Vista panorâmica de Salzburg" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Salzburg_%2848489551981%29.jpg/3840px-Salzburg_%2848489551981%29.jpg" alt="Vista de Salzburg" loading="lazy" />
               <figcaption class="photo-label">Vista da cidade</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Salzburg_-_Festung_Hohensalzburg.JPG/960px-Salzburg_-_Festung_Hohensalzburg.JPG" alt="Fortaleza Hohensalzburg em Salzburg" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Salzburg_-_Festung_Hohensalzburg.JPG/3840px-Salzburg_-_Festung_Hohensalzburg.JPG" alt="Fortaleza Hohensalzburg em Salzburg" loading="lazy" />
               <figcaption class="photo-label">Fortaleza Hohensalzburg</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Palatul_Mirabell1.jpg/960px-Palatul_Mirabell1.jpg" alt="Palácio Mirabell em Salzburg" width="960" height="640" loading="lazy" decoding="async" />
-              <figcaption class="photo-label">Palácio Mirabell</figcaption>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Palatul_Mirabell1.jpg" alt="Palácio Mirabell em Salzburg" loading="lazy" />
+              <figcaption class="photo-label">Palacio Mirabell</figcaption>
             </figure>
           </div>
           <div class="card-body">
@@ -848,16 +751,16 @@
         <article class="card dest" data-tags="favorita primavera economica">
           <div class="dest-media">
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Panorama_Belgrad.jpg/960px-Panorama_Belgrad.jpg" alt="Panorama urbano de Belgrado" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Panorama_Belgrad.jpg/3840px-Panorama_Belgrad.jpg" alt="Panorama de Belgrado" loading="lazy" />
               <figcaption class="photo-label">Panorama urbano</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/%D0%A1%D0%B2%D1%98%D0%B5%D1%82%D0%BB%D0%BE%D0%BF%D0%B8%D1%81_%D0%B4%D0%B8%D1%98%D0%B5%D0%BB%D0%B0_%D0%9A%D0%B0%D0%BB%D0%B5%D0%BC%D0%B5%D0%B3%D0%B4%D0%B0%D0%BD%D0%B0_%D0%B8_%D1%80%D0%B8%D1%98%D0%B5%D0%BA%D0%B5_%D0%A1%D0%B0%D0%B2%D0%B5_%D0%B7%D0%B8%D0%BC%D0%B8.jpg/960px-%D0%A1%D0%B2%D1%98%D0%B5%D1%82%D0%BB%D0%BE%D0%BF%D0%B8%D1%81_%D0%B4%D0%B8%D1%98%D0%B5%D0%BB%D0%B0_%D0%9A%D0%B0%D0%BB%D0%B5%D0%BC%D0%B5%D0%B3%D0%B4%D0%B0%D0%BD%D0%B0_%D0%B8_%D1%80%D0%B8%D1%98%D0%B5%D0%BA%D0%B5_%D0%A1%D0%B0%D0%B2%D0%B5_%D0%B7%D0%B8%D0%BC%D0%B8.jpg" alt="Kalemegdan e o rio Sava em Belgrado" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/%D0%A1%D0%B2%D1%98%D0%B5%D1%82%D0%BB%D0%BE%D0%BF%D0%B8%D1%81_%D0%B4%D0%B8%D1%98%D0%B5%D0%BB%D0%B0_%D0%9A%D0%B0%D0%BB%D0%B5%D0%BC%D0%B5%D0%B3%D0%B4%D0%B0%D0%BD%D0%B0_%D0%B8_%D1%80%D0%B8%D1%98%D0%B5%D0%BA%D0%B5_%D0%A1%D0%B0%D0%B2%D0%B5_%D0%B7%D0%B8%D0%BC%D0%B8.jpg" alt="Kalemegdan em Belgrado" loading="lazy" />
               <figcaption class="photo-label">Kalemegdan</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Hram_svetog_save_beograd_0005_%28edited%29.jpg/960px-Hram_svetog_save_beograd_0005_%28edited%29.jpg" alt="Templo de São Sava em Belgrado" width="960" height="640" loading="lazy" decoding="async" />
-              <figcaption class="photo-label">Templo de São Sava</figcaption>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Hram_svetog_save_beograd_0005_%28edited%29.jpg/3840px-Hram_svetog_save_beograd_0005_%28edited%29.jpg" alt="Templo de São Sava em Belgrado" loading="lazy" />
+              <figcaption class="photo-label">Templo de Sao Sava</figcaption>
             </figure>
           </div>
           <div class="card-body">
@@ -876,15 +779,15 @@
         <article class="card dest" data-tags="favorita primavera ferias">
           <div class="dest-media">
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Skyscrapers_in_Limassol.jpg/960px-Skyscrapers_in_Limassol.jpg" alt="Arranha-céus na frente costeira de Limassol" width="960" height="640" loading="lazy" decoding="async" />
-              <figcaption class="photo-label">Frente costeira</figcaption>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Skyscrapers_in_Limassol.jpg/3840px-Skyscrapers_in_Limassol.jpg" alt="Skyline de Limassol" loading="lazy" />
+              <figcaption class="photo-label">Skyline de Limassol</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Episkopi_01-2017_img06_Kourion.jpg/960px-Episkopi_01-2017_img06_Kourion.jpg" alt="Sítio arqueológico de Kourion, perto de Limassol" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Episkopi_01-2017_img06_Kourion.jpg/3840px-Episkopi_01-2017_img06_Kourion.jpg" alt="Kourion, perto de Limassol" loading="lazy" />
               <figcaption class="photo-label">Kourion</figcaption>
             </figure>
             <figure class="photo-tile">
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/49/Kolossi_Castle_01.JPG/960px-Kolossi_Castle_01.JPG" alt="Castelo de Kolossi, perto de Limassol" width="960" height="640" loading="lazy" decoding="async" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/4/49/Kolossi_Castle_01.JPG" alt="Castelo de Kolossi, perto de Limassol" loading="lazy" />
               <figcaption class="photo-label">Castelo de Kolossi</figcaption>
             </figure>
           </div>
@@ -901,13 +804,13 @@
           </div>
         </article>
       </div>
-      <p class="note mt-12">Nota de imagem: para uma página pública do clube, recomenda-se substituir as imagens por fotografias próprias do RUN 4 FUN. Enquanto isso, são usadas imagens da Wikimedia Commons com a respetiva atribuição na secção de créditos.</p>
+      <p class="note" style="margin-top:12px">Nota de imagem: para uma página pública do clube, recomenda-se substituir as imagens por fotografias próprias do RUN 4 FUN ou por ficheiros com licença claramente compatível, mantendo atribuição quando exigida.</p>
     </section>
 
-    <section id="viagens" aria-labelledby="t-viagens">
+    <section id="viagens">
       <div class="section-title">
         <div>
-          <h2 id="t-viagens">Modelos de viagem possíveis</h2>
+          <h2>Modelos de viagem possíveis</h2>
           <p class="note">A mesma prova deve permitir diferentes compromissos de tempo e orçamento.</p>
         </div>
       </div>
@@ -941,10 +844,10 @@
       </div>
     </section>
 
-    <section id="alojamento" aria-labelledby="t-alojamento">
+    <section id="alojamento">
       <div class="section-title">
         <div>
-          <h2 id="t-alojamento">Estratégia de estadia para grupo</h2>
+          <h2>Estratégia de estadia para grupo</h2>
           <p class="note">A escolha do hotel pode ser tão importante como a escolha da prova.</p>
         </div>
       </div>
@@ -968,10 +871,10 @@
       </div>
     </section>
 
-    <section id="recomendacao" aria-labelledby="t-recomendacao">
+    <section id="recomendacao">
       <div class="decision">
         <div class="winner">
-          <h2 id="t-recomendacao">Recomendação final</h2>
+          <h2>Recomendação final</h2>
           <p class="note">Para votação interna, eu apresentaria quatro opções e deixaria a escolha final depender de preços reais de voos/hotéis quando as <span class="date-badge">Datas</span> estiverem totalmente confirmadas.</p>
           <div class="quote"><strong>Escolha racional:</strong> Ljubljana 2027, se a <span class="date-badge">Data</span> de 2027 encaixar e os custos de voo/hotel forem bons.</div>
           <div class="quote"><strong>Escolha emocional/histórica:</strong> Belgrado 2027, pela participação no European Running Championships.</div>
@@ -996,59 +899,44 @@
       </div>
     </section>
 
-    <section id="fontes" class="sources" aria-labelledby="t-fontes">
+    <section id="fontes" class="sources">
       <div class="section-title">
         <div>
-          <h2 id="t-fontes">Fontes consultadas</h2>
+          <h2>Fontes consultadas</h2>
           <p class="note">Ligações úteis para confirmar datas, distâncias, transportes e turismo antes de reservas.</p>
         </div>
       </div>
       <ol>
-        <li><a href="https://run4f.blogspot.com/2023/11/projeto-maratona-1-maratona-de-atenas.html" target="_blank" rel="noopener noreferrer">RUN 4 FUN — Projeto Maratona #1: Atenas 2023</a></li>
-        <li><a href="https://run4f.blogspot.com/2024/10/projeto-maratona-2-maratona-de.html" target="_blank" rel="noopener noreferrer">RUN 4 FUN — Projeto Maratona #2: Budapeste 2024</a></li>
-        <li><a href="https://www.athensauthenticmarathon.gr/en" target="_blank" rel="noopener noreferrer">Athens Marathon — The Authentic</a></li>
-        <li><a href="https://marathon.runinbudapest.com/" target="_blank" rel="noopener noreferrer">SPAR Budapest Marathon</a></li>
-        <li><a href="https://rimirigamarathon.com/en/" target="_blank" rel="noopener noreferrer">Rimi Riga Marathon</a></li>
-        <li><a href="https://www.edinburghmarathon.com/" target="_blank" rel="noopener noreferrer">Edinburgh Marathon Festival</a></li>
-        <li><a href="https://ljubljanskimaraton.si/en/" target="_blank" rel="noopener noreferrer">NLB Ljubljana Marathon</a></li>
-        <li><a href="https://salzburg-marathon.at/en/" target="_blank" rel="noopener noreferrer">Salzburg Marathon</a></li>
-        <li><a href="https://www.erch2027.com/" target="_blank" rel="noopener noreferrer">European Running Championships 2027 — Belgrade</a></li>
-        <li><a href="https://www.limassolmarathon.com/" target="_blank" rel="noopener noreferrer">XM Limassol Marathon</a></li>
-        <li><a href="https://raceroster.com/events/2027/110607/xm-limassol-marathon-2027" target="_blank" rel="noopener noreferrer">Race Roster — Limassol Marathon 2027</a></li>
-        <li><a href="https://www.vienna-marathon.com/?go=course&amp;lang=en" target="_blank" rel="noopener noreferrer">Vienna City Marathon</a></li>
-        <li><a href="https://helsinkicityrun.fi/en/" target="_blank" rel="noopener noreferrer">Helsinki City Run</a></li>
-        <li><a href="https://aims-worldrunning.org/countries/33.html" target="_blank" rel="noopener noreferrer">AIMS — Tallinn Marathon</a></li>
-        <li><a href="https://bucharest-marathon.com/en/" target="_blank" rel="noopener noreferrer">Bucharest Marathon</a></li>
-        <li><a href="https://www.lju-airport.si/en/transport/bus/" target="_blank" rel="noopener noreferrer">Ljubljana Airport — transporte público</a></li>
-        <li><a href="https://www.salzburg-airport.com/en/flights-arrival/arrival-to-the-airport/public-transportation" target="_blank" rel="noopener noreferrer">Salzburg Airport — transporte público</a></li>
-        <li><a href="https://beg.aero/eng/practical-informations/public-transportation" target="_blank" rel="noopener noreferrer">Belgrade Airport — transporte público</a></li>
-        <li><a href="https://limassolairportexpress.eu/" target="_blank" rel="noopener noreferrer">Limassol Airport Express</a></li>
-        <li><a href="https://www.airserbia.com/en-pt/flights-from-lisbon-to-serbia" target="_blank" rel="noopener noreferrer">Air Serbia — Lisboa–Belgrado</a></li>
-        <li><a href="https://www.visitljubljana.com/en/visitors/" target="_blank" rel="noopener noreferrer">Visit Ljubljana</a></li>
-        <li><a href="https://www.salzburg.info/en/sights/top10" target="_blank" rel="noopener noreferrer">Salzburg.info — Top 10 sights</a></li>
-        <li><a href="https://www.tob.rs/en/what-to-see" target="_blank" rel="noopener noreferrer">Tourist Organization of Belgrade</a></li>
-        <li><a href="https://visitestonia.com/en" target="_blank" rel="noopener noreferrer">Visit Estonia</a></li>
-        <li><a href="https://www.wien.info/en" target="_blank" rel="noopener noreferrer">Wien.info — guia oficial de Viena</a></li>
+        <li><a href="https://run4f.blogspot.com/2023/11/projeto-maratona-1-maratona-de-atenas.html" target="_blank" rel="noopener">RUN 4 FUN — Projeto Maratona #1: Atenas 2023</a></li>
+        <li><a href="https://run4f.blogspot.com/2024/10/projeto-maratona-2-maratona-de.html" target="_blank" rel="noopener">RUN 4 FUN — Projeto Maratona #2: Budapeste 2024</a></li>
+        <li><a href="https://www.athensauthenticmarathon.gr/en" target="_blank" rel="noopener">Athens Marathon — The Authentic</a></li>
+        <li><a href="https://marathon.runinbudapest.com/" target="_blank" rel="noopener">SPAR Budapest Marathon</a></li>
+        <li><a href="https://rimirigamarathon.com/en/" target="_blank" rel="noopener">Rimi Riga Marathon</a></li>
+        <li><a href="https://www.edinburghmarathon.com/" target="_blank" rel="noopener">Edinburgh Marathon Festival</a></li>
+        <li><a href="https://ljubljanskimaraton.si/en/" target="_blank" rel="noopener">NLB Ljubljana Marathon</a></li>
+        <li><a href="https://salzburg-marathon.at/en/" target="_blank" rel="noopener">Salzburg Marathon</a></li>
+        <li><a href="https://www.erch2027.com/" target="_blank" rel="noopener">European Running Championships 2027 — Belgrade</a></li>
+        <li><a href="https://www.limassolmarathon.com/" target="_blank" rel="noopener">XM Limassol Marathon</a></li>
+        <li><a href="https://raceroster.com/events/2027/110607/xm-limassol-marathon-2027" target="_blank" rel="noopener">Race Roster — Limassol Marathon 2027</a></li>
+        <li><a href="https://www.vienna-marathon.com/?go=course&lang=en" target="_blank" rel="noopener">Vienna City Marathon</a></li>
+        <li><a href="https://helsinkicityrun.fi/en/" target="_blank" rel="noopener">Helsinki City Run</a></li>
+        <li><a href="https://aims-worldrunning.org/countries/33.html" target="_blank" rel="noopener">AIMS — Tallinn Marathon</a></li>
+        <li><a href="https://bucharest-marathon.com/en/" target="_blank" rel="noopener">Bucharest Marathon</a></li>
+        <li><a href="https://www.lju-airport.si/en/transport/bus/" target="_blank" rel="noopener">Ljubljana Airport — transporte público</a></li>
+        <li><a href="https://www.salzburg-airport.com/en/flights-arrival/arrival-to-the-airport/public-transportation" target="_blank" rel="noopener">Salzburg Airport — transporte público</a></li>
+        <li><a href="https://beg.aero/eng/practical-informations/public-transportation" target="_blank" rel="noopener">Belgrade Airport — transporte público</a></li>
+        <li><a href="https://limassolairportexpress.eu/" target="_blank" rel="noopener">Limassol Airport Express</a></li>
+        <li><a href="https://www.airserbia.com/en-pt/flights-from-lisbon-to-serbia" target="_blank" rel="noopener">Air Serbia — Lisboa–Belgrado</a></li>
+        <li><a href="https://www.visitljubljana.com/en/visitors/" target="_blank" rel="noopener">Visit Ljubljana</a></li>
+        <li><a href="https://www.salzburg.info/en/sights/top10" target="_blank" rel="noopener">Salzburg.info — Top 10 sights</a></li>
+        <li><a href="https://www.tob.rs/en/what-to-see" target="_blank" rel="noopener">Tourist Organization of Belgrade</a></li>
+        <li><a href="https://visitestonia.com/en" target="_blank" rel="noopener">Visit Estonia</a></li>
+        <li><a href="https://www.wien.info/en" target="_blank" rel="noopener">Wien.info — guia oficial de Viena</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Ljubljana_from_the_Castle.JPG" target="_blank" rel="noopener">Foto Ljubljana — Wikimedia Commons</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Salzburg_Festung_Hohensalzburg_1.jpg" target="_blank" rel="noopener">Foto Salzburg — Wikimedia Commons</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Belgrade_Panorama.jpg" target="_blank" rel="noopener">Foto Belgrado — Wikimedia Commons</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Limassol_Marina,_Cyprus.jpg" target="_blank" rel="noopener">Foto Limassol — Wikimedia Commons</a></li>
       </ol>
-
-      <div class="credits" aria-labelledby="t-creditos">
-        <h3 id="t-creditos">Créditos fotográficos (Wikimedia Commons)</h3>
-        <p>As fotografias usadas na secção “Candidatas principais” provêm da Wikimedia Commons sob licenças Creative Commons (CC BY / CC BY-SA) ou domínio público. Atribuição:</p>
-        <ul>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Ljubljana_Old_Town,_Slovenia_(Old_Camera)_(33286165680).jpg" target="_blank" rel="noopener noreferrer">Ljubljana Old Town</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Ljubljanski_grad_in_Grajski_gri%C4%8D.jpg" target="_blank" rel="noopener noreferrer">Castelo de Ljubljana</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Lake_Bled_from_the_Mountain.jpg" target="_blank" rel="noopener noreferrer">Lake Bled</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Salzburg_(48489551981).jpg" target="_blank" rel="noopener noreferrer">Salzburg (vista)</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Salzburg_-_Festung_Hohensalzburg.JPG" target="_blank" rel="noopener noreferrer">Fortaleza Hohensalzburg</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Palatul_Mirabell1.jpg" target="_blank" rel="noopener noreferrer">Palácio Mirabell</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Panorama_Belgrad.jpg" target="_blank" rel="noopener noreferrer">Panorama de Belgrado</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Hram_svetog_save_beograd_0005_(edited).jpg" target="_blank" rel="noopener noreferrer">Templo de São Sava</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Skyscrapers_in_Limassol.jpg" target="_blank" rel="noopener noreferrer">Skyscrapers in Limassol</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Episkopi_01-2017_img06_Kourion.jpg" target="_blank" rel="noopener noreferrer">Kourion</a> — Wikimedia Commons.</li>
-          <li><a href="https://commons.wikimedia.org/wiki/File:Kolossi_Castle_01.JPG" target="_blank" rel="noopener noreferrer">Castelo de Kolossi</a> — Wikimedia Commons.</li>
-        </ul>
-        <p>Antes de publicar a página de forma definitiva, confirmar a licença exata de cada ficheiro (algumas exigem nome do autor + indicação da licença) e, sempre que possível, substituir por fotografias próprias do RUN 4 FUN.</p>
-      </div>
     </section>
   </main>
 
@@ -1057,26 +945,20 @@
     <p>Página estática preparada para GitHub Pages. Sugestão: guardar como <code>index.html</code> no repositório ou na pasta <code>docs/</code>.</p>
   </footer>
 
-  <script defer>
-    (function () {
-      const buttons = document.querySelectorAll('.filters button');
-      const rows = document.querySelectorAll('#shortlist-table tbody tr');
-      buttons.forEach(btn => {
-        btn.addEventListener('click', () => {
-          buttons.forEach(b => {
-            b.classList.remove('active');
-            b.setAttribute('aria-pressed', 'false');
-          });
-          btn.classList.add('active');
-          btn.setAttribute('aria-pressed', 'true');
-          const filter = btn.dataset.filter;
-          rows.forEach(row => {
-            const tags = row.dataset.tags || '';
-            row.hidden = !(filter === 'all' || tags.includes(filter));
-          });
+  <script>
+    const buttons = document.querySelectorAll('.filters button');
+    const rows = document.querySelectorAll('#shortlist-table tbody tr');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        rows.forEach(row => {
+          const tags = row.dataset.tags || '';
+          row.style.display = filter === 'all' || tags.includes(filter) ? '' : 'none';
         });
       });
-    })();
+    });
   </script>
 </body>
 </html>
