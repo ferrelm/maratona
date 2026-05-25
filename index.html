@@ -126,6 +126,7 @@
     .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
 
     .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .cards-single{grid-template-columns:1fr}
     .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 24px rgba(15,23,42,.06);overflow:hidden}
     .card.pad{padding:18px}
     .card img{width:100%;height:180px;object-fit:cover;display:block;background:#e2e8f0}
@@ -155,6 +156,12 @@
     .growth-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#22c55e)}
     .growth-bar.pending{background:repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0 8px,#f1f5f9 8px,#f1f5f9 16px)}
     .growth-value{font-weight:800;color:#0f172a;white-space:nowrap}
+    .history-highlights{display:grid;grid-template-columns:repeat(2,minmax(320px,1fr));gap:16px;margin-top:12px}
+    .history-highlight{border:1px solid var(--line);background:#f8fafc;border-radius:18px;padding:18px 18px 20px}
+    .history-highlight.wide{grid-column:1 / -1}
+    .history-highlight .pill{margin-bottom:8px}
+    .history-highlight strong{display:block;font-size:1.05rem;line-height:1.25;color:#0f172a;margin-bottom:6px}
+    .history-highlight p{margin:0;color:#475569;font-size:.95rem}
 
     .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:white;box-shadow:0 8px 22px rgba(15,23,42,.05)}
     table{border-collapse:collapse;width:100%;min-width:920px;background:white}
@@ -256,6 +263,7 @@
     @media (max-width:980px){
       .hero-grid,.decision{grid-template-columns:1fr}
       .cards,.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .history-highlights{grid-template-columns:1fr}
       .destination-grid{grid-template-columns:1fr}
       .dest{grid-template-columns:1fr}
       .dest-media{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:1fr;min-height:220px;height:220px}
@@ -362,13 +370,13 @@
           <div class="year">2025</div>
           <h3>Riga</h3>
           <p class="race-date"><span class="date-badge">Data</span>18 de maio de 2025</p>
-          <p>Cidade compacta e muito prática. Evento com maratona, meia, 10 km, 6 km, milha e provas infantis.</p>
+          <p>Cidade compacta e muito prática. Evento com maratona, meia, 10 km, 6 km, milha e provas infantis. Participação RUN 4 FUN: <strong>23 pessoas</strong>.</p>
         </article>
         <article class="done">
           <div class="year">2026</div>
           <h3>Edimburgo</h3>
           <p class="race-date"><span class="date-badge">Data</span>24 de maio de 2026</p>
-          <p>Festival muito completo: maratona, meia, estafeta, 10 km, 5 km e provas júnior. Excelente para acompanhantes, embora mais exigente em custos de alojamento.</p>
+          <p>Festival muito completo: maratona, meia, estafeta, 10 km, 5 km e provas júnior. Excelente para acompanhantes, embora mais exigente em custos de alojamento. Participação RUN 4 FUN: <strong>30 pessoas</strong>.</p>
         </article>
       </div>
       <div class="cards mt-14">
@@ -389,9 +397,21 @@
           <p><strong>12 participantes</strong> viajaram só pela componente social “4 FUN”, reforçando o modelo inclusivo da iniciativa.</p>
         </article>
       </div>
+      <div class="cards mt-14">
+        <article class="card pad">
+          <h3>Resumo: Atenas 2023</h3>
+          <p>A primeira edição escolheu uma prova altamente simbólica: a maratona original. A comitiva reuniu <strong>22 pessoas</strong> entre atletas, acompanhantes e participantes nas provas paralelas, num formato pensado para ser inclusivo e não apenas centrado nos 42,195 km.</p>
+          <p>Em termos desportivos, Atenas confirmou a sua reputação: percurso exigente, longa subida até perto do km 30 e chegada icónica ao Estádio Panathenaic. Em termos humanos, deixou a sensação de missão cumprida e lançou a base do Projeto Maratona para os anos seguintes.</p>
+        </article>
+        <article class="card pad">
+          <h3>Resumo: Budapeste 2024</h3>
+          <p>A segunda edição mostrou crescimento claro: <strong>50 participantes</strong>, dos quais 33 membros do clube e 17 convidados. Houve presença em várias distâncias, estafetas e um núcleo relevante de pessoas focadas sobretudo na componente social e turística.</p>
+          <p>Budapeste reforçou o modelo do projeto: logística flexível, cidade acessível, percurso mais amigável junto ao Danúbio e um ambiente muito familiar. O resultado foi inequívoco: mais adesão, mais diversidade e consolidação plena da iniciativa.</p>
+        </article>
+      </div>
       <div class="growth" aria-label="Evolução anual de participantes do Projeto Maratona">
         <h3>Evolução de participantes por edição</h3>
-        <p class="note">Valores confirmados para 2023 e 2024. Para 2025 e 2026, o clube reporta crescimento significativo, mas sem total oficial consolidado nas fontes aqui listadas.</p>
+        <p class="note">Valores confirmados para as quatro edições já realizadas: Atenas 2023, Budapeste 2024, Riga 2025 e Edimburgo 2026.</p>
         <div class="growth-row">
           <span class="label">2023</span>
           <div class="growth-bar" role="img" aria-label="2023: 22 participantes"><span style="width:44%"></span></div>
@@ -404,16 +424,38 @@
         </div>
         <div class="growth-row">
           <span class="label">2025</span>
-          <div class="growth-bar pending" role="img" aria-label="2025: total ainda não consolidado"></div>
-          <span class="growth-value">sem total oficial</span>
+          <div class="growth-bar" role="img" aria-label="2025: 23 participantes"><span style="width:46%"></span></div>
+          <span class="growth-value">23</span>
         </div>
         <div class="growth-row">
           <span class="label">2026</span>
-          <div class="growth-bar pending" role="img" aria-label="2026: total ainda não consolidado"></div>
-          <span class="growth-value">sem total oficial</span>
+          <div class="growth-bar" role="img" aria-label="2026: 30 participantes"><span style="width:60%"></span></div>
+          <span class="growth-value">30</span>
         </div>
       </div>
-      <p class="note mt-12">Dados de participação extraídos dos relatos oficiais do clube para o Projeto Maratona #1 (Atenas 2023) e #2 (Budapeste 2024). Enquanto não houver total oficial de 2025 e 2026, esta página evita calcular percentagens desses anos.</p>
+      <div class="cards cards-single mt-14">
+        <article class="card pad">
+          <h3>Leitura editorial 2023-2026</h3>
+          <div class="history-highlights">
+            <div class="history-highlight">
+              <span class="pill blue">Arranque e escala</span>
+              <strong>De 22 em Atenas para 50 em Budapeste</strong>
+              <p>O projeto passou de experiência fundadora para proposta mobilizadora à escala do clube.</p>
+            </div>
+            <div class="history-highlight">
+              <span class="pill warn">Ajuste e retoma</span>
+              <strong>Riga desce para 23, Edimburgo sobe para 30</strong>
+              <p>Há variação entre destinos, mas sem quebra estrutural da adesão ao modelo.</p>
+            </div>
+            <div class="history-highlight wide">
+              <span class="pill good">Sinal estrutural</span>
+              <strong>O Projeto Maratona já tem base estável</strong>
+              <p>A tração depende tanto da prova como do convívio, e adapta-se a formatos e cidades diferentes.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="note mt-12">Dados de participação extraídos dos relatos oficiais do clube para o Projeto Maratona #1 (Atenas 2023), #2 (Budapeste 2024), Riga 2025 e Edimburgo 2026.</p>
     </section>
 
     <section id="shortlist" aria-labelledby="t-shortlist">
@@ -1047,7 +1089,7 @@
           <li><a href="https://commons.wikimedia.org/wiki/File:Episkopi_01-2017_img06_Kourion.jpg" target="_blank" rel="noopener noreferrer">Kourion</a> — Wikimedia Commons.</li>
           <li><a href="https://commons.wikimedia.org/wiki/File:Kolossi_Castle_01.JPG" target="_blank" rel="noopener noreferrer">Castelo de Kolossi</a> — Wikimedia Commons.</li>
         </ul>
-        <p>Antes de publicar a página de forma definitiva, confirmar a licença exata de cada ficheiro (algumas exigem nome do autor + indicação da licença) e, sempre que possível, substituir por fotografias próprias do RUN 4 FUN.</p>
+        <p>É necessário confirmar a licença exata de cada ficheiro (algumas exigem nome do autor + indicação da licença).</p>
       </div>
     </section>
   </main>
