@@ -169,16 +169,30 @@
     th,td{padding:14px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
     th{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;background:#f8fafc;color:#334155;position:sticky;top:0;z-index:1}
     tr:last-child td{border-bottom:0}
-    .cost-table{min-width:1660px;font-size:.97rem}
+    .cost-table{min-width:1800px;font-size:.97rem}
     .cost-table th,.cost-table td{padding:12px 10px}
     .cost-table th{font-size:.74rem;line-height:1.25;white-space:normal}
     .cost-table td{line-height:1.35}
     .cost-table td:first-child{white-space:nowrap}
-    .cost-table th:nth-child(10),.cost-table td:nth-child(10){width:230px;min-width:230px;max-width:230px}
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){width:180px;min-width:180px;max-width:180px}
     .cost-table td:nth-child(10){white-space:nowrap}
-    .cost-table th:nth-child(11),.cost-table td:nth-child(11){width:200px;min-width:200px;max-width:200px}
-    .cost-table th:nth-child(10),.cost-table td:nth-child(10),
-    .cost-table th:nth-child(11),.cost-table td:nth-child(11){padding-left:6px;padding-right:6px}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11){width:250px;min-width:250px;max-width:250px}
+    .cost-table td:nth-child(11){white-space:nowrap}
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){width:230px;min-width:230px;max-width:230px}
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){padding-left:8px;padding-right:8px}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11),
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){padding-left:14px;padding-right:12px}
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){border-left:2px solid #cbd5e1;background:#fafcff}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11){background:#eef6ff}
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){background:#f8fafc}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11),
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){border-left:1px solid #e2e8f0}
+    .cost-table th:nth-child(11){color:#1e3a8a;font-weight:800}
+    .cost-table td:nth-child(11){font-weight:700;color:#0f172a}
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){position:sticky;right:0;z-index:2;box-shadow:-6px 0 12px rgba(15,23,42,.05)}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11){position:sticky;right:229px;z-index:3;box-shadow:-4px 0 10px rgba(15,23,42,.04)}
+    .cost-table thead th:nth-child(12){z-index:5}
+    .cost-table thead th:nth-child(11){z-index:6}
 
     .score{display:inline-grid;grid-template-columns:80px auto;gap:8px;align-items:center;white-space:nowrap}
     .bar{width:80px;height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden;position:relative}
@@ -258,7 +272,7 @@
 
     @media (min-width:1800px){
       :root{--max:1600px}
-      .cost-table{min-width:1720px}
+      .cost-table{min-width:1860px}
     }
     @media (max-width:980px){
       .hero-grid,.decision{grid-template-columns:1fr}
@@ -602,7 +616,7 @@
 
       <div class="table-wrap">
         <table class="cost-table">
-          <caption class="sr-only">Custo de vida estimado por cidade, com índice vs Lisboa, hotel, alimentação, transportes, inscrição e totais para 3 e 7 dias.</caption>
+          <caption class="sr-only">Custo de vida estimado por cidade, com índice vs Lisboa, hotel, alimentação, transportes, inscrição, voo e totais para 3 e 7 dias.</caption>
           <thead>
             <tr>
               <th scope="col">Cidade</th>
@@ -614,6 +628,7 @@
               <th scope="col">Inscrição (estim.)</th>
               <th scope="col">Total/pessoa 3 dias</th>
               <th scope="col">Total/pessoa 7 dias</th>
+              <th scope="col">Voo ida e volta (estim.)</th>
               <th scope="col">Total com voo (estim.)</th>
               <th scope="col">Leitura rápida</th>
             </tr>
@@ -629,6 +644,7 @@
               <td>45-75 EUR</td>
               <td><strong>314-562 EUR</strong></td>
               <td><strong>666-1208 EUR</strong></td>
+              <td>140-300 EUR</td>
               <td><strong>3 dias:</strong> 454-862 EUR<br><strong>7 dias:</strong> 806-1508 EUR</td>
               <td>Mais económica da shortlist principal.</td>
             </tr>
@@ -642,6 +658,7 @@
               <td>45-75 EUR</td>
               <td><strong>304-552 EUR</strong></td>
               <td><strong>642-1173 EUR</strong></td>
+              <td>150-320 EUR</td>
               <td><strong>3 dias:</strong> 454-872 EUR<br><strong>7 dias:</strong> 792-1493 EUR</td>
               <td>Boa relação custo total para grupo grande.</td>
             </tr>
@@ -655,6 +672,7 @@
               <td>55-95 EUR</td>
               <td><strong>410-723 EUR</strong></td>
               <td><strong>877-1542 EUR</strong></td>
+              <td>180-360 EUR</td>
               <td><strong>3 dias:</strong> 590-1083 EUR<br><strong>7 dias:</strong> 1057-1902 EUR</td>
               <td>Próxima de Lisboa no dia a dia.</td>
             </tr>
@@ -668,6 +686,7 @@
               <td>55-90 EUR</td>
               <td><strong>433-762 EUR</strong></td>
               <td><strong>931-1641 EUR</strong></td>
+              <td>190-380 EUR</td>
               <td><strong>3 dias:</strong> 623-1142 EUR<br><strong>7 dias:</strong> 1121-2021 EUR</td>
               <td>Ligeiramente acima de Lisboa.</td>
             </tr>
@@ -681,6 +700,7 @@
               <td>70-120 EUR</td>
               <td><strong>519-952 EUR</strong></td>
               <td><strong>1109-2038 EUR</strong></td>
+              <td>140-280 EUR</td>
               <td><strong>3 dias:</strong> 659-1232 EUR<br><strong>7 dias:</strong> 1249-2318 EUR</td>
               <td>Confortável, mas mais cara ao fim de semana.</td>
             </tr>
@@ -694,6 +714,7 @@
               <td>60-100 EUR</td>
               <td><strong>495-960 EUR</strong></td>
               <td><strong>1067-2087 EUR</strong></td>
+              <td>220-450 EUR</td>
               <td><strong>3 dias:</strong> 715-1410 EUR<br><strong>7 dias:</strong> 1287-2537 EUR</td>
               <td>Boa para férias, penaliza em estadias longas.</td>
             </tr>
@@ -707,6 +728,7 @@
               <td>75-130 EUR</td>
               <td><strong>581-1129 EUR</strong></td>
               <td><strong>1245-2436 EUR</strong></td>
+              <td>180-360 EUR</td>
               <td><strong>3 dias:</strong> 761-1489 EUR<br><strong>7 dias:</strong> 1425-2796 EUR</td>
               <td>Excelente turismo, custo elevado.</td>
             </tr>
@@ -720,6 +742,7 @@
               <td>70-120 EUR</td>
               <td><strong>608-1180 EUR</strong></td>
               <td><strong>1317-2569 EUR</strong></td>
+              <td>220-420 EUR</td>
               <td><strong>3 dias:</strong> 828-1600 EUR<br><strong>7 dias:</strong> 1537-2989 EUR</td>
               <td>Mais cara da lista para orçamento diário.</td>
             </tr>
