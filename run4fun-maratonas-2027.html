@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RUN 4 FUN — Maratona Internacional 2027</title>
+  <meta name="description" content="Página de apoio à decisão RUN 4 FUN para escolher a maratona internacional de 2027: provas já realizadas, shortlist, voos, estadia, turismo e recomendação." />
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg2:#111827;
+      --card:#ffffff;
+      --muted:#64748b;
+      --text:#0f172a;
+      --ink:#e5e7eb;
+      --brand:#f97316;
+      --brand2:#22c55e;
+      --brand3:#2563eb;
+      --soft:#f8fafc;
+      --line:#e2e8f0;
+      --danger:#dc2626;
+      --ok:#15803d;
+      --warn:#ca8a04;
+      --shadow:0 20px 45px rgba(15,23,42,.18);
+      --radius:22px;
+      --max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#eef2ff 0,#f8fafc 22%,#ffffff 100%);
+      line-height:1.55;
+    }
+    a{color:#1d4ed8;text-decoration:none}
+    a:hover{text-decoration:underline}
+    .hero{
+      color:white;
+      background:
+        radial-gradient(circle at 12% 10%,rgba(249,115,22,.42),transparent 34%),
+        radial-gradient(circle at 82% 22%,rgba(34,197,94,.26),transparent 32%),
+        linear-gradient(135deg,#0f172a 0%,#172554 55%,#111827 100%);
+      padding:46px 20px 34px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -12% -40% 35%; height:260px;
+      background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);
+      transform:rotate(-10deg);
+    }
+    .wrap{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+    .topline{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.10);padding:7px 12px;border-radius:999px;font-size:.9rem;color:#fff}
+    .badge.dark{border-color:#dbeafe;background:#eff6ff;color:#1e3a8a}
+    .badge.green{border-color:#bbf7d0;background:#f0fdf4;color:#166534}
+    .badge.orange{border-color:#fed7aa;background:#fff7ed;color:#9a3412}
+    h1{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.98;margin:0 0 18px;letter-spacing:-.06em;max-width:980px}
+    .lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:900px;color:#dbeafe;margin:0 0 28px}
+    .hero-grid{display:grid;grid-template-columns:1.45fr .85fr;gap:22px;align-items:stretch;margin-top:28px}
+    .hero-panel{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:22px;backdrop-filter:blur(8px)}
+    .hero-panel h2{margin:0 0 8px;font-size:1.15rem;color:#fff;letter-spacing:-.02em}
+    .criteria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+    .criterion{background:rgba(255,255,255,.10);border-radius:16px;padding:12px;color:#e5e7eb;font-size:.95rem}
+    .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .toc a{color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.08);font-size:.95rem}
+    .toc a:hover{background:rgba(255,255,255,.18);text-decoration:none}
+    main{padding:34px 20px 70px}
+    section{max-width:var(--max);margin:0 auto 46px}
+    .section-title{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-bottom:18px}
+    h2{font-size:clamp(1.55rem,3vw,2.35rem);letter-spacing:-.04em;line-height:1.05;margin:0;color:#0f172a}
+    h3{font-size:1.2rem;letter-spacing:-.02em;margin:0 0 8px;color:#111827}
+    .note{color:var(--muted);font-size:.96rem;margin:0;max-width:760px}
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 24px rgba(15,23,42,.06);overflow:hidden}
+    .card.pad{padding:18px}
+    .card img{width:100%;height:180px;object-fit:cover;display:block;background:#e2e8f0}
+    .card-body{padding:17px}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0 12px}
+    .pill{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:700;background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}
+    .pill.good{background:#dcfce7;color:#166534;border-color:#bbf7d0}
+    .pill.warn{background:#fef3c7;color:#92400e;border-color:#fde68a}
+    .pill.blue{background:#dbeafe;color:#1e40af;border-color:#bfdbfe}
+    .pill.red{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+    .timeline{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+    .done{position:relative;padding:18px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:0 8px 20px rgba(15,23,42,.05)}
+    .year{font-weight:900;color:var(--brand3);font-size:1.45rem;margin-bottom:6px}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:white;box-shadow:0 8px 22px rgba(15,23,42,.05)}
+    table{border-collapse:collapse;width:100%;min-width:920px;background:white}
+    th,td{padding:14px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+    th{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;background:#f8fafc;color:#334155;position:sticky;top:0;z-index:1}
+    tr:last-child td{border-bottom:0}
+    .score{display:inline-grid;grid-template-columns:80px auto;gap:8px;align-items:center;white-space:nowrap}
+    .bar{width:80px;height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden}
+    .bar span{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#f97316);border-radius:999px}
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+    .filters button{border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:700;color:#334155}
+    .filters button.active,.filters button:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+    .destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .dest{display:grid;grid-template-columns:220px 1fr;gap:0;min-height:360px}
+    .dest img{height:100%;min-height:360px}
+    .dest .card-body{padding:22px}
+    .rank{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;background:#0f172a;color:#fff;font-weight:900;margin-right:8px}
+    .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .info{border:1px solid var(--line);background:#f8fafc;border-radius:16px;padding:13px}
+    .info strong{display:block;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:5px}
+    .quote{border-left:5px solid var(--brand);padding:16px 18px;background:#fff7ed;border-radius:0 18px 18px 0;margin:16px 0;color:#431407}
+    .plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .plan{border:1px solid var(--line);background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
+    .plan h3{display:flex;align-items:center;gap:10px}
+    .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#dbeafe;color:#1e40af;font-weight:900;font-size:.85rem}
+    ul{margin:9px 0 0 20px;padding:0}
+    li{margin:5px 0}
+    .decision{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+    .decision .winner{background:linear-gradient(135deg,#022c22,#064e3b);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .winner h2{color:white}
+    .winner .note{color:#d1fae5}
+    .winner strong{color:#bbf7d0}
+    .matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+    .matrix div{border:1px solid rgba(255,255,255,.16);border-radius:16px;padding:12px;background:rgba(255,255,255,.08)}
+    .checklist{background:#0f172a;color:#e5e7eb;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .checklist h2{color:white}
+    .checklist li{margin-bottom:8px}
+    .sources{font-size:.92rem;color:#475569}
+    .sources ol{columns:2;column-gap:35px;padding-left:21px}
+    .sources li{break-inside:avoid;margin:0 0 9px}
+    .footer{max-width:var(--max);margin:30px auto 0;padding:24px 20px 44px;color:#64748b;text-align:center;border-top:1px solid var(--line)}
+    .print-only{display:none}
+    @media (max-width:980px){
+      .hero-grid,.decision{grid-template-columns:1fr}
+      .cards,.timeline{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .destination-grid{grid-template-columns:1fr}
+      .dest{grid-template-columns:1fr}
+      .dest img{height:240px;min-height:240px}
+      .plan-grid{grid-template-columns:1fr}
+      .sources ol{columns:1}
+    }
+    @media (max-width:620px){
+      .criteria,.info-grid,.matrix{grid-template-columns:1fr}
+      .cards,.timeline{grid-template-columns:1fr}
+      .hero{padding-top:34px}
+      main{padding-left:14px;padding-right:14px}
+      .section-title{align-items:start;flex-direction:column}
+    }
+    @media print{
+      body{background:white;font-size:11pt}
+      .hero{background:white;color:#111827;padding:20px 0;border-bottom:2px solid #111827}
+      .hero *{color:#111827!important}
+      .toc,.filters,.footer{display:none}
+      main{padding:16px 0}
+      section{break-inside:avoid;margin-bottom:22px}
+      .card,.done,.plan,.table-wrap{box-shadow:none}
+      .dest img,.card img{display:none}
+      .sources ol{columns:1}
+      .print-only{display:block}
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="topline">
+        <span class="badge">🏃 RUN 4 FUN</span>
+        <span class="badge">🌍 Maratona internacional anual</span>
+        <span class="badge">🗓️ Plano 2027</span>
+        <span class="badge">Verificado em maio de 2026</span>
+      </div>
+      <h1>Escolha da maratona internacional RUN 4 FUN 2027</h1>
+      <p class="lead">Página de apoio à decisão para comparar as provas já realizadas pelo clube e selecionar uma nova viagem de grupo com maratona, meia-maratona, 10 km, opções para acompanhantes, estadias curtas e estadias de férias.</p>
+      <div class="hero-grid">
+        <div class="hero-panel">
+          <h2>O perfil ideal para o clube</h2>
+          <p>O evento ideal deve funcionar para atletas com objetivos diferentes e para acompanhantes: uma maratona para quem quer o desafio principal, meia-maratona e 10 km para maior inclusão, eventual estafeta, boa cidade para turismo, voos razoáveis a partir de Lisboa e alojamento com capacidade para várias pessoas no mesmo hotel.</p>
+          <div class="criteria">
+            <div class="criterion">✅ 2 ou 3 distâncias, idealmente 42 km + 21 km + 10 km</div>
+            <div class="criterion">✅ Cidade interessante para acompanhantes</div>
+            <div class="criterion">✅ Possibilidade de estadia curta, 2–3 dias</div>
+            <div class="criterion">✅ Possibilidade de estadia longa, 7–9 dias</div>
+            <div class="criterion">✅ Custos controláveis em voos e hotéis</div>
+            <div class="criterion">✅ Logística simples para grupo grande</div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <h2>Resumo executivo</h2>
+          <p><strong>Escolha racional:</strong> Ljubljana, se o calendário 2027 confirmar uma data adequada.</p>
+          <p><strong>Escolha mais memorável:</strong> Belgrado 2027, por coincidir com o European Running Championships aberto a populares.</p>
+          <p><strong>Escolha mais turística:</strong> Salzburg, muito forte para acompanhantes.</p>
+          <p><strong>Escolha sol/férias:</strong> Limassol, ideal para quem quiser juntar prova e semana de descanso.</p>
+        </div>
+      </div>
+      <nav class="toc" aria-label="Navegação da página">
+        <a href="#historico">Histórico</a>
+        <a href="#shortlist">Shortlist 2027</a>
+        <a href="#destinos">Candidatas principais</a>
+        <a href="#viagens">Modelos de viagem</a>
+        <a href="#recomendacao">Recomendação</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="historico">
+      <div class="section-title">
+        <div>
+          <h2>Maratonas internacionais já realizadas</h2>
+          <p class="note">O padrão RUN 4 FUN tem sido escolher capitais/cidades europeias com boa componente turística e logística aceitável para diferentes durações de estadia.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <article class="done">
+          <div class="year">2023</div>
+          <h3>Atenas</h3>
+          <p>Prova histórica e simbólica. Muito forte para quem queria correr a “maratona original”. Programa com maratona, 10 km, 5 km e prova infantil.</p>
+        </article>
+        <article class="done">
+          <div class="year">2024</div>
+          <h3>Budapeste</h3>
+          <p>Excelente para grupo: festival de corrida com várias distâncias, cidade acessível, bons transportes e forte componente turística.</p>
+        </article>
+        <article class="done">
+          <div class="year">2025</div>
+          <h3>Riga</h3>
+          <p>Cidade compacta e muito prática. Evento com maratona, meia, 10 km, 6 km, milha e provas infantis.</p>
+        </article>
+        <article class="done">
+          <div class="year">2026</div>
+          <h3>Edimburgo</h3>
+          <p>Festival muito completo: maratona, meia, estafeta, 10 km, 5 km e provas júnior. Excelente para acompanhantes, embora mais exigente em custos de alojamento.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="shortlist">
+      <div class="section-title">
+        <div>
+          <h2>Shortlist 2027</h2>
+          <p class="note">A pontuação combina adequação desportiva, logística, custos prováveis, interesse turístico e flexibilidade para estadias curtas ou longas. As datas devem ser sempre reconfirmadas antes de reservas não reembolsáveis.</p>
+        </div>
+      </div>
+
+      <div class="filters" aria-label="Filtros da shortlist">
+        <button class="active" data-filter="all">Todas</button>
+        <button data-filter="favorita">Favoritas</button>
+        <button data-filter="primavera">Primavera</button>
+        <button data-filter="outono">Outono</button>
+        <button data-filter="economica">Custo mais controlável</button>
+        <button data-filter="ferias">Boa para férias</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="shortlist-table">
+          <thead>
+            <tr>
+              <th>Prioridade</th>
+              <th>Prova</th>
+              <th>Data / estado</th>
+              <th>Distâncias</th>
+              <th>Viagem desde Lisboa</th>
+              <th>Estadia / turismo</th>
+              <th>Adequação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-tags="favorita outono economica ferias">
+              <td><strong>1</strong></td>
+              <td><strong>NLB Ljubljana Marathon</strong><br><span class="note">Ljubljana, Eslovénia</span></td>
+              <td>Outubro. Data 2027 ainda a confirmar; a edição 2026 está anunciada para 17–18 outubro.</td>
+              <td>Maratona, meia-maratona, 10 km e kids run.</td>
+              <td>Normalmente com escala. Opções via Zurique, Frankfurt, Munique, Paris, Amesterdão ou cidades próximas.</td>
+              <td>Cidade compacta; boa para 3 dias e excelente porta de entrada para Lake Bled, Postojna e Alpes Julianos.</td>
+              <td><span class="score"><span class="bar"><span style="width:94%"></span></span>94/100</span></td>
+            </tr>
+            <tr data-tags="favorita primavera ferias">
+              <td><strong>2</strong></td>
+              <td><strong>Salzburg Marathon</strong><br><span class="note">Salzburg, Áustria</span></td>
+              <td>23 maio 2027 confirmado no site oficial.</td>
+              <td>Maratona, meia, 10 km, estafeta, corrida feminina, júnior e inclusão.</td>
+              <td>Sem voo direto regular forte desde Lisboa; normalmente via Frankfurt, Munique, Zurique ou Viena + comboio.</td>
+              <td>Cidade belíssima e muito turística. Hotéis devem ser reservados cedo.</td>
+              <td><span class="score"><span class="bar"><span style="width:91%"></span></span>91/100</span></td>
+            </tr>
+            <tr data-tags="favorita primavera economica">
+              <td><strong>3</strong></td>
+              <td><strong>European Running Championships 2027</strong><br><span class="note">Belgrado, Sérvia</span></td>
+              <td>17–18 abril 2027 confirmado.</td>
+              <td>Maratona, meia-maratona, 10 km, meia em estafeta e fun run.</td>
+              <td>Melhor opção aérea: Air Serbia tem ligações diretas Lisboa–Belgrado em alguns períodos.</td>
+              <td>Boa relação custo/benefício; cidade intensa, histórica e diferente das anteriores.</td>
+              <td><span class="score"><span class="bar"><span style="width:90%"></span></span>90/100</span></td>
+            </tr>
+            <tr data-tags="favorita primavera ferias">
+              <td><strong>4</strong></td>
+              <td><strong>XM Limassol Marathon</strong><br><span class="note">Limassol, Chipre</span></td>
+              <td>3–4 abril 2027 anunciado na plataforma de inscrição.</td>
+              <td>Maratona, meia-maratona, 10 km e 5 km.</td>
+              <td>Voar para Larnaca ou Paphos e seguir de shuttle/transfer para Limassol.</td>
+              <td>Excelente para juntar prova, sol, costa, gastronomia e semana de férias.</td>
+              <td><span class="score"><span class="bar"><span style="width:88%"></span></span>88/100</span></td>
+            </tr>
+            <tr data-tags="primavera">
+              <td><strong>5</strong></td>
+              <td><strong>Vienna City Marathon</strong><br><span class="note">Viena, Áustria</span></td>
+              <td>Abril 2027; confirmar calendário final.</td>
+              <td>Maratona, meia, estafeta e provas curtas no fim de semana.</td>
+              <td>Viagem simples para Viena; custos de hotel podem subir muito no fim de semana da prova.</td>
+              <td>Turismo fortíssimo: Ringstrasse, Schönbrunn, museus, cafés e música.</td>
+              <td><span class="score"><span class="bar"><span style="width:84%"></span></span>84/100</span></td>
+            </tr>
+            <tr data-tags="primavera ferias">
+              <td><strong>6</strong></td>
+              <td><strong>Helsinki City Run</strong><br><span class="note">Helsínquia, Finlândia</span></td>
+              <td>Maio 2027 a confirmar em fontes agregadoras; site oficial mostra 2026.</td>
+              <td>Maratona, meia, estafeta, 5 km e formatos familiares.</td>
+              <td>Normalmente com escala; país mais caro para alimentação e hotelaria.</td>
+              <td>Boa cidade para quem quer uma experiência nórdica, limpa e organizada.</td>
+              <td><span class="score"><span class="bar"><span style="width:77%"></span></span>77/100</span></td>
+            </tr>
+            <tr data-tags="outono economica">
+              <td><strong>7</strong></td>
+              <td><strong>Tallinn Marathon</strong><br><span class="note">Tallinn, Estónia</span></td>
+              <td>Setembro. AIMS confirma 2026; edição 2027 a confirmar.</td>
+              <td>Maratona, estafeta, meia, 10 km e 5 km.</td>
+              <td>Normalmente com escala; alternativa báltica sem repetir Riga.</td>
+              <td>Cidade medieval compacta e muito boa para fim de semana prolongado.</td>
+              <td><span class="score"><span class="bar"><span style="width:82%"></span></span>82/100</span></td>
+            </tr>
+            <tr data-tags="outono economica">
+              <td><strong>8</strong></td>
+              <td><strong>Bucharest Marathon</strong><br><span class="note">Bucareste, Roménia</span></td>
+              <td>Normalmente outubro; calendário 2027 a confirmar.</td>
+              <td>42 km, estafeta 4x, 21 km, 10 km e fun race.</td>
+              <td>Normalmente com escala. Pode ter bom custo total se reservado cedo.</td>
+              <td>Menos “postal turístico”, mas potencialmente económica para grupo grande.</td>
+              <td><span class="score"><span class="bar"><span style="width:78%"></span></span>78/100</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="destinos">
+      <div class="section-title">
+        <div>
+          <h2>Candidatas principais em detalhe</h2>
+          <p class="note">As quatro melhores opções para votação interna. As fotografias são apenas ilustrativas e usam ficheiros públicos/Wikimedia quando possível.</p>
+        </div>
+      </div>
+      <div class="destination-grid">
+        <article class="card dest" data-tags="favorita outono economica ferias">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ljubljana%20from%20the%20Castle.JPG" alt="Vista de Ljubljana a partir do castelo" loading="lazy" />
+          <div class="card-body">
+            <h3><span class="rank">1</span>Ljubljana — equilíbrio geral</h3>
+            <div class="meta"><span class="pill good">Recomendação racional</span><span class="pill blue">Outono</span><span class="pill good">Cidade compacta</span></div>
+            <p>É provavelmente a opção mais equilibrada: cidade bonita, dimensão humana, boa experiência para acompanhantes e um programa de prova que encaixa quase perfeitamente no modelo RUN 4 FUN.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong>Maratona, meia-maratona, 10 km e kids run. Data 2027 ainda a confirmar.</div>
+              <div class="info"><strong>Voos</strong>Lisboa–Ljubljana deverá exigir escala. Também é possível estudar voos para Veneza, Trieste, Zagreb ou Viena e transporte terrestre.</div>
+              <div class="info"><strong>Estadia</strong>Procurar hotéis/apart-hotéis no centro, perto da estação ou zona Old Town–Tivoli. Ideal para 3–5 noites.</div>
+              <div class="info"><strong>Acompanhantes</strong>Centro histórico, castelo, rio Ljubljanica, mercados, cafés, Lake Bled e Postojna.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card dest" data-tags="favorita primavera ferias">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Salzburg%20Festung%20Hohensalzburg%201.jpg" alt="Fortaleza Hohensalzburg em Salzburg" loading="lazy" />
+          <div class="card-body">
+            <h3><span class="rank">2</span>Salzburg — postal turístico</h3>
+            <div class="meta"><span class="pill good">Data 2027 confirmada</span><span class="pill blue">Primavera</span><span class="pill warn">Reservar cedo</span></div>
+            <p>Excelente para uma viagem com acompanhantes. A cidade é pequena, muito caminhável e tem uma combinação rara de património, música, paisagem e ambiente de prova.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong>23 maio 2027. Maratona, meia, 10 km, estafeta, provas júnior e inclusão.</div>
+              <div class="info"><strong>Voos</strong>Lisboa–Salzburg normalmente requer escala. Alternativas: Munique ou Viena + comboio.</div>
+              <div class="info"><strong>Estadia</strong>Centro histórico, Hauptbahnhof, Elisabeth-Vorstadt ou Lehen. Hotéis podem esgotar/subir no fim de semana.</div>
+              <div class="info"><strong>Acompanhantes</strong>Fortaleza Hohensalzburg, Mirabell, Getreidegasse, casa de Mozart, Hallstatt ou lagos próximos.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card dest" data-tags="favorita primavera economica">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Belgrade%20Panorama.jpg" alt="Panorama de Belgrado a partir de Kalemegdan" loading="lazy" />
+          <div class="card-body">
+            <h3><span class="rank">3</span>Belgrado — a escolha com história</h3>
+            <div class="meta"><span class="pill good">Evento especial</span><span class="pill blue">Primavera</span><span class="pill good">Potencialmente económica</span></div>
+            <p>A oportunidade de correr num Campeonato Europeu aberto a populares torna esta opção especialmente memorável para a história do clube.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong>17–18 abril 2027. Maratona, meia, 10 km, meia em estafeta e fun run.</div>
+              <div class="info"><strong>Voos</strong>Verificar Air Serbia para ligação direta Lisboa–Belgrado. Caso contrário, procurar escala via hubs europeus.</div>
+              <div class="info"><strong>Estadia</strong>Stari Grad, Vračar ou zona Knez Mihailova/Kalemegdan. Boa relação preço/localização.</div>
+              <div class="info"><strong>Acompanhantes</strong>Kalemegdan, Fortaleza, Skadarlija, Templo de São Sava, Zemun, museus e vida noturna.</div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card dest" data-tags="favorita primavera ferias">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Limassol%20Marina%2C%20Cyprus.jpg" alt="Limassol Marina, Chipre" loading="lazy" />
+          <div class="card-body">
+            <h3><span class="rank">4</span>Limassol — sol, costa e férias</h3>
+            <div class="meta"><span class="pill good">Boa para semana longa</span><span class="pill blue">Primavera</span><span class="pill warn">Transfer aeroporto</span></div>
+            <p>Ideal para quem quiser transformar a maratona numa semana de descanso mediterrânico. A logística exige mais atenção por não haver aeroporto em Limassol.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong>3–4 abril 2027. Maratona, meia, 10 km e 5 km em percurso costeiro.</div>
+              <div class="info"><strong>Voos</strong>Voar para Larnaca ou Paphos. Usar Limassol Airport Express, Kapnos ou transfer privado.</div>
+              <div class="info"><strong>Estadia</strong>Centro antigo, Marina, Molos/Promenade ou Germasogeia para praia e restaurantes.</div>
+              <div class="info"><strong>Acompanhantes</strong>Marina, Promenade, Kourion, Kolossi, praias, aldeias vinícolas e possível aluguer de carro.</div>
+            </div>
+          </div>
+        </article>
+      </div>
+      <p class="note" style="margin-top:12px">Nota de imagem: para uma página pública do clube, recomenda-se substituir as imagens por fotografias próprias do RUN 4 FUN ou por ficheiros com licença claramente compatível, mantendo atribuição quando exigida.</p>
+    </section>
+
+    <section id="viagens">
+      <div class="section-title">
+        <div>
+          <h2>Modelos de viagem possíveis</h2>
+          <p class="note">A mesma prova deve permitir diferentes compromissos de tempo e orçamento.</p>
+        </div>
+      </div>
+      <div class="plan-grid">
+        <article class="plan">
+          <h3><span class="num">A</span>Fim de semana curto — 2/3 noites</h3>
+          <ul>
+            <li>Chegada sexta ou sábado.</li>
+            <li>Levantamento de dorsais e jantar de grupo.</li>
+            <li>Prova no domingo e regresso segunda.</li>
+            <li>Melhor para Ljubljana, Belgrado, Salzburg e Viena.</li>
+          </ul>
+        </article>
+        <article class="plan">
+          <h3><span class="num">B</span>Viagem intermédia — 4/5 noites</h3>
+          <ul>
+            <li>Permite turismo antes/depois da prova.</li>
+            <li>Menos stress com escalas e horários.</li>
+            <li>Boa para acompanhantes.</li>
+            <li>Melhor equilíbrio para quase todos os destinos.</li>
+          </ul>
+        </article>
+        <article class="plan">
+          <h3><span class="num">C</span>Semana longa — 7/9 noites</h3>
+          <ul>
+            <li>Combina maratona e férias.</li>
+            <li>Requer opções de apartamentos ou hotéis com boa política de grupo.</li>
+            <li>Ideal para Chipre, Eslovénia com Bled/Bohinj, ou Áustria com lagos/Baviera.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="alojamento">
+      <div class="section-title">
+        <div>
+          <h2>Estratégia de estadia para grupo</h2>
+          <p class="note">A escolha do hotel pode ser tão importante como a escolha da prova.</p>
+        </div>
+      </div>
+      <div class="cards">
+        <article class="card pad">
+          <h3>1. Bloqueio inicial</h3>
+          <p>Logo que a cidade seja escolhida, pedir 2 ou 3 propostas para 20–40 pessoas com opção de cancelamento parcial.</p>
+        </article>
+        <article class="card pad">
+          <h3>2. Dois níveis de preço</h3>
+          <p>Escolher um hotel-base e uma alternativa mais económica próxima, para não excluir quem tem orçamento menor.</p>
+        </article>
+        <article class="card pad">
+          <h3>3. Proximidade prática</h3>
+          <p>Priorizar acesso fácil a transportes, expo/dorsais e zona de partida/chegada, mesmo que o hotel não fique no centro absoluto.</p>
+        </article>
+        <article class="card pad">
+          <h3>4. Acompanhantes</h3>
+          <p>Evitar zonas isoladas. Acompanhantes valorizam cafés, transportes, restaurantes, segurança e percursos pedonais.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="recomendacao">
+      <div class="decision">
+        <div class="winner">
+          <h2>Recomendação final</h2>
+          <p class="note">Para votação interna, eu apresentaria quatro opções e deixaria a escolha final depender de preços reais de voos/hotéis quando as datas estiverem totalmente confirmadas.</p>
+          <div class="quote"><strong>Escolha racional:</strong> Ljubljana 2027, se a data encaixar e os custos de voo/hotel forem bons.</div>
+          <div class="quote"><strong>Escolha emocional/histórica:</strong> Belgrado 2027, pela participação no European Running Championships.</div>
+          <div class="matrix">
+            <div><strong>Melhor cidade turística</strong><br>Salzburg</div>
+            <div><strong>Melhor para férias</strong><br>Limassol</div>
+            <div><strong>Melhor custo provável</strong><br>Belgrado ou Ljubljana</div>
+            <div><strong>Melhor equilíbrio geral</strong><br>Ljubljana</div>
+          </div>
+        </div>
+        <div class="checklist">
+          <h2>Próximos passos</h2>
+          <ol>
+            <li>Confirmar datas oficiais 2027 de Ljubljana, Tallinn e Bucharest.</li>
+            <li>Simular voos para 25–40 pessoas, com e sem bagagem de porão.</li>
+            <li>Pedir propostas de alojamento com cancelamento flexível.</li>
+            <li>Verificar preços de inscrição por fases e eventuais descontos de grupo.</li>
+            <li>Criar votação interna com 4 opções: Ljubljana, Salzburg, Belgrado e Limassol.</li>
+            <li>Depois da votação, bloquear hotel-base e publicar plano A/B/C de estadia.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="fontes" class="sources">
+      <div class="section-title">
+        <div>
+          <h2>Fontes consultadas</h2>
+          <p class="note">Ligações úteis para confirmar datas, distâncias, transportes e turismo antes de reservas.</p>
+        </div>
+      </div>
+      <ol>
+        <li><a href="https://www.athensauthenticmarathon.gr/en" target="_blank" rel="noopener">Athens Marathon — The Authentic</a></li>
+        <li><a href="https://marathon.runinbudapest.com/" target="_blank" rel="noopener">SPAR Budapest Marathon</a></li>
+        <li><a href="https://rimirigamarathon.com/en/" target="_blank" rel="noopener">Rimi Riga Marathon</a></li>
+        <li><a href="https://www.edinburghmarathon.com/" target="_blank" rel="noopener">Edinburgh Marathon Festival</a></li>
+        <li><a href="https://ljubljanskimaraton.si/en/" target="_blank" rel="noopener">NLB Ljubljana Marathon</a></li>
+        <li><a href="https://salzburg-marathon.at/en/" target="_blank" rel="noopener">Salzburg Marathon</a></li>
+        <li><a href="https://www.erch2027.com/" target="_blank" rel="noopener">European Running Championships 2027 — Belgrade</a></li>
+        <li><a href="https://www.limassolmarathon.com/" target="_blank" rel="noopener">XM Limassol Marathon</a></li>
+        <li><a href="https://raceroster.com/events/2027/110607/xm-limassol-marathon-2027" target="_blank" rel="noopener">Race Roster — Limassol Marathon 2027</a></li>
+        <li><a href="https://www.vienna-marathon.com/?go=course&lang=en" target="_blank" rel="noopener">Vienna City Marathon</a></li>
+        <li><a href="https://helsinkicityrun.fi/en/" target="_blank" rel="noopener">Helsinki City Run</a></li>
+        <li><a href="https://aims-worldrunning.org/countries/33.html" target="_blank" rel="noopener">AIMS — Tallinn Marathon</a></li>
+        <li><a href="https://bucharest-marathon.com/en/" target="_blank" rel="noopener">Bucharest Marathon</a></li>
+        <li><a href="https://www.lju-airport.si/en/transport/bus/" target="_blank" rel="noopener">Ljubljana Airport — transporte público</a></li>
+        <li><a href="https://www.salzburg-airport.com/en/flights-arrival/arrival-to-the-airport/public-transportation" target="_blank" rel="noopener">Salzburg Airport — transporte público</a></li>
+        <li><a href="https://beg.aero/eng/practical-informations/public-transportation" target="_blank" rel="noopener">Belgrade Airport — transporte público</a></li>
+        <li><a href="https://limassolairportexpress.eu/" target="_blank" rel="noopener">Limassol Airport Express</a></li>
+        <li><a href="https://www.airserbia.com/en-pt/flights-from-lisbon-to-serbia" target="_blank" rel="noopener">Air Serbia — Lisboa–Belgrado</a></li>
+        <li><a href="https://www.visitljubljana.com/en/visitors/" target="_blank" rel="noopener">Visit Ljubljana</a></li>
+        <li><a href="https://www.salzburg.info/en/sights/top10" target="_blank" rel="noopener">Salzburg.info — Top 10 sights</a></li>
+        <li><a href="https://www.tob.rs/en/what-to-see" target="_blank" rel="noopener">Tourist Organization of Belgrade</a></li>
+        <li><a href="https://visitestonia.com/en" target="_blank" rel="noopener">Visit Estonia</a></li>
+        <li><a href="https://www.wien.info/en" target="_blank" rel="noopener">Wien.info — guia oficial de Viena</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Ljubljana_from_the_Castle.JPG" target="_blank" rel="noopener">Foto Ljubljana — Wikimedia Commons</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Salzburg_Festung_Hohensalzburg_1.jpg" target="_blank" rel="noopener">Foto Salzburg — Wikimedia Commons</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Belgrade_Panorama.jpg" target="_blank" rel="noopener">Foto Belgrado — Wikimedia Commons</a></li>
+        <li><a href="https://commons.wikimedia.org/wiki/File:Limassol_Marina,_Cyprus.jpg" target="_blank" rel="noopener">Foto Limassol — Wikimedia Commons</a></li>
+      </ol>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>RUN 4 FUN — Maratona Internacional 2027</strong></p>
+    <p>Página estática preparada para GitHub Pages. Sugestão: guardar como <code>index.html</code> no repositório ou na pasta <code>docs/</code>.</p>
+  </footer>
+
+  <script>
+    const buttons = document.querySelectorAll('.filters button');
+    const rows = document.querySelectorAll('#shortlist-table tbody tr');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        buttons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        rows.forEach(row => {
+          const tags = row.dataset.tags || '';
+          row.style.display = filter === 'all' || tags.includes(filter) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>
