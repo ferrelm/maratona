@@ -27,6 +27,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 
   <style>
     :root{
@@ -246,6 +247,7 @@
     .dest .card-body{padding:22px}
     .rank{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;background:#0f172a;color:#fff;font-weight:900;margin-right:8px}
     .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .race-map{height:300px;border-radius:12px;overflow:hidden;border:1px solid var(--line);grid-column:1/-1;margin-top:4px}
     .info{border:1px solid var(--line);background:#f8fafc;border-radius:16px;padding:13px}
     .info strong{display:block;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:5px}
 
@@ -947,6 +949,7 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">⚠️ Reservar logo que a data 2027 for confirmada — fim de semana da maratona esgota rapidamente. Pedir 2–3 propostas para 20–40 pessoas com opção de cancelamento parcial. <a href="https://salzburg-marathon.at/en/information/hotels/" target="_blank" rel="noopener">↗ Parceiros oficiais</a> · <a href="https://www.booking.com/searchresults.html?ss=Salzburg&checkin=2027-05-21&checkout=2027-05-24" target="_blank" rel="noopener">↗ Booking 21–24 mai</a> · <a href="https://www.airbnb.com/salzburg-region-austria/stays/apartments" target="_blank" rel="noopener">↗ Airbnb apartamentos</a></p>
               </div>
+              <div id="map-salzburg" class="race-map" aria-label="Mapa de Salzburg com largada, meta e alojamento sugerido"></div>
             </div>
           </div>
         </article>
@@ -986,6 +989,7 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">⚠️ Campeonato Europeu: procura muito acima do normal — reservar logo que possível (aberturas esperadas ~out 2026). Pedir 2–3 propostas para 20–40 pessoas com cancelamento parcial. <a href="https://www.booking.com/searchresults.html?ss=Belgrade+Stari+Grad&checkin=2027-04-16&checkout=2027-04-19" target="_blank" rel="noopener">↗ Booking 16–19 abr</a> · <a href="https://www.booking.com/searchresults.html?ss=Belgrade+Stari+Grad&checkin=2027-04-16&checkout=2027-04-26" target="_blank" rel="noopener">↗ 16–26 abr</a> · <a href="https://www.airbnb.com/republic-square-beograd-serbia/stays/family-friendly" target="_blank" rel="noopener">↗ Airbnb apartamentos</a></p>
               </div>
+              <div id="map-belgrado" class="race-map" aria-label="Mapa de Belgrado com largada/meta e alojamento sugerido"></div>
             </div>
           </div>
         </article>
@@ -1188,6 +1192,41 @@
     <p>Página estática preparada para GitHub Pages. Sugestão: guardar como <code>index.html</code> no repositório ou na pasta <code>docs/</code>.</p>
   </footer>
 
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+  (function () {
+    function mkIcon(color, label) {
+      return L.divIcon({
+        html: '<div style="background:' + color + ';width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);white-space:nowrap">' + label + '</div>',
+        className: '', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -17]
+      });
+    }
+    var tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var attr = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+    /* ---- Salzburg ---- */
+    var sm = L.map('map-salzburg', {scrollWheelZoom: false}).setView([47.804, 13.0438], 14);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(sm);
+    L.marker([47.8006, 13.0441], {icon: mkIcon('#ef4444', 'S')}).addTo(sm).bindPopup('<b>Largada</b> — Staatsbrücke');
+    L.marker([47.8029, 13.0433], {icon: mkIcon('#22c55e', 'M')}).addTo(sm).bindPopup('<b>Meta</b> — Max-Reinhardt-Platz');
+    L.marker([47.7985, 13.0452], {icon: mkIcon('#2563eb', '1')}).addTo(sm).bindPopup('<b>JUFA Hotel Salzburg City</b> (3★)<br><em>Hotel-base</em> · Josef-Preis-Allee 18<br>10% desconto para inscritos');
+    L.marker([47.813, 13.0438], {icon: mkIcon('#60a5fa', '2')}).addTo(sm).bindPopup('<b>H+ Hotel Salzburg</b> (3★)<br><em>Alternativa económica</em> · Hauptbahnhof<br>~€75–120/noite');
+    L.marker([47.8014, 13.0425], {icon: mkIcon('#38bdf8', '3')}).addTo(sm).bindPopup('<b>Leonardo Hotel Salzburg City Center</b> (3★)<br><em>Acompanhantes</em> · Altstadt');
+    L.marker([47.8044, 13.0433], {icon: mkIcon('#8b5cf6', 'A')}).addTo(sm).bindPopup('<b>master Mirabell Serviced Apartments</b><br><em>Grupos &gt;2 pessoas</em> · Rainerstrasse 7<br>Studios a apartamentos até 8 pessoas');
+    L.marker([47.8033, 13.043], {icon: mkIcon('#f59e0b', '4★')}).addTo(sm).bindPopup('<b>IMLAUER Palais Mirabell</b> (4★)<br><em>Upgrade único</em> · Mirabellplatz<br>Desde ~€106/noite');
+
+    /* ---- Belgrado ---- */
+    var bm = L.map('map-belgrado', {scrollWheelZoom: false}).setView([44.8174, 20.4578], 16);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(bm);
+    L.marker([44.8178, 20.4576], {icon: mkIcon('#ef4444', 'S/M')}).addTo(bm).bindPopup('<b>Largada e Meta</b> — Trg Republike');
+    L.marker([44.8188, 20.4597], {icon: mkIcon('#2563eb', '1')}).addTo(bm).bindPopup('<b>Majestic Hotel Belgrade</b> (3★)<br><em>Hotel-base</em> · Obilicev Venac 28<br>~€55–80/noite · PQ incluído');
+    L.marker([44.816, 20.4576], {icon: mkIcon('#60a5fa', '2')}).addTo(bm).bindPopup('<b>Balkan Hotel Garni</b> (3★)<br><em>Alternativa económica</em> · zona central<br>4,6/5 · 511 avaliações');
+    L.marker([44.8174, 20.4567], {icon: mkIcon('#38bdf8', '3')}).addTo(bm).bindPopup('<b>Hotel Centar No. 1</b> (3★)<br><em>Segunda alternativa</em> · Kolarceva 1<br>100 m do Trg Republike');
+    L.marker([44.8181, 20.458], {icon: mkIcon('#8b5cf6', 'A1')}).addTo(bm).bindPopup('<b>Republic Square Apartment</b><br><em>Grupos &gt;2 pessoas</em> · Trg Republike<br>3–4 pessoas · cozinha equipada');
+    L.marker([44.8176, 20.457], {icon: mkIcon('#a78bfa', 'A2')}).addTo(bm).bindPopup('<b>Luxury Apartment Walnut</b><br><em>Grupos &gt;2 pessoas</em> · junto ao Trg<br>2 quartos · até 4 pessoas');
+    L.marker([44.8166, 20.4574], {icon: mkIcon('#f59e0b', '4★')}).addTo(bm).bindPopup('<b>Hotel Moskva</b> (4★)<br><em>Upgrade único</em> · Balkanska 1<br>8,9/10 · ~€115/noite');
+  })();
+  </script>
   <script defer>
     (function () {
       const buttons = document.querySelectorAll('.filters button');
