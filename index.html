@@ -159,6 +159,16 @@
     .growth-bar span{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2563eb,#22c55e)}
     .growth-bar.pending{background:repeating-linear-gradient(45deg,#e2e8f0,#e2e8f0 8px,#f1f5f9 8px,#f1f5f9 16px)}
     .growth-value{font-weight:800;color:#0f172a;white-space:nowrap}
+    .growth-detail{padding-left:80px;margin:-4px 0 12px}
+    .growth-stacked{height:6px;border-radius:999px;overflow:hidden;display:flex;margin-bottom:6px}
+    .growth-legend{display:flex;gap:10px;flex-wrap:wrap}
+    .gl{font-size:.7rem;color:#475569;display:inline-flex;align-items:center;gap:3px}
+    .gl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:2px;flex-shrink:0}
+    .gl-marathon::before{background:#1d4ed8}
+    .gl-relay::before{background:#60a5fa}
+    .gl-10k::before{background:#22c55e}
+    .gl-short::before{background:#86efac}
+    .gl-social::before{background:#fbbf24}
     .history-highlights{display:grid;grid-template-columns:repeat(2,minmax(320px,1fr));gap:16px;margin-top:12px}
     .history-highlight{border:1px solid var(--line);background:#f8fafc;border-radius:18px;padding:18px 18px 20px}
     .history-highlight.wide{grid-column:1 / -1}
@@ -334,8 +344,8 @@
           <div class="criteria">
             <div class="criterion">✅ 2 ou 3 distâncias, idealmente 42 km + 21 km + 10 km</div>
             <div class="criterion">✅ Cidade interessante para acompanhantes</div>
-            <div class="criterion">✅ Possibilidade de estadia curta, 2–3 dias</div>
-            <div class="criterion">✅ Possibilidade de estadia longa, 7–9 dias</div>
+            <div class="criterion">✅ Possibilidade de estadia curta, 2–3 noites</div>
+            <div class="criterion">✅ Possibilidade de estadia longa, 9–10 noites</div>
             <div class="criterion">✅ Custos controláveis em voos e hotéis</div>
             <div class="criterion">✅ Logística simples para grupo grande</div>
           </div>
@@ -441,6 +451,22 @@
           <div class="growth-bar" role="img" aria-label="2024: 50 participantes"><span style="width:100%"></span></div>
           <span class="growth-value">50</span>
         </div>
+        <div class="growth-detail">
+          <div class="growth-stacked" role="img" aria-label="Divisão 2024: 22 maratona, 8 estafeta, 6 10km, 2 distâncias curtas, 12 social">
+            <span style="width:44%;background:#1d4ed8" title="Maratona: 22"></span>
+            <span style="width:16%;background:#60a5fa" title="Estafeta: 8"></span>
+            <span style="width:12%;background:#22c55e" title="10 km: 6"></span>
+            <span style="width:4%;background:#86efac" title="14 km + 5 km: 2"></span>
+            <span style="width:24%;background:#fbbf24" title="Social 4 FUN: 12"></span>
+          </div>
+          <div class="growth-legend">
+            <span class="gl gl-marathon">Maratona 22</span>
+            <span class="gl gl-relay">Estafeta 8</span>
+            <span class="gl gl-10k">10 km 6</span>
+            <span class="gl gl-short">14 km + 5 km 2</span>
+            <span class="gl gl-social">Social 4 FUN 12</span>
+          </div>
+        </div>
         <div class="growth-row">
           <span class="label">2025</span>
           <div class="growth-bar" role="img" aria-label="2025: 23 participantes"><span style="width:46%"></span></div>
@@ -515,7 +541,7 @@
               <td class="date-cell"><span class="date-badge a-confirmar">A confirmar</span>Outubro. Calendário 2027 ainda a confirmar; a edição 2026 está anunciada para 17-18 outubro.</td>
               <td>Maratona, meia-maratona, 10 km e kids run.</td>
               <td>Normalmente com escala. Opções via Zurique, Frankfurt, Munique, Paris, Amesterdão ou cidades próximas.</td>
-              <td>Cidade compacta; boa para 3 dias e excelente porta de entrada para Lake Bled, Postojna e Alpes Julianos.</td>
+              <td>Cidade compacta; boa para 3 noites e excelente porta de entrada para Lake Bled, Postojna e Alpes Julianos.</td>
               <td><span class="score"><span class="bar" role="img" aria-label="Adequação 94 em 100"><span style="width:94%"></span></span>94/100</span></td>
             </tr>
             <tr data-tags="favorita primavera ferias">
@@ -608,8 +634,8 @@
         <article class="card pad">
           <h3>Como usar na votação</h3>
           <ul>
-            <li><strong>Viagem curta (3 dias):</strong> usar custo diário x 3 + inscrição.</li>
-            <li><strong>Viagem longa (10 dias):</strong> usar custo diário x 10 + inscrição.</li>
+            <li><strong>Viagem curta (3 noites):</strong> usar custo diário x 3 + inscrição.</li>
+            <li><strong>Viagem longa (10 noites):</strong> usar custo diário x 10 + inscrição.</li>
             <li><strong>Cenário conservador:</strong> aplicar margem de risco de 10%-15%.</li>
             <li><strong>Regra de decisão:</strong> cruzar custo com adequação desportiva.</li>
             <li><strong>Atualização:</strong> rever preços de 30 em 30 dias.</li>
@@ -621,7 +647,7 @@
 
       <div class="table-wrap">
         <table class="cost-table">
-          <caption class="sr-only">Custo de vida estimado por cidade, com índice vs Lisboa, hotel, alimentação, transportes, inscrição, voo e totais para 3 e 10 dias.</caption>
+          <caption class="sr-only">Custo de vida estimado por cidade, com índice vs Lisboa, hotel, alimentação, transportes, inscrição, voo e totais para 3 e 10 noites.</caption>
           <thead>
             <tr>
               <th scope="col">Cidade</th>
@@ -631,8 +657,8 @@
               <th scope="col">Transportes/dia</th>
               <th scope="col">Custo diário total (sem voo)</th>
               <th scope="col">Inscrição (estim.)</th>
-              <th scope="col">Total/pessoa 3 dias</th>
-              <th scope="col">Total/pessoa 10 dias</th>
+              <th scope="col">Total/pessoa 3 noites</th>
+              <th scope="col">Total/pessoa 10 noites</th>
               <th scope="col">Voo ida e volta (estim.)</th>
               <th scope="col">Total com voo (estim.)</th>
               <th scope="col">Leitura rápida</th>
@@ -650,7 +676,7 @@
               <td><strong>314-562 EUR</strong></td>
               <td><strong>930-1673 EUR</strong></td>
               <td>140-300 EUR</td>
-              <td><strong>3 dias:</strong> 454-862 EUR<br><strong>10 dias:</strong> 1070-1973 EUR</td>
+              <td><strong>3 noites:</strong> 454-862 EUR<br><strong>10 noites:</strong> 1070-1973 EUR</td>
               <td>Mais económica da shortlist principal.</td>
             </tr>
             <tr>
@@ -664,7 +690,7 @@
               <td><strong>304-552 EUR</strong></td>
               <td><strong>897-1639 EUR</strong></td>
               <td>150-320 EUR</td>
-              <td><strong>3 dias:</strong> 454-872 EUR<br><strong>10 dias:</strong> 1047-1959 EUR</td>
+              <td><strong>3 noites:</strong> 454-872 EUR<br><strong>10 noites:</strong> 1047-1959 EUR</td>
               <td>Boa relação custo total para grupo grande.</td>
             </tr>
             <tr>
@@ -678,7 +704,7 @@
               <td><strong>410-723 EUR</strong></td>
               <td><strong>1227-2156 EUR</strong></td>
               <td>180-360 EUR</td>
-              <td><strong>3 dias:</strong> 590-1083 EUR<br><strong>10 dias:</strong> 1407-2516 EUR</td>
+              <td><strong>3 noites:</strong> 590-1083 EUR<br><strong>10 noites:</strong> 1407-2516 EUR</td>
               <td>Próxima de Lisboa no dia a dia.</td>
             </tr>
             <tr>
@@ -692,7 +718,7 @@
               <td><strong>433-762 EUR</strong></td>
               <td><strong>1304-2300 EUR</strong></td>
               <td>190-380 EUR</td>
-              <td><strong>3 dias:</strong> 623-1142 EUR<br><strong>10 dias:</strong> 1494-2680 EUR</td>
+              <td><strong>3 noites:</strong> 623-1142 EUR<br><strong>10 noites:</strong> 1494-2680 EUR</td>
               <td>Ligeiramente acima de Lisboa.</td>
             </tr>
             <tr>
@@ -706,7 +732,7 @@
               <td><strong>519-952 EUR</strong></td>
               <td><strong>1551-2852 EUR</strong></td>
               <td>140-280 EUR</td>
-              <td><strong>3 dias:</strong> 659-1232 EUR<br><strong>10 dias:</strong> 1691-3132 EUR</td>
+              <td><strong>3 noites:</strong> 659-1232 EUR<br><strong>10 noites:</strong> 1691-3132 EUR</td>
               <td>Confortável, mas mais cara ao fim de semana.</td>
             </tr>
             <tr>
@@ -720,7 +746,7 @@
               <td><strong>495-960 EUR</strong></td>
               <td><strong>1496-2933 EUR</strong></td>
               <td>220-450 EUR</td>
-              <td><strong>3 dias:</strong> 715-1410 EUR<br><strong>10 dias:</strong> 1716-3383 EUR</td>
+              <td><strong>3 noites:</strong> 715-1410 EUR<br><strong>10 noites:</strong> 1716-3383 EUR</td>
               <td>Boa para férias, penaliza em estadias longas.</td>
             </tr>
             <tr>
@@ -734,7 +760,7 @@
               <td><strong>581-1129 EUR</strong></td>
               <td><strong>1744-3416 EUR</strong></td>
               <td>180-360 EUR</td>
-              <td><strong>3 dias:</strong> 761-1489 EUR<br><strong>10 dias:</strong> 1924-3776 EUR</td>
+              <td><strong>3 noites:</strong> 761-1489 EUR<br><strong>10 noites:</strong> 1924-3776 EUR</td>
               <td>Excelente turismo, custo elevado.</td>
             </tr>
             <tr>
@@ -748,14 +774,14 @@
               <td><strong>608-1180 EUR</strong></td>
               <td><strong>1848-3611 EUR</strong></td>
               <td>220-420 EUR</td>
-              <td><strong>3 dias:</strong> 828-1600 EUR<br><strong>10 dias:</strong> 2068-4031 EUR</td>
+              <td><strong>3 noites:</strong> 828-1600 EUR<br><strong>10 noites:</strong> 2068-4031 EUR</td>
               <td>Mais cara da lista para orçamento diário.</td>
             </tr>
           </tbody>
         </table>
       </div>
       <p class="note mt-12">Método sugerido: recolher 10 amostras por cidade (5 hotéis + 5 restaurantes), usar mediana em vez de média e recalcular o índice com Lisboa=100 para reduzir distorções.</p>
-      <p class="note">Cálculo dos totais: custo diário x 3 ou x 10 + inscrição estimada, com margem de risco incluída (10% no limite inferior e 15% no limite superior). Não inclui voo internacional.</p>
+      <p class="note">Cálculo dos totais: custo diário x 3 noites ou x 10 noites + inscrição estimada, com margem de risco incluída (10% no limite inferior e 15% no limite superior). Não inclui voo internacional.</p>
       <p class="note">Voo (estimativa Lisboa ida e volta): Belgrado 140-300 EUR, Bucareste 150-320 EUR, Ljubljana 180-360 EUR, Tallinn 190-380 EUR, Viena 140-280 EUR, Limassol 220-450 EUR, Salzburg 180-360 EUR, Helsínquia 220-420 EUR.</p>
     </section>
 
@@ -911,6 +937,16 @@
               <div class="info"><strong>Voos</strong>Sem direto de Lisboa. Melhor via <strong>Munique</strong> (1h de comboio, ~€20–40) ou <strong>Viena</strong> (1h30). Partida: <strong>sex 21 mai</strong>; regresso <strong>seg 24 mai</strong> (fim de semana curto) ou <strong>seg 31 mai</strong> (10 dias após chegada). Ref. histórica: ~€200–350 i/v p.p. para MUC ou VIE — reservas 2027 abrem ~nov 2026. <a href="https://www.kayak.pt/flights/LIS-MUC/2027-05-21/2027-05-24" target="_blank" rel="noopener">↗ via MUC 21–24 mai</a> · <a href="https://www.kayak.pt/flights/LIS-VIE/2027-05-21/2027-05-31" target="_blank" rel="noopener">↗ via VIE 21–31 mai</a></div>
               <div class="info"><strong>Estadia</strong>Centro histórico, Hauptbahnhof, Elisabeth-Vorstadt ou Lehen. Hotéis podem esgotar/subir no fim de semana.</div>
               <div class="info"><strong>Acompanhantes</strong>Fortaleza Hohensalzburg, Mirabell, Getreidegasse, casa de Mozart, Hallstatt ou lagos próximos.</div>
+              <div class="info" style="grid-column:1/-1"><strong>Alojamento sugerido</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.7">
+                  <li><strong>JUFA Hotel Salzburg City</strong> (3★) — hotel oficial da maratona; Josef-Preis-Allee 18, a 5 min da meta; <em>10% desconto para inscritos</em>; bom para grupos.</li>
+                  <li><strong>H+ Hotel Salzburg</strong> (3★) — diretamente na Hauptbahnhof; 8,5/10 (9 000 avaliações); prático para chegadas de comboio de Munique/Viena. ~€75–120/noite.</li>
+                  <li><strong>Leonardo Hotel Salzburg City Center</strong> (3★) — centro, 86 quartos, bar e terraço de verão; bom para reservas de grupo.</li>
+                  <li><strong>master Mirabell Serviced Apartments</strong> — Rainerstrasse 7, junto ao Palácio Mirabell; studios a apartamentos familiares até 8 pessoas; ideal para grupos que preferem cozinhar.</li>
+                  <li><strong>IMLAUER Palais Mirabell</strong> (4★) — no próprio Mirabellplatz, desde ~€106/noite; opção de upgrade para quem quer estar à chegada da meta. <em>(único 4★ sugerido)</em></li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">⚠️ Reservar logo que a data 2027 for confirmada — o fim de semana da maratona esgota rapidamente. <a href="https://salzburg-marathon.at/en/information/hotels/" target="_blank" rel="noopener">↗ Parceiros oficiais da maratona</a> · <a href="https://www.booking.com/searchresults.html?ss=Salzburg&checkin=2027-05-21&checkout=2027-05-24" target="_blank" rel="noopener">↗ Booking 21–24 mai</a> · <a href="https://www.airbnb.com/salzburg-region-austria/stays/apartments" target="_blank" rel="noopener">↗ Apartamentos no Airbnb</a></p>
+              </div>
             </div>
           </div>
         </article>
@@ -939,6 +975,17 @@
               <div class="info"><strong>Voos</strong>Air Serbia tem <strong>voos diretos</strong> LIS–BEG (~3h40, ~3–4×/sem. incluindo sexta). Partida: <strong>sex 16 abr</strong>; regresso <strong>seg 19 abr</strong> (fim de semana curto) ou <strong>seg 26 abr</strong> (10 dias após chegada). Ref. histórica: ~€220–320 i/v p.p. — reservas 2027 abrem ~out 2026. <a href="https://www.kayak.pt/flights/LIS-BEG/2027-04-16/2027-04-19" target="_blank" rel="noopener">↗ 16–19 abr</a> · <a href="https://www.kayak.pt/flights/LIS-BEG/2027-04-16/2027-04-26" target="_blank" rel="noopener">↗ 16–26 abr</a></div>
               <div class="info"><strong>Estadia</strong>Stari Grad, Vračar ou zona Knez Mihailova/Kalemegdan. Boa relação preço/localização.</div>
               <div class="info"><strong>Acompanhantes</strong>Kalemegdan, Fortaleza, Skadarlija, Templo de São Sava, Zemun, museus e vida noturna.</div>
+              <div class="info" style="grid-column:1/-1"><strong>Alojamento sugerido</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.7">
+                  <li><strong>Majestic Hotel Belgrade</strong> (3★) — Obilicev Venac 28, a 100 m do Trg Republike (largada/chegada); pequeno-almoço incluído; 353 avaliações. ~€55–80/noite.</li>
+                  <li><strong>Hotel Centar No. 1</strong> (3★) — Kolarceva 1, a 100 m do Trg Republike; central, bem avaliado e fácil acesso a transportes.</li>
+                  <li><strong>Balkan Hotel Garni</strong> (3★) — classificação 4,6/5 (511 avaliações); edifício histórico na zona central; boa relação qualidade/preço.</li>
+                  <li><strong>Republic Square Apartment</strong> — apartamento no próprio Trg Republike, para 3–4 pessoas; cozinha equipada; perfeito para grupo pequeno ou estadia longa.</li>
+                  <li><strong>Luxury Apartment Walnut</strong> — 2 quartos a 50 passos do Trg Republike; até 4 pessoas; cozinha e lavandaria incluídas.</li>
+                  <li><strong>Hotel Moskva</strong> (4★) — ícone histórico de Belgrado na Terazije, a ~400 m da largada; 8,9/10 (4 000+ avaliações); ~€115/noite. <em>(único 4★ sugerido)</em></li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">⚠️ Campeonato Europeu: procura muito acima do habitual — reservar logo que possível (aberturas esperadas ~out 2026). <a href="https://www.booking.com/searchresults.html?ss=Belgrade+Stari+Grad&checkin=2027-04-16&checkout=2027-04-19" target="_blank" rel="noopener">↗ Booking 16–19 abr</a> · <a href="https://www.booking.com/searchresults.html?ss=Belgrade+Stari+Grad&checkin=2027-04-16&checkout=2027-04-26" target="_blank" rel="noopener">↗ 16–26 abr</a> · <a href="https://www.airbnb.com/republic-square-beograd-serbia/stays/family-friendly" target="_blank" rel="noopener">↗ Apartamentos no Airbnb</a></p>
+              </div>
             </div>
           </div>
         </article>
@@ -1101,6 +1148,8 @@
         <li><a href="https://www.kayak.pt/flights/LIS-BEG/2027-04-16/2027-04-26" target="_blank" rel="noopener noreferrer">Kayak — Pesquisa LIS–BEG 16–26 abr 2027</a></li>
         <li><a href="https://www.kayak.pt/flights/LIS-MUC/2027-05-21/2027-05-24" target="_blank" rel="noopener noreferrer">Kayak — Pesquisa LIS–MUC 21–24 mai 2027 (Salzburg via Munique)</a></li>
         <li><a href="https://www.kayak.pt/flights/LIS-VIE/2027-05-21/2027-05-31" target="_blank" rel="noopener noreferrer">Kayak — Pesquisa LIS–VIE 21–31 mai 2027 (Salzburg via Viena)</a></li>
+        <li><a href="https://salzburg-marathon.at/en/information/hotels/" target="_blank" rel="noopener noreferrer">Salzburg Marathon — Hotéis parceiros oficiais</a></li>
+        <li><a href="https://www.tripadvisor.com/HotelsNear-g294472-d550326-Knez_Mihailova-Belgrade.html" target="_blank" rel="noopener noreferrer">TripAdvisor — Hotéis junto a Knez Mihailova, Belgrado</a></li>
         <li><a href="https://www.visitljubljana.com/en/visitors/" target="_blank" rel="noopener noreferrer">Visit Ljubljana</a></li>
         <li><a href="https://www.salzburg.info/en/sights/top10" target="_blank" rel="noopener noreferrer">Salzburg.info — Top 10 sights</a></li>
         <li><a href="https://www.tob.rs/en/what-to-see" target="_blank" rel="noopener noreferrer">Tourist Organization of Belgrade</a></li>
