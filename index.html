@@ -239,10 +239,14 @@
     .action-btn.transfer:hover{background:#ffedd5}
 
     .destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-    .dest{display:grid;grid-template-columns:190px 1fr;gap:0}
-    .dest-media{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(8,130px);align-self:start}
+    .dest{display:grid;grid-template-columns:220px 1fr;gap:0}
+    .dest-media{display:flex;flex-direction:column}
     .dest .info-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-    .photo-tile{position:relative;min-height:0;margin:0}
+    .photo-tile{position:relative;flex:0 0 150px;margin:0;overflow:hidden}
+    .dest-col-info{flex:1;display:flex;flex-direction:column;gap:6px;padding:10px 8px;background:var(--surface);border-top:1px solid var(--line);min-height:0;overflow:hidden}
+    .dest-col-stat{background:#f1f5f9;border-radius:10px;padding:8px 10px;font-size:.80rem;line-height:1.5}
+    .dest-col-stat strong{display:block;font-size:.70rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:3px}
+    .dest-col-stat .pill{font-size:.70rem;padding:2px 7px;margin-top:3px;display:inline-flex}
     .dest-media img{width:100%;height:100%;object-fit:cover;display:block;background:#e2e8f0}
     .photo-label{position:absolute;left:8px;bottom:8px;margin:0;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.02em;color:#f1f5f9;background:rgba(15,23,42,.78);border:1px solid rgba(226,232,240,.35)}
     .dest .card-body{padding:22px}
@@ -297,7 +301,9 @@
       .history-highlights{grid-template-columns:1fr}
       .destination-grid{grid-template-columns:1fr}
       .dest{grid-template-columns:1fr}
-      .dest-media{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,120px);height:240px}
+      .dest-media{flex-direction:row;flex-wrap:wrap;height:240px;overflow:hidden}
+      .photo-tile{flex:0 0 25%;height:120px}
+      .dest-col-info{display:none}
       .dest .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .plan-grid{grid-template-columns:1fr}
       .sources ol{columns:1}
@@ -924,6 +930,20 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ljubljana_Tivoli_park_02.jpg/960px-Ljubljana_Tivoli_park_02.jpg" alt="Parque Tivoli, o maior jardim de Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Parque Tivoli</figcaption>
             </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                2027 a confirmar <span class="pill blue">Outono</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>590–1 083 €</b><br>10 noites: <b>1 407–2 516 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Cidade compacta · Lake Bled e Postojna perto · Recomendação racional
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <h3><span class="rank">1</span>Ljubljana — equilíbrio geral</h3>
@@ -982,6 +1002,20 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/SalzburgNacht2.jpg/960px-SalzburgNacht2.jpg" alt="Salzburg iluminada à noite com reflexo no Salzach" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Salzburg noturna</figcaption>
             </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                <span class="date-badge">Data</span> 23 maio 2027 <span class="pill blue">Primavera</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>761–1 489 €</b><br>10 noites: <b>1 924–3 776 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Património UNESCO · Mozart · Reservar cedo
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <h3><span class="rank">2</span>Salzburg — postal turístico</h3>
@@ -1050,6 +1084,20 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Sava_river_in_Belgrade%2C_view_from_Kalemegdan_fortress.jpg/960px-Sava_river_in_Belgrade%2C_view_from_Kalemegdan_fortress.jpg" alt="Vista do rio Sava desde a fortaleza de Kalemegdan" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Sava desde Kalemegdan</figcaption>
             </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                <span class="date-badge">Data</span> 17–18 abr 2027 <span class="pill blue">Primavera</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>534–882 €</b><br>10 noites: <b>1 150–1 993 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Mais económica · Direto LIS-BEG · Campeonato Europeu
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <h3><span class="rank">3</span>Belgrado — a escolha com história</h3>
@@ -1116,6 +1164,20 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Limassol_sea.jpg/960px-Limassol_sea.jpg" alt="Litoral de Limassol à noite" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Litoral noturno</figcaption>
             </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                <span class="date-badge">Data</span> 3–4 abr 2027 <span class="pill blue">Primavera</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>715–1 410 €</b><br>10 noites: <b>1 716–3 383 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Sol e mar · Percurso costeiro · Kourion e Kolossi
+              </div>
+            </div>
           </div>
           <div class="card-body">
             <h3><span class="rank">4</span>Limassol — sol, costa e férias</h3>
