@@ -911,6 +911,7 @@
               <div class="info"><strong>Voos</strong>Lisboa–Ljubljana deverá exigir escala. Também é possível estudar voos para Veneza, Trieste, Zagreb ou Viena e transporte terrestre.</div>
               <div class="info"><strong>Estadia</strong>Procurar hotéis/apart-hotéis no centro, perto da estação ou zona Old Town–Tivoli. Ideal para 3–5 noites.</div>
               <div class="info"><strong>Acompanhantes</strong>Centro histórico, castelo, rio Ljubljanica, mercados, cafés, Lake Bled e Postojna.</div>
+              <div id="map-ljubljana" class="race-map" aria-label="Mapa de Ljubljana com largada e meta da maratona"></div>
             </div>
           </div>
         </article>
@@ -1018,6 +1019,7 @@
               <div class="info"><strong>Voos</strong>Voar para Larnaca ou Paphos. Usar Limassol Airport Express, Kapnos ou transfer privado.</div>
               <div class="info"><strong>Estadia</strong>Centro antigo, Marina, Molos/Promenade ou Germasogeia para praia e restaurantes.</div>
               <div class="info"><strong>Acompanhantes</strong>Marina, Promenade, Kourion, Kolossi, praias, aldeias vinícolas e possível aluguer de carro.</div>
+              <div id="map-limassol" class="race-map" aria-label="Mapa de Limassol com largada e meta da maratona costeira"></div>
             </div>
           </div>
         </article>
@@ -1225,6 +1227,17 @@
     L.marker([44.8181, 20.458], {icon: mkIcon('#8b5cf6', 'A1')}).addTo(bm).bindPopup('<b>Republic Square Apartment</b><br><em>Grupos &gt;2 pessoas</em> · Trg Republike<br>3–4 pessoas · cozinha equipada');
     L.marker([44.8176, 20.457], {icon: mkIcon('#a78bfa', 'A2')}).addTo(bm).bindPopup('<b>Luxury Apartment Walnut</b><br><em>Grupos &gt;2 pessoas</em> · junto ao Trg<br>2 quartos · até 4 pessoas');
     L.marker([44.8166, 20.4574], {icon: mkIcon('#f59e0b', '4★')}).addTo(bm).bindPopup('<b>Hotel Moskva</b> (4★)<br><em>Upgrade único</em> · Balkanska 1<br>8,9/10 · ~€115/noite');
+
+    /* ---- Ljubljana ---- */
+    var lm = L.map('map-ljubljana', {scrollWheelZoom: false}).setView([46.051, 14.505], 15);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(lm);
+    L.marker([46.0511, 14.5051], {icon: mkIcon('#ef4444', 'S')}).addTo(lm).bindPopup('<b>Largada</b> — Kongresni trg');
+    L.marker([46.0508, 14.5048], {icon: mkIcon('#22c55e', 'M')}).addTo(lm).bindPopup('<b>Meta</b> — Kongresni trg');
+
+    /* ---- Limassol ---- */
+    var li = L.map('map-limassol', {scrollWheelZoom: false}).setView([34.671, 33.041], 14);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(li);
+    L.marker([34.671, 33.041], {icon: mkIcon('#ef4444', 'S/M')}).addTo(li).bindPopup('<b>Largada e Meta</b> — Molos Promenade (Seafront)');
   })();
   </script>
   <script defer>
