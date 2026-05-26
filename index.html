@@ -241,7 +241,7 @@
     .destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
     .dest{display:grid;grid-template-columns:220px 1fr;gap:0}
     .dest-media{display:flex;flex-direction:column}
-    .dest .info-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .dest .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .photo-tile{position:relative;flex:0 0 150px;margin:0;overflow:hidden}
     .dest-col-info{flex:1;display:flex;flex-direction:column;gap:6px;padding:10px 8px;background:var(--surface);border-top:1px solid var(--line);min-height:0;overflow:hidden}
     .dest-col-stat{background:#f1f5f9;border-radius:10px;padding:8px 10px;font-size:.80rem;line-height:1.5}
@@ -253,6 +253,7 @@
     .rank{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;background:#0f172a;color:#fff;font-weight:900;margin-right:8px}
     .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
     .race-map{height:300px;border-radius:12px;overflow:hidden;border:1px solid var(--line);grid-column:1/-1;margin-top:4px}
+    .dest>.race-map{height:380px;border-radius:0 0 20px 20px;border-left:none;border-right:none;border-bottom:none;border-top:1px solid var(--line);margin-top:0;grid-column:1/-1}
     .ref{font-size:.75em;vertical-align:super;color:#2563eb;text-decoration:none;margin-left:1px}.ref:hover{text-decoration:underline}
     .info{border:1px solid var(--line);background:#f8fafc;border-radius:16px;padding:13px}
     .info strong{display:block;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:5px}
@@ -953,6 +954,7 @@
               <div class="info"><strong>Prova</strong>Maratona, meia-maratona, 10 km e kids run.<a href="#ref-7" class="ref">[7]</a> <span class="date-badge">Data</span>2027 ainda a confirmar.</div>
               <div class="info"><strong>Voos</strong>Lisboa–Ljubljana deverá exigir escala. Também é possível estudar voos para Veneza, Trieste, Zagreb ou Viena e transporte terrestre.<a href="#ref-16" class="ref">[16]</a></div>
               <div class="info"><strong>Estadia</strong>Procurar hotéis/apart-hotéis no centro, perto da estação ou zona Old Town–Tivoli. Ideal para 3–5 noites.</div>
+              <div class="info"><strong>Acompanhantes</strong>Centro histórico, castelo, rio Ljubljanica, mercados, cafés, Lake Bled e Postojna.<a href="#ref-35" class="ref">[35]</a></div>
               <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
                 <strong>Ljubljana Card</strong><a href="#ref-40" class="ref">[40]</a> — transporte público ilimitado (autocarros LPP) + entrada gratuita em 20+ atrações (Castelo, Museu Nacional, Zoo, passeio de barco no Ljubljanica, 4h de bicicleta).
                 <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
@@ -962,10 +964,9 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">Para 3 noites, o cartão de 72 h compensa com 3+ atrações (Castelo isolado ~€16). <a href="https://www.visitljubljana.com/en/visitors/sights-and-activities/ljubljana-card/" target="_blank" rel="noopener">↗ Comprar online</a></p>
               </div>
-              <div class="info"><strong>Acompanhantes</strong>Centro histórico, castelo, rio Ljubljanica, mercados, cafés, Lake Bled e Postojna.<a href="#ref-35" class="ref">[35]</a></div>
-              <div id="map-ljubljana" class="race-map" aria-label="Mapa de Ljubljana com largada e meta da maratona"></div>
             </div>
           </div>
+          <div id="map-ljubljana" class="race-map" aria-label="Mapa de Ljubljana com largada e meta da maratona"></div>
         </article>
 
         <article class="card dest" data-tags="favorita primavera ferias">
@@ -1025,6 +1026,7 @@
               <div class="info"><strong>Prova</strong><span class="date-badge">Data</span>23 maio 2027.<a href="#ref-8" class="ref">[8]</a> Maratona, meia, 10 km, estafeta, corrida feminina, provas júnior e inclusão.</div>
               <div class="info"><strong>Voos</strong>Sem direto de Lisboa. Melhor via <strong>Munique</strong> (1h de comboio, ~€20–40)<a href="#ref-17" class="ref">[17]</a><a href="#ref-23" class="ref">[23]</a> ou <strong>Viena</strong> (1h30). Partida: <strong>sex 21 mai</strong>; regresso <strong>seg 24 mai</strong> (fim de semana curto) ou <strong>seg 31 mai</strong> (10 dias após chegada). Ref. histórica: ~€200–350 i/v p.p. para MUC ou VIE — reservas 2027 abrem ~nov 2026. <a href="https://www.kayak.pt/flights/LIS-MUC/2027-05-21/2027-05-24" target="_blank" rel="noopener">↗ via MUC 21–24 mai</a> · <a href="https://www.kayak.pt/flights/LIS-VIE/2027-05-21/2027-05-31" target="_blank" rel="noopener">↗ via VIE 21–31 mai</a></div>
               <div class="info"><strong>Estadia</strong>Centro histórico, Hauptbahnhof, Elisabeth-Vorstadt ou Lehen. Hotéis podem esgotar/subir no fim de semana.</div>
+              <div class="info"><strong>Acompanhantes</strong>Fortaleza Hohensalzburg, Mirabell, Getreidegasse, casa de Mozart, Hallstatt ou lagos próximos.<a href="#ref-36" class="ref">[36]</a></div>
               <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
                 <strong>Salzburg Card</strong><a href="#ref-41" class="ref">[41]</a> — transporte público ilimitado + entrada gratuita em 30+ atrações. Preços de alta temporada (Abr–Out):
                 <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
@@ -1034,7 +1036,6 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">Baixa temporada (Nov–Mar): 24 h = €35. Inclui Fortaleza Hohensalzburg (~€16,90 avulso), teleférico Untersberg, Casa natal de Mozart, Palácio Hellbrunn e cruzeiro fluvial — o cartão paga-se com 2–3 atrações. <a href="https://www.salzburgcard.com/en/" target="_blank" rel="noopener">↗ Salzburg Card oficial</a></p>
               </div>
-              <div class="info"><strong>Acompanhantes</strong>Fortaleza Hohensalzburg, Mirabell, Getreidegasse, casa de Mozart, Hallstatt ou lagos próximos.<a href="#ref-36" class="ref">[36]</a></div>
               <div class="info" style="grid-column:1/-1"><strong>Alojamento sugerido</strong>
                 <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
                   <li><em>Hotel-base</em> — <strong>JUFA Hotel Salzburg City</strong> (3★): hotel oficial da maratona, a 5 min da meta e da expo de dorsais (Josef-Preis-Allee 18); <strong>10% desconto para inscritos</strong><a href="#ref-28" class="ref">[28]</a>; adequado para reservas de grupo com cancelamento parcial.</li>
@@ -1045,9 +1046,9 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">⚠️ Reservar logo que a data 2027 for confirmada — fim de semana da maratona esgota rapidamente. Pedir 2–3 propostas para 20–40 pessoas com opção de cancelamento parcial. <a href="https://salzburg-marathon.at/en/information/hotels/" target="_blank" rel="noopener">↗ Parceiros oficiais</a> · <a href="https://www.booking.com/searchresults.html?ss=Salzburg&checkin=2027-05-21&checkout=2027-05-24" target="_blank" rel="noopener">↗ Booking 21–24 mai</a> · <a href="https://www.airbnb.com/salzburg-region-austria/stays/apartments" target="_blank" rel="noopener">↗ Airbnb apartamentos</a></p>
               </div>
-              <div id="map-salzburg" class="race-map" aria-label="Mapa de Salzburg com largada, meta e alojamento sugerido"></div>
             </div>
           </div>
+          <div id="map-salzburg" class="race-map" aria-label="Mapa de Salzburg com largada, meta e alojamento sugerido"></div>
         </article>
 
         <article class="card dest" data-tags="favorita primavera economica">
@@ -1107,13 +1108,13 @@
               <div class="info"><strong>Prova</strong><span class="date-badge">Data</span>17-18 abril 2027.<a href="#ref-9" class="ref">[9]</a> Maratona, meia, 10 km, meia em estafeta e fun run.</div>
               <div class="info"><strong>Voos</strong>Air Serbia tem <strong>voos diretos</strong> LIS–BEG (~3h40, ~3–4×/sem. incluindo sexta)<a href="#ref-20" class="ref">[20]</a><a href="#ref-21" class="ref">[21]</a>. Partida: <strong>sex 16 abr</strong>; regresso <strong>seg 19 abr</strong> (fim de semana curto) ou <strong>seg 26 abr</strong> (10 dias após chegada). Ref. histórica: ~€220–320 i/v p.p. — reservas 2027 abrem ~out 2026. <a href="https://www.kayak.pt/flights/LIS-BEG/2027-04-16/2027-04-19" target="_blank" rel="noopener">↗ 16–19 abr</a> · <a href="https://www.kayak.pt/flights/LIS-BEG/2027-04-16/2027-04-26" target="_blank" rel="noopener">↗ 16–26 abr</a></div>
               <div class="info"><strong>Estadia</strong>Stari Grad, Vračar ou zona Knez Mihailova/Kalemegdan. Boa relação preço/localização.</div>
+              <div class="info"><strong>Acompanhantes</strong>Kalemegdan, Fortaleza, Skadarlija, Templo de São Sava, Zemun, museus e vida noturna.<a href="#ref-37" class="ref">[37]</a></div>
               <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
                 <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
                   <li><strong>Transporte público gratuito</strong><a href="#ref-42" class="ref">[42]</a> — desde 1 jan 2025, autocarros, elétricos e troleicarros são completamente gratuitos em Belgrado. Exceções: minibus expresso (E1/E2/E6/E9) ~200 RSD (~€1,70); aeroporto expresso A1 ~400 RSD (~€3,40).<a href="#ref-18" class="ref">[18]</a></li>
                   <li><strong>Belgrade Card</strong><a href="#ref-42" class="ref">[42]</a> — cartão digital com descontos em museus, restaurantes e bares. <strong>€8–12</strong> para 24/48/72 h; ativado na primeira visita, disponível via app antes da viagem. <a href="https://belgradecard.rs/" target="_blank" rel="noopener">↗ belgradecard.rs</a></li>
                 </ul>
               </div>
-              <div class="info"><strong>Acompanhantes</strong>Kalemegdan, Fortaleza, Skadarlija, Templo de São Sava, Zemun, museus e vida noturna.<a href="#ref-37" class="ref">[37]</a></div>
               <div class="info" style="grid-column:1/-1"><strong>Alojamento sugerido</strong>
                 <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
                   <li><em>Hotel-base</em> — <strong>Majestic Hotel Belgrade</strong> (3★): Obilicev Venac 28, a 100 m do Trg Republike (largada, chegada e expo de dorsais); pequeno-almoço incluído; 353 avaliações; ~€55–80/noite. Pedir proposta de grupo com cancelamento parcial.</li>
@@ -1125,9 +1126,9 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">⚠️ Campeonato Europeu: procura muito acima do normal — reservar logo que possível (aberturas esperadas ~out 2026). Pedir 2–3 propostas para 20–40 pessoas com cancelamento parcial. <a href="https://www.booking.com/searchresults.html?ss=Belgrade+Stari+Grad&checkin=2027-04-16&checkout=2027-04-19" target="_blank" rel="noopener">↗ Booking 16–19 abr</a> · <a href="https://www.booking.com/searchresults.html?ss=Belgrade+Stari+Grad&checkin=2027-04-16&checkout=2027-04-26" target="_blank" rel="noopener">↗ 16–26 abr</a> · <a href="https://www.airbnb.com/republic-square-beograd-serbia/stays/family-friendly" target="_blank" rel="noopener">↗ Airbnb apartamentos</a></p>
               </div>
-              <div id="map-belgrado" class="race-map" aria-label="Mapa de Belgrado com largada/meta e alojamento sugerido"></div>
             </div>
           </div>
+          <div id="map-belgrado" class="race-map" aria-label="Mapa de Belgrado com largada/meta e alojamento sugerido"></div>
         </article>
 
         <article class="card dest" data-tags="favorita primavera ferias">
@@ -1187,6 +1188,7 @@
               <div class="info"><strong>Prova</strong><span class="date-badge">Data</span>3-4 abril 2027.<a href="#ref-10" class="ref">[10]</a><a href="#ref-11" class="ref">[11]</a> Maratona, meia, 10 km e 5 km em percurso costeiro.</div>
               <div class="info"><strong>Voos</strong>Voar para Larnaca ou Paphos. Usar Limassol Airport Express, Kapnos ou transfer privado.<a href="#ref-19" class="ref">[19]</a></div>
               <div class="info"><strong>Estadia</strong>Centro antigo, Marina, Molos/Promenade ou Germasogeia para praia e restaurantes.</div>
+              <div class="info"><strong>Acompanhantes</strong>Marina, Promenade, Kourion, Kolossi, praias, aldeias vinícolas e possível aluguer de carro.</div>
               <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
                 Não existe cartão turístico integrado em Limassol. Bilhetes avulso nas atrações:<a href="#ref-44" class="ref">[44]</a>
                 <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
@@ -1198,10 +1200,9 @@
                 </ul>
                 <p style="margin:6px 0 0;font-size:.85em">Bilhetes comprados diretamente nas atrações (sem reserva online para o Departamento de Antiguidades). Para Kourion + Kolossi pode ser mais prático um tour guiado com transporte incluído.</p>
               </div>
-              <div class="info"><strong>Acompanhantes</strong>Marina, Promenade, Kourion, Kolossi, praias, aldeias vinícolas e possível aluguer de carro.</div>
-              <div id="map-limassol" class="race-map" aria-label="Mapa de Limassol com largada e meta da maratona costeira"></div>
             </div>
           </div>
+          <div id="map-limassol" class="race-map" aria-label="Mapa de Limassol com largada e meta da maratona costeira"></div>
         </article>
       </div>
       <p class="note mt-12">Nota de imagem: para uma página pública do clube, recomenda-se substituir as imagens por fotografias próprias do RUN 4 FUN. Enquanto isso, são usadas imagens da Wikimedia Commons com a respetiva atribuição na secção de créditos.</p>
