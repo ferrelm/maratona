@@ -239,8 +239,9 @@
     .action-btn.transfer:hover{background:#ffedd5}
 
     .destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
-    .dest{display:grid;grid-template-columns:320px 1fr;gap:0}
-    .dest-media{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(2,130px);align-self:start}
+    .dest{display:grid;grid-template-columns:190px 1fr;gap:0}
+    .dest-media{display:grid;grid-template-columns:1fr;grid-template-rows:repeat(8,130px);align-self:start}
+    .dest .info-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
     .photo-tile{position:relative;min-height:0;margin:0}
     .dest-media img{width:100%;height:100%;object-fit:cover;display:block;background:#e2e8f0}
     .photo-label{position:absolute;left:8px;bottom:8px;margin:0;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.02em;color:#f1f5f9;background:rgba(15,23,42,.78);border:1px solid rgba(226,232,240,.35)}
@@ -296,7 +297,8 @@
       .history-highlights{grid-template-columns:1fr}
       .destination-grid{grid-template-columns:1fr}
       .dest{grid-template-columns:1fr}
-      .dest-media{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:1fr;min-height:160px;height:160px}
+      .dest-media{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(2,120px);height:240px}
+      .dest .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
       .plan-grid{grid-template-columns:1fr}
       .sources ol{columns:1}
     }
@@ -906,6 +908,22 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Dragons_Bridge%2C_Ljubljana_2.jpg/960px-Dragons_Bridge%2C_Ljubljana_2.jpg" alt="Ponte dos Dragões (Zmajski most) em Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Ponte dos Dragões</figcaption>
             </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Lubiana_fiume2.jpg/960px-Lubiana_fiume2.jpg" alt="Rio Ljubljanica no centro histórico" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Rio Ljubljanica</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Stolnica-Ljubljana.JPG/960px-Stolnica-Ljubljana.JPG" alt="Catedral de São Nicolau em Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Catedral</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Lublana_134.jpg/960px-Lublana_134.jpg" alt="Praça Prešeren, coração do centro histórico de Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Praça Prešeren</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Ljubljana_Tivoli_park_02.jpg/960px-Ljubljana_Tivoli_park_02.jpg" alt="Parque Tivoli, o maior jardim de Ljubljana" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Parque Tivoli</figcaption>
+            </figure>
           </div>
           <div class="card-body">
             <h3><span class="rank">1</span>Ljubljana — equilíbrio geral</h3>
@@ -947,6 +965,22 @@
             <figure class="photo-tile">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Getreidegasse%2C_Salzburg-0398.jpg/960px-Getreidegasse%2C_Salzburg-0398.jpg" alt="Getreidegasse, a rua histórica de Salzburg com a casa natal de Mozart" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Getreidegasse</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Salzburg_from_the_river.jpg/960px-Salzburg_from_the_river.jpg" alt="Vista de Salzburg desde o rio Salzach" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Rio Salzach</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Salzburg_Dom_03.jpg/960px-Salzburg_Dom_03.jpg" alt="Dom de Salzburg, catedral barroca no centro histórico" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Dom de Salzburg</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Salisburgo_-_Hellbrunn_-_panoramio.jpg/960px-Salisburgo_-_Hellbrunn_-_panoramio.jpg" alt="Palácio Hellbrunn e jardins em Salzburg" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Palácio Hellbrunn</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/SalzburgNacht2.jpg/960px-SalzburgNacht2.jpg" alt="Salzburg iluminada à noite com reflexo no Salzach" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Salzburg noturna</figcaption>
             </figure>
           </div>
           <div class="card-body">
@@ -1000,6 +1034,22 @@
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Skadarlija_street%2C_Belgrade%2C_Serbia.jpg/960px-Skadarlija_street%2C_Belgrade%2C_Serbia.jpg" alt="Skadarlija, o bairro boémio de Belgrado" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Skadarlija</figcaption>
             </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/The_confluence_of_the_Sava_into_the_Danube_at_Belgrade.jpg/960px-The_confluence_of_the_Sava_into_the_Danube_at_Belgrade.jpg" alt="Confluência do Sava com o Danúbio em Belgrado" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Confluência Sava–Danúbio</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Sava_river_in_Belgrade%2C_Serbia.jpg/960px-Sava_river_in_Belgrade%2C_Serbia.jpg" alt="Rio Sava em Belgrado" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Rio Sava</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Belgrade_from_Zemun.jpg/960px-Belgrade_from_Zemun.jpg" alt="Vista de Belgrado desde Zemun, com o Danúbio" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Vista de Zemun</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Sava_river_in_Belgrade%2C_view_from_Kalemegdan_fortress.jpg/960px-Sava_river_in_Belgrade%2C_view_from_Kalemegdan_fortress.jpg" alt="Vista do rio Sava desde a fortaleza de Kalemegdan" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Sava desde Kalemegdan</figcaption>
+            </figure>
           </div>
           <div class="card-body">
             <h3><span class="rank">3</span>Belgrado — a escolha com história</h3>
@@ -1049,6 +1099,22 @@
             <figure class="photo-tile">
               <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Limassol_01-2017_img18_Marina.jpg/960px-Limassol_01-2017_img18_Marina.jpg" alt="Marina de Limassol com iates e frente marítima" width="960" height="640" loading="lazy" decoding="async" />
               <figcaption class="photo-label">Marina de Limassol</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Limassol_01-2017_img21_Castle_exterior.jpg/960px-Limassol_01-2017_img21_Castle_exterior.jpg" alt="Castelo medieval de Limassol no centro da cidade" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Castelo de Limassol</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Limassol%2C_Cyprus_2.jpg/960px-Limassol%2C_Cyprus_2.jpg" alt="Frente costeira de Limassol com passeio marítimo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Frente costeira</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/View_of_Limassol_01.JPG/960px-View_of_Limassol_01.JPG" alt="Vista panorâmica de Limassol" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Panorâmica</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Limassol_sea.jpg/960px-Limassol_sea.jpg" alt="Litoral de Limassol à noite" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Litoral noturno</figcaption>
             </figure>
           </div>
           <div class="card-body">
