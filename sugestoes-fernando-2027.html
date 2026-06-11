@@ -1,0 +1,1353 @@
+<!doctype html>
+<html lang="pt-PT">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RUN 4 FUN — Maratona Internacional 2027 · sugestões Fernando Rosete</title>
+  <meta name="description" content="Investigação das seis maratonas sugeridas por Fernando Rosete para a viagem RUN 4 FUN 2027: Praga, Luxemburgo, Oslo, Munique, Amesterdão e Alpes-Marítimos Nice–Cannes. Datas, distâncias, custos, voos e turismo." />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="light" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_PT" />
+  <meta property="og:title" content="RUN 4 FUN — Maratona Internacional 2027 · sugestões Fernando Rosete" />
+  <meta property="og:description" content="Praga, Luxemburgo, Oslo, Munique, Amesterdão e Nice–Cannes comparadas: datas 2027, distâncias, custos, voos e turismo." />
+  <meta property="og:site_name" content="RUN 4 FUN" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RUN 4 FUN — Maratona Internacional 2027 · sugestões Fernando Rosete" />
+  <meta name="twitter:description" content="Seis maratonas comparadas para a escolha do clube em 2027." />
+
+  <!-- Favicon SVG (emoji) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8F%83%3C/text%3E%3C/svg%3E" />
+
+  <!-- Tipografia: Inter (carregada explicitamente, com fallback de sistema) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+
+  <style>
+    :root{
+      --bg:#0f172a;
+      --bg2:#111827;
+      --card:#ffffff;
+      --muted:#64748b;
+      --text:#0f172a;
+      --ink:#e5e7eb;
+      --brand:#f97316;
+      --brand2:#22c55e;
+      --brand3:#2563eb;
+      --soft:#f8fafc;
+      --line:#e2e8f0;
+      --danger:#dc2626;
+      --ok:#15803d;
+      --warn:#ca8a04;
+      --shadow:0 20px 45px rgba(15,23,42,.18);
+      --radius:22px;
+      --max:1520px;
+      --index-max:150;          /* escala máxima do índice vs Lisboa */
+      --index-lisbon:66.67%;    /* 100/150 → posição do marcador Lisboa=100 */
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, "Noto Sans", sans-serif;
+      color:var(--text);
+      background:linear-gradient(180deg,#eef2ff 0,#f8fafc 22%,#ffffff 100%);
+      line-height:1.55;
+    }
+    a{color:#1d4ed8;text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    /* Foco visível e consistente para teclado */
+    :focus-visible{outline:3px solid #f97316;outline-offset:2px;border-radius:6px}
+    .toc a:focus-visible,.action-btn:focus-visible,.filters button:focus-visible{outline-offset:3px}
+
+    /* Skip link (acessibilidade por teclado/leitor de ecrã) */
+    .skip-link{
+      position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden;
+    }
+    .skip-link:focus{
+      position:fixed;left:16px;top:16px;width:auto;height:auto;
+      padding:10px 14px;background:#0f172a;color:#fff;border-radius:10px;
+      font-weight:800;z-index:100;text-decoration:none;
+    }
+    /* Visualmente escondido, mas legível por leitores de ecrã */
+    .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+    .hero{
+      color:white;
+      background:
+        radial-gradient(circle at 12% 10%,rgba(249,115,22,.42),transparent 34%),
+        radial-gradient(circle at 82% 22%,rgba(34,197,94,.26),transparent 32%),
+        linear-gradient(135deg,#0f172a 0%,#172554 55%,#111827 100%);
+      padding:46px 20px 34px;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::after{
+      content:"";
+      position:absolute; inset:auto -12% -40% 35%; height:260px;
+      background:radial-gradient(circle,rgba(255,255,255,.16),transparent 70%);
+      transform:rotate(-10deg);
+      pointer-events:none;
+    }
+    .wrap{max-width:var(--max);margin:0 auto;position:relative;z-index:1}
+    .topline{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:20px}
+    .badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.28);background:rgba(255,255,255,.12);padding:7px 12px;border-radius:999px;font-size:.9rem;color:#fff}
+    .badge.dark{border-color:#dbeafe;background:#eff6ff;color:#1e3a8a}
+    .badge.green{border-color:#bbf7d0;background:#f0fdf4;color:#166534}
+    .badge.orange{border-color:#fed7aa;background:#fff7ed;color:#9a3412}
+    h1{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.98;margin:0 0 18px;letter-spacing:-.06em;max-width:980px}
+    .lead{font-size:clamp(1.05rem,2vw,1.35rem);max-width:900px;color:#e0e7ff;margin:0 0 28px}
+    .hero-grid{display:grid;grid-template-columns:1.45fr .85fr;gap:22px;align-items:stretch;margin-top:28px}
+    .hero-panel{background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:var(--radius);padding:22px;backdrop-filter:blur(8px)}
+    .hero-panel h2{margin:0 0 8px;font-size:1.15rem;color:#fff;letter-spacing:-.02em}
+    .criteria{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:16px}
+    .criterion{background:rgba(255,255,255,.12);border-radius:16px;padding:12px;color:#f1f5f9;font-size:.95rem}
+    .toc{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+    .toc a{color:#fff;border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.10);font-size:.95rem}
+    .toc a:hover{background:rgba(255,255,255,.20);text-decoration:none}
+
+    main{padding:34px 20px 70px}
+    section{max-width:var(--max);margin:0 auto 46px}
+    .section-title{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;margin-bottom:18px}
+    h2{font-size:clamp(1.55rem,3vw,2.35rem);letter-spacing:-.04em;line-height:1.05;margin:0;color:#0f172a}
+    h3{font-size:1.2rem;letter-spacing:-.02em;margin:0 0 8px;color:#111827}
+    .note{color:var(--muted);font-size:.96rem;margin:0;max-width:760px}
+
+    /* Utilitários (substituem styles inline) */
+    .mt-12{margin-top:12px}
+    .mt-14{margin-top:14px}
+    .mb-14{margin-bottom:14px}
+    .grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+    .cards{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .cards-single{grid-template-columns:1fr}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 10px 24px rgba(15,23,42,.06);overflow:hidden}
+    .card.pad{padding:18px}
+    .card img{width:100%;height:180px;object-fit:cover;display:block;background:#e2e8f0}
+    .card-body{padding:17px}
+    .meta{display:flex;gap:8px;flex-wrap:wrap;margin:9px 0 12px}
+    .pill{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:.78rem;font-weight:700;background:#f1f5f9;color:#334155;border:1px solid #e2e8f0}
+    .pill.good{background:#dcfce7;color:#166534;border-color:#bbf7d0}
+    .pill.warn{background:#fef3c7;color:#92400e;border-color:#fde68a}
+    .pill.blue{background:#dbeafe;color:#1e40af;border-color:#bfdbfe}
+    .pill.red{background:#fee2e2;color:#991b1b;border-color:#fecaca}
+
+    .race-date{display:flex;align-items:center;gap:8px;margin:0 0 10px;font-size:.95rem;color:#334155}
+    .date-badge{display:inline-flex;align-items:center;border-radius:999px;padding:4px 9px;font-size:.72rem;font-weight:800;letter-spacing:.03em;text-transform:uppercase;background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe}
+    .date-badge.confirmado{background:#dcfce7;color:#166534;border-color:#86efac}
+    .date-badge.anunciado{background:#e0f2fe;color:#0369a1;border-color:#7dd3fc}
+    .date-badge.a-confirmar{background:#fef9c3;color:#854d0e;border-color:#fde047}
+    .date-cell{line-height:1.4}
+    .date-cell .date-badge{margin-right:8px}
+    .info .date-badge{margin-right:6px}
+
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:20px;background:white;box-shadow:0 8px 22px rgba(15,23,42,.05)}
+    table{border-collapse:collapse;width:100%;min-width:920px;background:white}
+    caption{caption-side:top;text-align:left;font-weight:700;color:#334155;padding:14px 16px;border-bottom:1px solid var(--line)}
+    th,td{padding:14px 13px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left}
+    th{font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;background:#f8fafc;color:#334155;position:sticky;top:0;z-index:1}
+    tr:last-child td{border-bottom:0}
+    .cost-table{min-width:1800px;font-size:.97rem}
+    .cost-table th,.cost-table td{padding:12px 10px}
+    .cost-table th{font-size:.74rem;line-height:1.25;white-space:normal}
+    .cost-table td{line-height:1.35}
+    .cost-table td:first-child{white-space:nowrap}
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){width:180px;min-width:180px;max-width:180px}
+    .cost-table td:nth-child(10){white-space:nowrap}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11){width:250px;min-width:250px;max-width:250px}
+    .cost-table td:nth-child(11){white-space:nowrap}
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){width:230px;min-width:230px;max-width:230px}
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){padding-left:8px;padding-right:8px}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11),
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){padding-left:14px;padding-right:12px}
+    .cost-table th:nth-child(10),.cost-table td:nth-child(10){border-left:2px solid #cbd5e1;background:#fafcff}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11){background:#eef6ff}
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){background:#f8fafc}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11),
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){border-left:1px solid #e2e8f0}
+    .cost-table th:nth-child(11){color:#1e3a8a;font-weight:800}
+    .cost-table td:nth-child(11){font-weight:700;color:#0f172a}
+    .cost-table th:nth-child(12),.cost-table td:nth-child(12){position:sticky;right:0;z-index:2;box-shadow:-6px 0 12px rgba(15,23,42,.05)}
+    .cost-table th:nth-child(11),.cost-table td:nth-child(11){position:sticky;right:229px;z-index:3;box-shadow:-4px 0 10px rgba(15,23,42,.04)}
+    .cost-table thead th:nth-child(12){z-index:5}
+    .cost-table thead th:nth-child(11){z-index:6}
+
+    .score{display:inline-grid;grid-template-columns:80px auto;gap:8px;align-items:center;white-space:nowrap}
+    .bar{width:80px;height:9px;border-radius:999px;background:#e2e8f0;overflow:hidden;position:relative}
+    .bar > span{display:block;height:100%;background:linear-gradient(90deg,#22c55e,#f97316);border-radius:999px}
+    /* Barras do índice vs Lisboa: escala 0–150, marcador a 100 */
+    .bar.index{overflow:visible}
+    .bar.index > span{background:linear-gradient(90deg,#2563eb,#f97316)}
+    .bar.index::before{
+      content:"";position:absolute;top:-3px;bottom:-3px;left:var(--index-lisbon);
+      width:2px;background:#0f172a;border-radius:2px;
+    }
+    .index-legend{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:#475569;margin:0 0 10px}
+    .index-legend::before{content:"";display:inline-block;width:2px;height:14px;background:#0f172a;border-radius:2px}
+
+    .filters{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 18px}
+    .filters button{border:1px solid #cbd5e1;background:#fff;border-radius:999px;padding:9px 13px;cursor:pointer;font-weight:700;color:#334155}
+    .filters button.active,.filters button:hover{background:#0f172a;color:#fff;border-color:#0f172a}
+    .filters button[aria-pressed="true"]{background:#0f172a;color:#fff;border-color:#0f172a}
+
+    .resource-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .resource{border:1px solid var(--line);background:#fff;border-radius:20px;padding:16px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
+    .resource h3{margin:0 0 6px}
+    .resource .note{margin-bottom:10px}
+    .actions{display:flex;gap:10px;flex-wrap:wrap}
+    .action-btn{display:inline-flex;align-items:center;justify-content:center;border-radius:999px;padding:9px 14px;font-weight:800;font-size:.9rem;border:1px solid #cbd5e1;background:#fff;color:#1e3a8a;text-decoration:none}
+    .action-btn:hover{background:#eff6ff;text-decoration:none}
+    .action-btn.hotel{color:#14532d;border-color:#bbf7d0;background:#f0fdf4}
+    .action-btn.hotel:hover{background:#dcfce7}
+    .action-btn.transfer{color:#7c2d12;border-color:#fdba74;background:#fff7ed}
+    .action-btn.transfer:hover{background:#ffedd5}
+
+    .destination-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .dest{display:grid;grid-template-columns:220px 1fr;gap:0}
+    .dest-media{display:flex;flex-direction:column}
+    .dest .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .photo-tile{position:relative;flex:0 0 150px;margin:0;overflow:hidden}
+    .dest-col-info{flex:1;display:flex;flex-direction:column;gap:6px;padding:10px 8px;background:var(--surface);border-top:1px solid var(--line);min-height:0;overflow:hidden}
+    .dest-col-stat{background:#f1f5f9;border-radius:10px;padding:8px 10px;font-size:.80rem;line-height:1.5}
+    .dest-col-stat strong{display:block;font-size:.70rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:3px}
+    .dest-col-stat .pill{font-size:.70rem;padding:2px 7px;margin-top:3px;display:inline-flex}
+    .dest-media img{width:100%;height:100%;object-fit:cover;display:block;background:#e2e8f0}
+    .photo-label{position:absolute;left:8px;bottom:8px;margin:0;padding:4px 8px;border-radius:999px;font-size:.72rem;font-weight:800;letter-spacing:.02em;color:#f1f5f9;background:rgba(15,23,42,.78);border:1px solid rgba(226,232,240,.35)}
+    .dest .card-body{padding:22px}
+    .rank{display:inline-flex;width:34px;height:34px;align-items:center;justify-content:center;border-radius:12px;background:#0f172a;color:#fff;font-weight:900;margin-right:8px}
+    .info-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:14px}
+    .race-map{height:300px;border-radius:12px;overflow:hidden;border:1px solid var(--line);grid-column:1/-1;margin-top:4px}
+    .dest>.race-map{height:380px;border-radius:0 0 20px 20px;border-left:none;border-right:none;border-bottom:none;border-top:1px solid var(--line);margin-top:0;grid-column:1/-1}
+    .ref{font-size:.75em;vertical-align:super;color:#2563eb;text-decoration:none;margin-left:1px}.ref:hover{text-decoration:underline}
+    .info{border:1px solid var(--line);background:#f8fafc;border-radius:16px;padding:13px}
+    .info strong{display:block;font-size:.86rem;text-transform:uppercase;letter-spacing:.05em;color:#475569;margin-bottom:5px}
+
+    .quote{border-left:5px solid var(--brand);padding:16px 18px;background:#fff7ed;border-radius:0 18px 18px 0;margin:16px 0;color:#431407}
+    .plan-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+    .plan{border:1px solid var(--line);background:#fff;border-radius:20px;padding:18px;box-shadow:0 8px 20px rgba(15,23,42,.05)}
+    .plan h3{display:flex;align-items:center;gap:10px}
+    .num{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:#dbeafe;color:#1e40af;font-weight:900;font-size:.85rem}
+    ul{margin:9px 0 0 20px;padding:0}
+    li{margin:5px 0}
+
+    .decision{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:stretch}
+    .decision .winner{background:linear-gradient(135deg,#022c22,#064e3b);color:white;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .winner h2{color:white}
+    .winner .note{color:#d1fae5}
+    .winner strong{color:#bbf7d0}
+    .winner .quote{background:#f8fafc;color:#1f2937;border-left-color:#f97316}
+    .winner .quote strong{color:#166534}
+    .matrix{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+    .matrix div{border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;background:rgba(255,255,255,.10);color:#ecfdf5}
+    .matrix strong{color:#bbf7d0}
+    .checklist{background:#0f172a;color:#e5e7eb;border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+    .checklist h2{color:white}
+    .checklist li{margin-bottom:8px}
+
+    .sources{font-size:.92rem;color:#475569}
+    .sources ol{columns:2;column-gap:35px;padding-left:21px}
+    .sources li{break-inside:avoid;margin:0 0 9px}
+
+    .credits{font-size:.86rem;color:#64748b;margin-top:14px;border:1px dashed var(--line);border-radius:14px;padding:14px 16px;background:#fafafa}
+    .credits h3{font-size:.95rem;margin:0 0 6px;color:#334155}
+    .credits ul{list-style:disc;margin:6px 0 0 18px}
+    .credits a{color:#475569;text-decoration:underline}
+
+    .footer{max-width:var(--max);margin:30px auto 0;padding:24px 20px 44px;color:#64748b;text-align:center;border-top:1px solid var(--line)}
+    .print-only{display:none}
+
+    @media (min-width:1800px){
+      :root{--max:1600px}
+      .cost-table{min-width:1860px}
+    }
+    @media (max-width:980px){
+      .hero-grid,.decision{grid-template-columns:1fr}
+      .cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .destination-grid{grid-template-columns:1fr}
+      .dest{grid-template-columns:1fr}
+      .dest-media{flex-direction:row;flex-wrap:wrap;height:240px;overflow:hidden}
+      .photo-tile{flex:0 0 25%;height:120px}
+      .dest-col-info{display:none}
+      .dest .info-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .plan-grid{grid-template-columns:1fr}
+      .sources ol{columns:1}
+    }
+    @media (max-width:620px){
+      .criteria,.info-grid,.matrix{grid-template-columns:1fr}
+      .cards{grid-template-columns:1fr}
+      .hero{padding-top:34px}
+      main{padding-left:14px;padding-right:14px}
+      .section-title{align-items:flex-start;flex-direction:column}
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+    }
+    @media print{
+      body{background:white;font-size:11pt}
+      .hero{background:white;color:#111827;padding:20px 0;border-bottom:2px solid #111827}
+      .hero *{color:#111827!important}
+      .toc,.filters,.footer,.skip-link{display:none}
+      main{padding:16px 0}
+      section{break-inside:avoid;margin-bottom:22px}
+      .card,.plan,.table-wrap{box-shadow:none}
+      .dest img,.card img{display:none}
+      .sources ol{columns:1}
+      .print-only{display:block}
+      a[href]:after{content:" ("attr(href)")";font-size:9pt;color:#475569}
+      .toc a:after,.action-btn:after{content:""}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Saltar para o conteúdo principal</a>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="topline">
+        <span class="badge">🏃 RUN 4 FUN</span>
+        <span class="badge">🌍 Maratona internacional anual</span>
+        <span class="badge">🗓️ Plano 2027</span>
+        <span class="badge">🔎 Pesquisa: Fernando Rosete</span>
+        <span class="badge">Verificado em junho de 2026</span>
+      </div>
+      <h1>As seis sugestões do Fernando para 2027</h1>
+      <p class="lead">Investigação detalhada das maratonas propostas por Fernando Rosete — Praga e Luxemburgo (maio), Oslo (setembro), Munique e Amesterdão (outubro) e Alpes-Marítimos Nice–Cannes (novembro). A organização das participações internacionais está a cargo de Carla Rebelo, Fernando Rosete e Luís Matos Ferreira. Esta página complementa a <a href="index.html" style="color:#fde68a">página principal de apoio à decisão</a>.</p>
+      <div class="hero-grid">
+        <div class="hero-panel">
+          <h2>Os filtros usados na pesquisa</h2>
+          <p>As seis provas foram escolhidas «à unha» com critérios exigentes — e todas têm uma vantagem que faltava a grande parte da shortlist anterior: <strong>voo direto a partir de Lisboa</strong>.</p>
+          <div class="criteria">
+            <div class="criterion">✅ Maratona reconhecida, com antiguidade e importância — por vezes palco de campeonatos europeus e mundiais</div>
+            <div class="criterion">✅ Evento com várias distâncias</div>
+            <div class="criterion">✅ Cidade com atrativo turístico</div>
+            <div class="criterion">✅ Só ano de 2027 — várias edições esgotam com facilidade</div>
+            <div class="criterion">✅ Algumas já sugeridas por participantes dos 4 primeiros projetos</div>
+            <div class="criterion">✅ Bónus verificado: as seis cidades têm voos diretos desde Lisboa</div>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <h2>Resumo executivo</h2>
+          <p><strong>Programa mais completo:</strong> Munique — 42 km, meia, 10 km e estafeta, com meta no Estádio Olímpico de 1972.</p>
+          <p><strong>Prova de maior prestígio:</strong> Amesterdão — mas esgota; exige decisão muito cedo.</p>
+          <p><strong>Melhor custo e cidade-postal:</strong> Praga — atenção: sem meia/10 km no fim de semana da maratona.</p>
+          <p><strong>Mais originais:</strong> Luxemburgo (maratona noturna, única já confirmada para 2027) e Nice–Cannes (ponto a ponto na Riviera).</p>
+        </div>
+      </div>
+      <nav class="toc" aria-label="Índice da página">
+        <a href="index.html">← Página principal</a>
+        <a href="#shortlist">Shortlist Fernando</a>
+        <a href="#custovida">Custo de vida</a>
+        <a href="#voosehoteis">Voos e hotéis</a>
+        <a href="#destinos">Candidatas em detalhe</a>
+        <a href="#viagens">Modelos de viagem</a>
+        <a href="#recomendacao">Recomendação</a>
+        <a href="#fontes">Fontes</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section id="shortlist" aria-labelledby="t-shortlist">
+      <div class="section-title">
+        <div>
+          <h2 id="t-shortlist">Shortlist Fernando Rosete — 6 provas</h2>
+          <p class="note">A pontuação combina adequação desportiva ao modelo RUN 4 FUN (várias distâncias e inclusão), logística desde Lisboa, custos prováveis, interesse turístico e estado da data 2027. As datas devem ser sempre reconfirmadas antes de reservas não reembolsáveis.</p>
+        </div>
+      </div>
+
+      <div class="quote"><strong>Fernando Rosete:</strong> «Mesmo sem IA, fiz algumas pesquisas à unha, tendo em conta alguns filtros importantes: prova de maratona reconhecida como tal, com antiguidade, importância, reconhecimento e por vezes até palco de campeonatos europeus e mundiais; evento com várias distâncias; atrativo turístico; só ano de 2027; algumas já foram sugeridas pelos participantes nos 4 primeiros projetos.»</div>
+
+      <div class="filters" role="group" aria-label="Filtros da shortlist">
+        <button type="button" class="active" data-filter="all" aria-pressed="true">Todas</button>
+        <button type="button" data-filter="favorita" aria-pressed="false">Favoritas</button>
+        <button type="button" data-filter="primavera" aria-pressed="false">Maio</button>
+        <button type="button" data-filter="outono" aria-pressed="false">Set–Nov</button>
+        <button type="button" data-filter="economica" aria-pressed="false">Custo mais controlável</button>
+        <button type="button" data-filter="ferias" aria-pressed="false">Boa para férias</button>
+      </div>
+
+      <div class="table-wrap">
+        <table id="shortlist-table">
+          <caption class="sr-only">Shortlist Fernando Rosete: prioridade, prova, datas, distâncias, logística e pontuação de adequação.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Prioridade</th>
+              <th scope="col">Prova</th>
+              <th scope="col">Data / estado</th>
+              <th scope="col">Distâncias</th>
+              <th scope="col">Viagem desde Lisboa</th>
+              <th scope="col">Estadia / turismo</th>
+              <th scope="col">Adequação</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-tags="favorita outono ferias">
+              <td><strong>1</strong></td>
+              <td><strong>TCS Amsterdam Marathon</strong><br><span class="note">Amesterdão, Países Baixos · desde 1975</span></td>
+              <td class="date-cell"><span class="date-badge a-confirmar">A confirmar</span>Outubro 2027. Edição 2026 confirmada para 18 de outubro; padrão é o 3.º domingo de outubro.<a href="#ref-9" class="ref">[9]</a><a href="#ref-10" class="ref">[10]</a></td>
+              <td>Maratona, meia-maratona, 7,5 km e kids run. Meta no Estádio Olímpico de 1928.</td>
+              <td>Vários diretos diários LIS–AMS (TAP, KLM, easyJet, Transavia), ~3h.</td>
+              <td>Cidade icónica para acompanhantes; alojamento caro e prova que esgota — decidir muito cedo.</td>
+              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 93 em 100"><span style="width:93%"></span></span>93/100</span></td>
+            </tr>
+            <tr data-tags="favorita outono">
+              <td><strong>2</strong></td>
+              <td><strong>Marathon München by Brooks</strong><br><span class="note">Munique, Alemanha · desde 1983 (ex-Generali)</span></td>
+              <td class="date-cell"><span class="date-badge a-confirmar">A confirmar</span>Outubro 2027. Edição 2026 confirmada para 11 de outubro.<a href="#ref-7" class="ref">[7]</a></td>
+              <td>Maratona, meia, 10 km, estafeta, kids run e Friendship Run — o programa mais completo das seis.<a href="#ref-7" class="ref">[7]</a></td>
+              <td>Diretos LIS–MUC (TAP, Lufthansa), ~3h.</td>
+              <td>Partida e meta no Olympiapark, com chegada dentro do Estádio Olímpico de 1972; cidade foi palco da maratona dos Europeus de 2022.</td>
+              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 91 em 100"><span style="width:91%"></span></span>91/100</span></td>
+            </tr>
+            <tr data-tags="favorita primavera economica">
+              <td><strong>3</strong></td>
+              <td><strong>Prague Marathon (RunCzech)</strong><br><span class="note">Praga, Chéquia · desde 1995</span></td>
+              <td class="date-cell"><span class="date-badge anunciado">Anunciado</span>2 de maio de 2027 em calendários internacionais; confirmar no site RunCzech.<a href="#ref-3" class="ref">[3]</a><a href="#ref-4" class="ref">[4]</a></td>
+              <td>Maratona e maratona a pares (estafeta 2×~21 km); Family Mile e Bambini Run no sábado. <strong>Sem meia nem 10 km</strong> no fim de semana (a meia de Praga é prova separada, em abril).</td>
+              <td>Diretos LIS–PRG (TAP; low-cost frequente), ~3h45.</td>
+              <td>Largada na Praça da Cidade Velha e percurso pela Ponte Carlos; custo de vida mais baixo das seis.</td>
+              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 88 em 100"><span style="width:88%"></span></span>88/100</span></td>
+            </tr>
+            <tr data-tags="favorita outono ferias economica">
+              <td><strong>4</strong></td>
+              <td><strong>Marathon des Alpes-Maritimes</strong><br><span class="note">Nice–Cannes, França · desde 2008</span></td>
+              <td class="date-cell"><span class="date-badge a-confirmar">A confirmar</span>Novembro 2027. Edição 2026 confirmada para 8 de novembro; a maratona 2026 já esgotou.<a href="#ref-11" class="ref">[11]</a><a href="#ref-12" class="ref">[12]</a></td>
+              <td>Maratona ponto a ponto Nice→Cannes, estafeta Duo 2×21,1 km, estafeta por equipas, 20 km e Breakfast Run.<a href="#ref-12" class="ref">[12]</a></td>
+              <td>Direto LIS–NCE (easyJet), ~2h. Regresso de Cannes a Nice de comboio TER (~40 min) ou navette.</td>
+              <td>Riviera Francesa em época baixa: Vieux Nice, Villefranche, Èze, Mónaco, Antibes, Cannes. 2.ª maior maratona de França; 15 000 dorsais que esgotam.</td>
+              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 87 em 100"><span style="width:87%"></span></span>87/100</span></td>
+            </tr>
+            <tr data-tags="primavera">
+              <td><strong>5</strong></td>
+              <td><strong>ING Night Marathon Luxembourg</strong><br><span class="note">Cidade do Luxemburgo · desde 2006</span></td>
+              <td class="date-cell"><span class="date-badge confirmado">Confirmado</span>8 de maio de 2027 (sábado), partida às 19h00 — a única das seis já confirmada.<a href="#ref-1" class="ref">[1]</a></td>
+              <td>Maratona, meia-maratona, Team Run (estafeta de 4: 12,9 + 7,2 + 13,3 + 8,7 km) e mini-maratona — tudo de noite, com animação no percurso.<a href="#ref-2" class="ref">[2]</a></td>
+              <td>Diretos LIS–LUX (TAP, Luxair), ~2h45.</td>
+              <td>Transporte público gratuito em todo o país; cidade-fortaleza UNESCO compacta — melhor para 3–4 noites do que para semana longa.</td>
+              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 85 em 100"><span style="width:85%"></span></span>85/100</span></td>
+            </tr>
+            <tr data-tags="outono ferias">
+              <td><strong>6</strong></td>
+              <td><strong>DNB Oslo Marathon</strong><br><span class="note">Oslo, Noruega · desde 1981</span></td>
+              <td class="date-cell"><span class="date-badge a-confirmar">A confirmar</span>Setembro 2027. Edição 2026 confirmada para sábado, 12 de setembro.<a href="#ref-5" class="ref">[5]</a></td>
+              <td>Maratona, meia-maratona, 10 km («10 for Grete», em memória de Grete Waitz) e 3 km.<a href="#ref-6" class="ref">[6]</a></td>
+              <td>Diretos LIS–OSL (TAP, Norwegian), ~3h45.</td>
+              <td>Percurso junto ao Oslofjord; cidade limpa e organizada, mas a mais cara das seis no dia a dia.</td>
+              <td><span class="score"><span class="bar" role="img" aria-label="Adequação 83 em 100"><span style="width:83%"></span></span>83/100</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note mt-12">Nota sobre o nome das provas: a maratona de Praga tem mudado de patrocinador principal (Volkswagen → Vodafone nas páginas 2026 da RunCzech) e a de Munique passou de «Generali München Marathon» para «Marathon München by Brooks». A prova é a mesma; convém apenas usar o nome atual ao pesquisar.</p>
+    </section>
+
+    <section id="custovida" aria-labelledby="t-custovida">
+      <div class="section-title">
+        <div>
+          <h2 id="t-custovida">Custo de vida por cidade (referência para decisão)</h2>
+          <p class="note">Estimativas indicativas para viagem de grupo em regime turístico (junho de 2026), na mesma métrica da página principal. Devem ser validadas 8-12 semanas antes da reserva, porque variam com época, câmbio e eventos locais.</p>
+        </div>
+      </div>
+
+      <div class="cards grid-2 mb-14">
+        <article class="card pad">
+          <h3>Métricas usadas</h3>
+          <ul>
+            <li><strong>Alojamento:</strong> hotel 3* bem localizado (quarto duplo/noite).</li>
+            <li><strong>Refeições:</strong> menu económico + jantar casual (sem luxo).</li>
+            <li><strong>Mobilidade:</strong> passe 24h ou custo médio diário de transportes.</li>
+            <li><strong>Inscrição:</strong> intervalo entre fase inicial e fase final.</li>
+            <li><strong>Índice total:</strong> Lisboa = 100 para comparação rápida.</li>
+          </ul>
+        </article>
+        <article class="card pad">
+          <h3>Leituras rápidas desta lista</h3>
+          <ul>
+            <li><strong>Praga</strong> é a única claramente abaixo de Lisboa no dia a dia.</li>
+            <li><strong>Nice em novembro</strong> beneficia de época baixa na hotelaria.</li>
+            <li><strong>Luxemburgo</strong> compensa hotéis caros com transportes gratuitos.</li>
+            <li><strong>Oslo e Amesterdão</strong> são os orçamentos mais exigentes.</li>
+            <li><strong>Voo direto em todas</strong> reduz custo e cansaço face à shortlist anterior.</li>
+          </ul>
+        </article>
+      </div>
+
+      <p class="index-legend">Linha vertical = Lisboa = 100 (escala 0–150)</p>
+
+      <div class="table-wrap">
+        <table class="cost-table">
+          <caption class="sr-only">Custo de vida estimado por cidade, com índice vs Lisboa, hotel, alimentação, transportes, inscrição, voo e totais para 3 e 10 noites.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Cidade</th>
+              <th scope="col">Índice vs Lisboa</th>
+              <th scope="col">Hotel 3* (duplo/noite)</th>
+              <th scope="col">Alimentação/dia</th>
+              <th scope="col">Transportes/dia</th>
+              <th scope="col">Custo diário total (sem voo)</th>
+              <th scope="col">Inscrição (estim.)</th>
+              <th scope="col">Total/pessoa 3 noites</th>
+              <th scope="col">Total/pessoa 10 noites</th>
+              <th scope="col">Voo ida e volta (estim.)</th>
+              <th scope="col">Total com voo (estim.)</th>
+              <th scope="col">Leitura rápida</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Praga</strong></td>
+              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 90 vs Lisboa 100"><span style="width:60%"></span></span>90</span></td>
+              <td>70-120 EUR</td>
+              <td>25-40 EUR</td>
+              <td>3-6 EUR</td>
+              <td><strong>98-166 EUR</strong></td>
+              <td>70-110 EUR</td>
+              <td><strong>400-699 EUR</strong></td>
+              <td><strong>1155-2036 EUR</strong></td>
+              <td>120-280 EUR</td>
+              <td><strong>3 noites:</strong> 520-979 EUR<br><strong>10 noites:</strong> 1275-2316 EUR</td>
+              <td>A mais económica das seis.</td>
+            </tr>
+            <tr>
+              <td><strong>Nice (–Cannes)</strong></td>
+              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 114 vs Lisboa 100"><span style="width:76%"></span></span>114</span></td>
+              <td>90-150 EUR</td>
+              <td>35-55 EUR</td>
+              <td>4-10 EUR</td>
+              <td><strong>129-215 EUR</strong></td>
+              <td>66-106 EUR</td>
+              <td><strong>498-864 EUR</strong></td>
+              <td><strong>1492-2594 EUR</strong></td>
+              <td>100-250 EUR</td>
+              <td><strong>3 noites:</strong> 598-1114 EUR<br><strong>10 noites:</strong> 1592-2844 EUR</td>
+              <td>Novembro é época baixa na Riviera.</td>
+            </tr>
+            <tr>
+              <td><strong>Munique</strong></td>
+              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 126 vs Lisboa 100"><span style="width:84%"></span></span>126</span></td>
+              <td>110-190 EUR</td>
+              <td>35-58 EUR</td>
+              <td>6-12 EUR</td>
+              <td><strong>151-260 EUR</strong></td>
+              <td>85-129 EUR</td>
+              <td><strong>592-1045 EUR</strong></td>
+              <td><strong>1755-3138 EUR</strong></td>
+              <td>130-280 EUR</td>
+              <td><strong>3 noites:</strong> 722-1325 EUR<br><strong>10 noites:</strong> 1885-3418 EUR</td>
+              <td>Custo alemão típico; a prova é depois do Oktoberfest.</td>
+            </tr>
+            <tr>
+              <td><strong>Luxemburgo</strong></td>
+              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 132 vs Lisboa 100"><span style="width:88%"></span></span>132</span></td>
+              <td>100-170 EUR</td>
+              <td>38-62 EUR</td>
+              <td>0 EUR (gratuito)</td>
+              <td><strong>138-232 EUR</strong></td>
+              <td>70-100 EUR</td>
+              <td><strong>532-915 EUR</strong></td>
+              <td><strong>1595-2783 EUR</strong></td>
+              <td>150-300 EUR</td>
+              <td><strong>3 noites:</strong> 682-1215 EUR<br><strong>10 noites:</strong> 1745-3083 EUR</td>
+              <td>Hotéis caros, transportes gratuitos em todo o país.</td>
+            </tr>
+            <tr>
+              <td><strong>Amesterdão</strong></td>
+              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 138 vs Lisboa 100"><span style="width:92%"></span></span>138</span></td>
+              <td>130-220 EUR</td>
+              <td>38-60 EUR</td>
+              <td>7-14 EUR</td>
+              <td><strong>175-294 EUR</strong></td>
+              <td>95-130 EUR</td>
+              <td><strong>682-1164 EUR</strong></td>
+              <td><strong>2030-3531 EUR</strong></td>
+              <td>120-260 EUR</td>
+              <td><strong>3 noites:</strong> 802-1424 EUR<br><strong>10 noites:</strong> 2150-3791 EUR</td>
+              <td>Alojamento é o grande peso; reservar muito cedo.</td>
+            </tr>
+            <tr>
+              <td><strong>Oslo</strong></td>
+              <td><span class="score"><span class="bar index" role="img" aria-label="Índice 140 vs Lisboa 100"><span style="width:93%"></span></span>140</span></td>
+              <td>110-180 EUR</td>
+              <td>42-70 EUR</td>
+              <td>6-13 EUR</td>
+              <td><strong>158-263 EUR</strong></td>
+              <td>65-95 EUR</td>
+              <td><strong>593-1017 EUR</strong></td>
+              <td><strong>1810-3134 EUR</strong></td>
+              <td>150-320 EUR</td>
+              <td><strong>3 noites:</strong> 743-1337 EUR<br><strong>10 noites:</strong> 1960-3454 EUR</td>
+              <td>A mais cara da lista para orçamento diário.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note mt-12">Cálculo dos totais: custo diário x 3 noites ou x 10 noites + inscrição estimada, com margem de risco incluída (10% no limite inferior e 15% no limite superior). Não inclui voo internacional. Mesma metodologia da página principal, para os valores serem comparáveis entre as duas listas.</p>
+      <p class="note">Voo (estimativa Lisboa ida e volta, em rotas diretas): Praga 120-280 EUR, Nice 100-250 EUR, Munique 130-280 EUR, Luxemburgo 150-300 EUR, Amesterdão 120-260 EUR, Oslo 150-320 EUR.</p>
+    </section>
+
+    <section id="voosehoteis" aria-labelledby="t-voosehoteis">
+      <div class="section-title">
+        <div>
+          <h2 id="t-voosehoteis">Pesquisa rápida de voos e hotéis</h2>
+          <p class="note">Botões diretos para comparar preços a partir de Lisboa, procurar alojamento por destino e validar o transfer aeroporto-centro. Todas as seis cidades têm ligação direta desde Lisboa.</p>
+        </div>
+      </div>
+
+      <div class="resource-grid">
+        <article class="resource">
+          <h3>Praga, Chéquia</h3>
+          <p class="note">Aeroporto principal: PRG (Václav Havel). Autocarro AE + metro até ao centro.</p>
+          <div class="actions">
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/prg/" target="_blank" rel="noopener noreferrer">Voos LIS-PRG</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Prague" target="_blank" rel="noopener noreferrer">Hotéis em Praga</a>
+            <a class="action-btn transfer" href="https://www.prg.aero/en/getting-airport" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <h3>Luxemburgo</h3>
+          <p class="note">Aeroporto principal: LUX. Tram/autocarro gratuitos até ao centro e a Kirchberg.</p>
+          <div class="actions">
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/lux/" target="_blank" rel="noopener noreferrer">Voos LIS-LUX</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Luxembourg" target="_blank" rel="noopener noreferrer">Hotéis no Luxemburgo</a>
+            <a class="action-btn transfer" href="https://www.mobiliteit.lu/en/" target="_blank" rel="noopener noreferrer">Transportes gratuitos (mobiliteit.lu)</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <h3>Oslo, Noruega</h3>
+          <p class="note">Aeroporto principal: OSL (Gardermoen). Comboio Flytoget ou linha regional até ao centro.</p>
+          <div class="actions">
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/osl/" target="_blank" rel="noopener noreferrer">Voos LIS-OSL</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Oslo" target="_blank" rel="noopener noreferrer">Hotéis em Oslo</a>
+            <a class="action-btn transfer" href="https://flytoget.no/en/" target="_blank" rel="noopener noreferrer">Comboio aeroporto-centro</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <h3>Munique, Alemanha</h3>
+          <p class="note">Aeroporto principal: MUC. S-Bahn S1/S8 até ao centro (~40 min).</p>
+          <div class="actions">
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/muc/" target="_blank" rel="noopener noreferrer">Voos LIS-MUC</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Munich" target="_blank" rel="noopener noreferrer">Hotéis em Munique</a>
+            <a class="action-btn transfer" href="https://www.munich-airport.com/" target="_blank" rel="noopener noreferrer">Transfer aeroporto-centro</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <h3>Amesterdão, Países Baixos</h3>
+          <p class="note">Aeroporto principal: AMS (Schiphol). Comboio NS direto à estação central e ao Zuid (~15 min).</p>
+          <div class="actions">
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/ams/" target="_blank" rel="noopener noreferrer">Voos LIS-AMS</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Amsterdam" target="_blank" rel="noopener noreferrer">Hotéis em Amesterdão</a>
+            <a class="action-btn transfer" href="https://www.schiphol.nl/en/" target="_blank" rel="noopener noreferrer">Comboio Schiphol-centro</a>
+          </div>
+        </article>
+
+        <article class="resource">
+          <h3>Nice, França</h3>
+          <p class="note">Aeroporto principal: NCE. Tram linha 2 do aeroporto ao centro; TER costeiro liga Nice a Cannes.</p>
+          <div class="actions">
+            <a class="action-btn" href="https://www.skyscanner.pt/transport/flights/lis/nce/" target="_blank" rel="noopener noreferrer">Voos LIS-NCE</a>
+            <a class="action-btn hotel" href="https://www.booking.com/searchresults.pt-pt.html?ss=Nice" target="_blank" rel="noopener noreferrer">Hotéis em Nice</a>
+            <a class="action-btn transfer" href="https://www.lignesdazur.com/" target="_blank" rel="noopener noreferrer">Tram e autocarros (Lignes d'Azur)</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="destinos" aria-labelledby="t-destinos">
+      <div class="section-title">
+        <div>
+          <h2 id="t-destinos">As seis candidatas em detalhe</h2>
+          <p class="note">Pela ordem de adequação ao modelo RUN 4 FUN. As fotografias são ilustrativas e provêm da Wikimedia Commons (ver créditos no fim). Datas de voo são indicativas e devem ser ajustadas quando as datas 2027 forem oficiais.</p>
+        </div>
+      </div>
+      <div class="destination-grid">
+
+        <!-- 1. AMESTERDÃO -->
+        <article class="card dest" data-tags="favorita outono ferias">
+          <div class="dest-media">
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Amsterdam_Canals_-_July_2006.jpg/960px-Amsterdam_Canals_-_July_2006.jpg" alt="Canais de Amesterdão com casas históricas" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Canais</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/68/Rijksmuseum_winter_7441.jpg/960px-Rijksmuseum_winter_7441.jpg" alt="Rijksmuseum, o grande museu nacional de Amesterdão" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Rijksmuseum</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Olympic_Stadium_Amsterdam.jpg/960px-Olympic_Stadium_Amsterdam.jpg" alt="Estádio Olímpico de Amesterdão, meta da maratona" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Estádio Olímpico (meta)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Vondelpark_amsterdam.jpg/960px-Vondelpark_amsterdam.jpg" alt="Vondelpark, o grande parque urbano de Amesterdão" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Vondelpark</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Dam_Amsterdam_7308.jpg/960px-Dam_Amsterdam_7308.jpg" alt="Praça Dam no centro de Amesterdão" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Praça Dam</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/White_sunset_over_Jordaan%2C_Amsterdam.jpg/960px-White_sunset_over_Jordaan%2C_Amsterdam.jpg" alt="Pôr do sol sobre o bairro Jordaan" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Jordaan</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Magere_Brug.jpg/960px-Magere_Brug.jpg" alt="Magere Brug, a ponte magra sobre o rio Amstel" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Magere Brug</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/30/Windmills_at_Zaanse_Schans%2C_Zaanstad%2C_2022.jpg/960px-Windmills_at_Zaanse_Schans%2C_Zaanstad%2C_2022.jpg" alt="Moinhos de vento de Zaanse Schans, perto de Amesterdão" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Zaanse Schans</figcaption>
+            </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                2027 a confirmar <span class="pill blue">Outubro</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>802–1 424 €</b><br>10 noites: <b>2 150–3 791 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Prova de topo mundial · Voos diretos baratos · Esgota cedo
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3><span class="rank">1</span>Amesterdão — a prova de maior prestígio</h3>
+            <div class="meta"><span class="pill good">Topo internacional</span><span class="pill blue">Outono</span><span class="pill warn">Esgota — decidir cedo</span></div>
+            <p>Uma das grandes maratonas europeias desde 1975, com meta dentro do Estádio Olímpico de 1928 e fama de percurso rápido ao longo do rio Amstel. Para o clube seria a viagem mais «mainstream» de sempre — com a contrapartida de exigir decisão e inscrição muito cedo.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong><span class="date-badge a-confirmar">A confirmar</span>Outubro 2027 (2026: 18 out).<a href="#ref-9" class="ref">[9]</a> Maratona, meia-maratona, 7,5 km e kids run.<a href="#ref-10" class="ref">[10]</a> As inscrições da edição seguinte abrem ~dezembro e podem esgotar antes do verão.</div>
+              <div class="info"><strong>Voos</strong>Vários diretos diários (TAP, KLM, easyJet, Transavia), ~3h. Datas indicativas: <strong>sex 15 out</strong> → <strong>seg 18 out</strong> (curta) ou <strong>seg 25 out</strong> (longa). <a href="https://www.kayak.pt/flights/LIS-AMS/2027-10-15/2027-10-18" target="_blank" rel="noopener">↗ 15–18 out</a> · <a href="https://www.kayak.pt/flights/LIS-AMS/2027-10-15/2027-10-25" target="_blank" rel="noopener">↗ 15–25 out</a></div>
+              <div class="info"><strong>Estadia</strong>Zuid/Museumkwartier fica perto do Estádio Olímpico (largada/meta); Centro/Jordaan para quem prioriza turismo. Hotéis caros — pedir bloqueio de grupo logo que a data saia.</div>
+              <div class="info"><strong>Acompanhantes</strong>Canais, Rijksmuseum e Van Gogh, Jordaan, Vondelpark, mercados; excursões fáceis a Zaanse Schans e Haarlem de comboio.<a href="#ref-21" class="ref">[21]</a></div>
+              <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
+                  <li><strong>GVB 24h</strong> (tram/metro/bus): ≈ <strong>€9–10</strong>; existem versões 48–96h.</li>
+                  <li><strong>I amsterdam City Card</strong>:<a href="#ref-22" class="ref">[22]</a> transportes + 70 museus/atrações; ≈ <strong>€65 (24h) – €110 (72h)</strong>. Compensa para acompanhantes que façam 2+ museus/dia.</li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">Preços a confirmar na altura — Amesterdão ajusta tarifas anualmente.</p>
+              </div>
+            </div>
+          </div>
+          <div id="map-amsterdao" class="race-map" aria-label="Mapa de Amesterdão com largada e meta no Estádio Olímpico"></div>
+        </article>
+
+        <!-- 2. MUNIQUE -->
+        <article class="card dest" data-tags="favorita outono">
+          <div class="dest-media">
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg/960px-Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg" alt="Marienplatz e a Câmara Nova de Munique vistas do alto" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Marienplatz</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9b/Frauenkirche_Munich%2C_March_2018.jpg/960px-Frauenkirche_Munich%2C_March_2018.jpg" alt="Frauenkirche, a catedral de Munique com as suas duas torres" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Frauenkirche</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/M%C3%BCnchen_-_Olympische_Bauten.jpg/960px-M%C3%BCnchen_-_Olympische_Bauten.jpg" alt="Olympiapark de Munique, zona de largada e meta da maratona" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Olympiapark (largada)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Monopteros_in_the_English_Garden_in_Munich%2C_seen_from_across_the_Schwabinger_Bach%2C_20251110_0900_6057.jpg/960px-Monopteros_in_the_English_Garden_in_Munich%2C_seen_from_across_the_Schwabinger_Bach%2C_20251110_0900_6057.jpg" alt="Monopteros no Englischer Garten de Munique" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Englischer Garten</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Image-Schloss_Nymphenburg_Munich_CC.jpg/960px-Image-Schloss_Nymphenburg_Munich_CC.jpg" alt="Palácio de Nymphenburg em Munique" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Nymphenburg</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/M%C3%BCnchen%2C_Viktualienmarkt%2C_Ladenzeile_--_2011_--_1.jpg/960px-M%C3%BCnchen%2C_Viktualienmarkt%2C_Ladenzeile_--_2011_--_1.jpg" alt="Viktualienmarkt, o mercado tradicional de Munique" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Viktualienmarkt</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/BMW_Welt_Night.jpg/960px-BMW_Welt_Night.jpg" alt="BMW Welt iluminado à noite, junto ao Olympiapark" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">BMW Welt</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ab/Olympiastadion_at_dusk.JPG/960px-Olympiastadion_at_dusk.JPG" alt="Estádio Olímpico de Munique ao entardecer, meta da maratona" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Olympiastadion (meta)</figcaption>
+            </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                2027 a confirmar <span class="pill blue">Outubro</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>722–1 325 €</b><br>10 noites: <b>1 885–3 418 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Programa mais completo · Meta no Estádio Olímpico · Diretos TAP/Lufthansa
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3><span class="rank">2</span>Munique — o programa mais completo</h3>
+            <div class="meta"><span class="pill good">42+21+10+estafeta</span><span class="pill blue">Outono</span><span class="pill good">Meta histórica</span></div>
+            <p>É a candidata que melhor encaixa no modelo inclusivo do clube: maratona, meia, 10 km, estafeta e kids run no mesmo fim de semana, com chegada dentro do Estádio Olímpico de 1972. Munique foi também palco da maratona dos Campeonatos da Europa de 2022 — cumpre à letra o filtro do Fernando.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong><span class="date-badge a-confirmar">A confirmar</span>Outubro 2027 (2026: 11 out).<a href="#ref-7" class="ref">[7]</a> Maratona, meia (Sport Schuster Half), 10 km, estafeta, kids run e Friendship Run; partida e meta no Olympiapark.<a href="#ref-8" class="ref">[8]</a></div>
+              <div class="info"><strong>Voos</strong>Diretos TAP/Lufthansa, ~3h. Datas indicativas: <strong>sex 8 out</strong> → <strong>seg 11 out</strong> (curta) ou <strong>seg 18 out</strong> (longa). O Oktoberfest termina no início de outubro — confirmar que o fim de semana da prova não coincide com a última semana da festa. <a href="https://www.kayak.pt/flights/LIS-MUC/2027-10-08/2027-10-11" target="_blank" rel="noopener">↗ 8–11 out</a> · <a href="https://www.kayak.pt/flights/LIS-MUC/2027-10-08/2027-10-18" target="_blank" rel="noopener">↗ 8–18 out</a></div>
+              <div class="info"><strong>Estadia</strong>Schwabing/Maxvorstadt tem metro U3 direto ao Olympiazentrum; alternativa no centro (Altstadt/Hauptbahnhof) para turismo. Apart-hotéis abundantes para grupos.</div>
+              <div class="info"><strong>Acompanhantes</strong>Marienplatz, Frauenkirche, Englischer Garten, Viktualienmarkt, Nymphenburg, BMW Welt; excursões a Neuschwanstein, lagos da Baviera ou Salzburgo.<a href="#ref-23" class="ref">[23]</a></div>
+              <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
+                  <li><strong>Bilhete diário MVV</strong> (zona M): ≈ <strong>€9–10</strong>; versões de grupo até 5 pessoas com bom desconto.</li>
+                  <li><strong>CityTourCard / München Card</strong>: transportes + descontos em atrações, desde ≈ <strong>€15–25 (24h)</strong>.</li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">O Olympiapark fica a 10 min do centro de metro — logística de prova muito simples para grupo grande.</p>
+              </div>
+            </div>
+          </div>
+          <div id="map-munique" class="race-map" aria-label="Mapa de Munique com largada e meta no Olympiapark"></div>
+        </article>
+
+        <!-- 3. PRAGA -->
+        <article class="card dest" data-tags="favorita primavera economica">
+          <div class="dest-media">
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/North_view_of_Charles_Bridge_from_M%C3%A1nes%C5%AFv_most%2C_Prague_20160808_1.jpg/960px-North_view_of_Charles_Bridge_from_M%C3%A1nes%C5%AFv_most%2C_Prague_20160808_1.jpg" alt="Ponte Carlos sobre o rio Vltava em Praga" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Ponte Carlos</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Prague_Old_Town_Square%2C_Czech_Republic_-_Oct_2010.jpg/960px-Prague_Old_Town_Square%2C_Czech_Republic_-_Oct_2010.jpg" alt="Praça da Cidade Velha de Praga, zona de largada da maratona" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Cidade Velha (largada)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Praha_-_Vltava_-_View_ENE_on_Prague_Castle_-_Hrad%C4%8Dany.jpg/960px-Praha_-_Vltava_-_View_ENE_on_Prague_Castle_-_Hrad%C4%8Dany.jpg" alt="Castelo de Praga e Hradčany vistos do rio Vltava" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Castelo de Praga</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2d/Czech-2013-Prague-Astronomical_clock_face.jpg/960px-Czech-2013-Prague-Astronomical_clock_face.jpg" alt="Relógio Astronómico de Praga" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Relógio Astronómico</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Vltava_river_in_Prague.jpg/960px-Vltava_river_in_Prague.jpg" alt="Rio Vltava e as pontes de Praga" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Rio Vltava</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Prague_07-2016_Wenceslas_Square_img1.jpg/960px-Prague_07-2016_Wenceslas_Square_img1.jpg" alt="Praça Venceslau em Praga" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Praça Venceslau</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Casa_Danzante%2C_Praga%2C_Rep%C3%BAblica_Checa%2C_2022-07-01%2C_DD_01.jpg/960px-Casa_Danzante%2C_Praga%2C_Rep%C3%BAblica_Checa%2C_2022-07-01%2C_DD_01.jpg" alt="Casa Dançante junto ao Vltava" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Casa Dançante</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Praha_Panorama_from_Pet%C5%99%C3%ADn_20170430.jpg/960px-Praha_Panorama_from_Pet%C5%99%C3%ADn_20170430.jpg" alt="Panorama de Praga visto da colina de Petřín" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Panorama de Petřín</figcaption>
+            </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                <span class="date-badge anunciado">Anunciado</span> 2 mai 2027 <span class="pill blue">Primavera</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>520–979 €</b><br>10 noites: <b>1 275–2 316 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Mais económica · Cidade-postal · Sem meia/10 km no fim de semana
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3><span class="rank">3</span>Praga — a cidade-postal mais económica</h3>
+            <div class="meta"><span class="pill good">Melhor custo</span><span class="pill blue">Primavera</span><span class="pill warn">Inclusão limitada</span></div>
+            <p>Uma das maratonas com mais tradição da Europa Central (desde 1995, organização RunCzech) num dos centros históricos mais bonitos do continente, com custo de vida abaixo de Lisboa. A reserva importante: o fim de semana da maratona não tem meia nem 10 km — quem não corre os 42 km só tem a estafeta a pares ou as provas familiares de sábado.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong><span class="date-badge anunciado">Anunciado</span>2 maio 2027 em calendários internacionais; confirmar na RunCzech.<a href="#ref-3" class="ref">[3]</a><a href="#ref-4" class="ref">[4]</a> Maratona com largada na Praça da Cidade Velha + maratona a pares (2×~21 km, troca ao km 21); dm Family Mile e Bambini Run no sábado.<a href="#ref-3" class="ref">[3]</a></div>
+              <div class="info"><strong>Voos</strong>Diretos TAP (e low-cost frequente), ~3h45. Datas indicativas: <strong>sex 30 abr</strong> → <strong>seg 3 mai</strong> (curta) ou <strong>seg 10 mai</strong> (longa). <a href="https://www.kayak.pt/flights/LIS-PRG/2027-04-30/2027-05-03" target="_blank" rel="noopener">↗ 30 abr–3 mai</a> · <a href="https://www.kayak.pt/flights/LIS-PRG/2027-04-30/2027-05-10" target="_blank" rel="noopener">↗ 30 abr–10 mai</a></div>
+              <div class="info"><strong>Estadia</strong>Staré Město/Nové Město para ficar em cima da largada; Karlín ou Vinohrady para melhor relação preço/qualidade a 1-2 paragens de metro.</div>
+              <div class="info"><strong>Acompanhantes</strong>Castelo de Praga, Ponte Carlos, Relógio Astronómico, Petřín, Casa Dançante, cerveja e gastronomia a preços baixos.<a href="#ref-20" class="ref">[20]</a></div>
+              <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
+                  <li><strong>Transportes PID</strong> (metro/tram/bus): 24h ≈ <strong>120 CZK (~€5)</strong>; 72h ≈ <strong>330 CZK (~€13)</strong> — dos passes mais baratos da Europa.<a href="#ref-19" class="ref">[19]</a></li>
+                  <li><strong>Prague Visitor Pass</strong> (opcional): transportes + atrações principais; só compensa com programa intensivo de museus.</li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">O centro histórico faz-se quase todo a pé — muitos grupos nem precisam de passe.</p>
+              </div>
+            </div>
+          </div>
+          <div id="map-praga" class="race-map" aria-label="Mapa de Praga com largada e meta na Praça da Cidade Velha"></div>
+        </article>
+
+        <!-- 4. NICE–CANNES -->
+        <article class="card dest" data-tags="favorita outono ferias economica">
+          <div class="dest-media">
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5d/Promenade_des_Anglais_%28Nice%29%2C_France.jpg/960px-Promenade_des_Anglais_%28Nice%29%2C_France.jpg" alt="Promenade des Anglais em Nice, zona de largada da maratona" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Promenade des Anglais (largada)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Nice_from_Castle_Hill_01.jpg/960px-Nice_from_Castle_Hill_01.jpg" alt="Nice vista da Colina do Castelo, com a Baie des Anges" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Nice da Colina do Castelo</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Beaches_along_the_Promenade_des_Anglais_%2853535057603%29.jpg/960px-Beaches_along_the_Promenade_des_Anglais_%2853535057603%29.jpg" alt="Praias ao longo da Promenade des Anglais" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Baie des Anges</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Dscn0062-nice-port-castle-hill_crop_1200x600.jpg/960px-Dscn0062-nice-port-castle-hill_crop_1200x600.jpg" alt="Porto de Nice junto à Colina do Castelo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Porto de Nice</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Cannes_-_Boulevard_de_la_Croisette_-_View_NNE_%26_Up.jpg/960px-Cannes_-_Boulevard_de_la_Croisette_-_View_NNE_%26_Up.jpg" alt="Boulevard de la Croisette em Cannes, zona de meta" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Croisette (meta)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Cannes_Palais_des_Festivals_et_des_Congr%C3%A8s.jpg/960px-Cannes_Palais_des_Festivals_et_des_Congr%C3%A8s.jpg" alt="Palais des Festivals em Cannes" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Palais des Festivals</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/45/Villefranche-sur-Mer.jpg/960px-Villefranche-sur-Mer.jpg" alt="Baía de Villefranche-sur-Mer, perto de Nice" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Villefranche-sur-Mer</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/EZE_Village_and_Sea.JPG/960px-EZE_Village_and_Sea.JPG" alt="Aldeia de Èze sobre o Mediterrâneo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Èze</figcaption>
+            </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                2027 a confirmar <span class="pill blue">Novembro</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>598–1 114 €</b><br>10 noites: <b>1 592–2 844 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Ponto a ponto cénico · Riviera em época baixa · 2.ª maior de França
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3><span class="rank">4</span>Alpes-Marítimos — correr de Nice a Cannes</h3>
+            <div class="meta"><span class="pill good">A mais cénica</span><span class="pill blue">Novembro</span><span class="pill warn">Logística ponto a ponto</span></div>
+            <p>A única ponto a ponto da lista: 42,195 km sempre à beira do Mediterrâneo, da Promenade des Anglais em Nice à Croisette em Cannes, passando por Cagnes-sur-Mer, Antibes e Juan-les-Pins. É a segunda maior maratona de França e uma experiência memorável — exige apenas planear o regresso de Cannes (comboio TER ~40 min ou navettes).</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong><span class="date-badge a-confirmar">A confirmar</span>Novembro 2027 (2026: 8 nov; maratona 2026 já esgotada).<a href="#ref-11" class="ref">[11]</a> Maratona, estafeta Duo 2×21,1 km, estafeta por equipas, 20 km e Breakfast Run; inscrição desde €66; 15 000 dorsais de maratona.<a href="#ref-12" class="ref">[12]</a></div>
+              <div class="info"><strong>Voos</strong>Direto easyJet LIS–NCE, ~2h. Datas indicativas: <strong>sex 5 nov</strong> → <strong>seg 8 nov</strong> (curta) ou <strong>seg 15 nov</strong> (longa). <a href="https://www.kayak.pt/flights/LIS-NCE/2027-11-05/2027-11-08" target="_blank" rel="noopener">↗ 5–8 nov</a> · <a href="https://www.kayak.pt/flights/LIS-NCE/2027-11-05/2027-11-15" target="_blank" rel="noopener">↗ 5–15 nov</a></div>
+              <div class="info"><strong>Estadia</strong>Base em Nice (centro/Promenade): a largada é em Nice e o aeroporto também. Novembro é época baixa — bons preços em hotéis que no verão são proibitivos. Reservar igualmente cedo o domingo da prova.</div>
+              <div class="info"><strong>Acompanhantes</strong>Vieux Nice, Colina do Castelo, mercado Cours Saleya; de comboio costeiro: Villefranche, Èze, Mónaco, Antibes e Cannes — podem até apoiar em vários pontos do percurso.<a href="#ref-24" class="ref">[24]</a></div>
+              <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
+                  <li><strong>Lignes d'Azur</strong> (tram/bus de Nice): bilhete ≈ <strong>€1,70</strong>; passe dia ≈ <strong>€7–8</strong>.<a href="#ref-18" class="ref">[18]</a></li>
+                  <li><strong>Comboio TER</strong> Nice↔Cannes: barato e frequente — é também o transporte de apoio à prova; a organização costuma disponibilizar navettes para a manhã da maratona.</li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">Confirmar no site oficial as navettes Cannes→Nice pós-prova quando o programa 2027 sair.</p>
+              </div>
+            </div>
+          </div>
+          <div id="map-nice" class="race-map" aria-label="Mapa do percurso ponto a ponto entre Nice e Cannes"></div>
+        </article>
+
+        <!-- 5. LUXEMBURGO -->
+        <article class="card dest" data-tags="primavera">
+          <div class="dest-media">
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Luxembourg_City_from_Adolphe_Bridge_01.jpg/960px-Luxembourg_City_from_Adolphe_Bridge_01.jpg" alt="Cidade do Luxemburgo vista da Ponte Adolphe" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Vista da Ponte Adolphe</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Luxembourg_Grund_Alzette_P%C3%A9trusse.jpg/960px-Luxembourg_Grund_Alzette_P%C3%A9trusse.jpg" alt="Bairro do Grund junto ao rio Alzette" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Grund</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Luxembourg_%28LU%29%2C_Plateau_du_Rham_--_2023_--_8135.jpg/960px-Luxembourg_%28LU%29%2C_Plateau_du_Rham_--_2023_--_8135.jpg" alt="Fortificações e vale na Cidade do Luxemburgo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Cidade-fortaleza</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Luxembourg_pl_Guillaume_II_vers_rue_de_la_Reine_wide.jpg/960px-Luxembourg_pl_Guillaume_II_vers_rue_de_la_Reine_wide.jpg" alt="Place Guillaume II no centro do Luxemburgo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Place Guillaume II</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Luxembourg_Notre-Dame_Cathedral_roof_01.jpg/960px-Luxembourg_Notre-Dame_Cathedral_roof_01.jpg" alt="Catedral de Notre-Dame do Luxemburgo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Catedral Notre-Dame</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Luxembourg-ville_%E2%80%93Corniche.jpg/960px-Luxembourg-ville_%E2%80%93Corniche.jpg" alt="Chemin de la Corniche, a varanda do Luxemburgo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Chemin de la Corniche</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Luxembourg_Philharmonie_S%C3%A4ulen-20080530-RM-195346.jpg/960px-Luxembourg_Philharmonie_S%C3%A4ulen-20080530-RM-195346.jpg" alt="Philharmonie no planalto de Kirchberg" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Kirchberg (largada)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f5/Vianden_chateau1.jpg/960px-Vianden_chateau1.jpg" alt="Castelo de Vianden, excursão clássica desde a capital" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Castelo de Vianden</figcaption>
+            </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                <span class="date-badge confirmado">Confirmado</span> 8 mai 2027, 19h00 <span class="pill blue">Noturna</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>682–1 215 €</b><br>10 noites: <b>1 745–3 083 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Única confirmada 2027 · Maratona noturna · Transportes gratuitos
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3><span class="rank">5</span>Luxemburgo — a maratona noturna</h3>
+            <div class="meta"><span class="pill good">Data 2027 confirmada</span><span class="pill blue">Maio</span><span class="pill good">Experiência única</span></div>
+            <p>A única das seis já confirmada para 2027 — e a mais diferente: corre-se ao sábado à noite, com partida às 19h00, música e animação pelo percurso iluminado. O Team Run de 4 elementos é perfeito para o espírito 4 FUN, e o país inteiro tem transportes públicos gratuitos.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong><span class="date-badge confirmado">Confirmado</span>Sábado, 8 maio 2027, 19h00, partida/meta no Luxexpo The Box (Kirchberg).<a href="#ref-1" class="ref">[1]</a> Maratona, meia, Team Run 4×(12,9+7,2+13,3+8,7 km; €152/equipa; limite 6h) e mini-maratona.<a href="#ref-2" class="ref">[2]</a> Levantamento de dorsais sex 7 e sáb 8 mai.</div>
+              <div class="info"><strong>Voos</strong>Diretos TAP/Luxair, ~2h45. Partida: <strong>sex 7 mai</strong>; regresso <strong>seg 10 mai</strong> (curta; a prova acaba de madrugada de domingo) ou <strong>seg 17 mai</strong> (longa). <a href="https://www.kayak.pt/flights/LIS-LUX/2027-05-07/2027-05-10" target="_blank" rel="noopener">↗ 7–10 mai</a> · <a href="https://www.kayak.pt/flights/LIS-LUX/2027-05-07/2027-05-17" target="_blank" rel="noopener">↗ 7–17 mai</a></div>
+              <div class="info"><strong>Estadia</strong>Kirchberg para ficar junto à partida/meta e à expo; Ville Haute ou zona da Gare para o centro histórico. O tram gratuito liga as duas zonas em minutos.</div>
+              <div class="info"><strong>Acompanhantes</strong>Casamatas do Bock (UNESCO), Grund, Chemin de la Corniche, Palácio Grão-Ducal, Mudam; excursões a Vianden, Echternach e vinhas do Mosela.<a href="#ref-25" class="ref">[25]</a></div>
+              <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
+                  <li><strong>Transporte público gratuito</strong> em todo o país desde 2020 (tram, autocarros e comboios em 2.ª classe) — caso único na Europa.<a href="#ref-14" class="ref">[14]</a></li>
+                  <li><strong>Luxembourg Card</strong>:<a href="#ref-26" class="ref">[26]</a> entrada em 60+ atrações de todo o país; ≈ <strong>€13 (1 dia) – €28 (3 dias)</strong>.</li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">Nota honesta: a cidade é pequena — excelente para 3-4 noites; uma semana longa pede carro ou excursões para preencher o programa.</p>
+              </div>
+            </div>
+          </div>
+          <div id="map-luxemburgo" class="race-map" aria-label="Mapa do Luxemburgo com largada e meta no Luxexpo The Box"></div>
+        </article>
+
+        <!-- 6. OSLO -->
+        <article class="card dest" data-tags="outono ferias">
+          <div class="dest-media">
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/Oslo_Opera_House_2023_1.jpg/960px-Oslo_Opera_House_2023_1.jpg" alt="Ópera de Oslo junto ao fiorde" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Ópera de Oslo</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Akershus_Fortress%2C_2023.jpg/960px-Akershus_Fortress%2C_2023.jpg" alt="Fortaleza de Akershus sobre o Oslofjord" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Fortaleza de Akershus</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/aa/Vigeland_Sculpture_Park_-_Panoramic_view_towards_the_Monolith%2C_Oslo%2C_Norway.jpg/960px-Vigeland_Sculpture_Park_-_Panoramic_view_towards_the_Monolith%2C_Oslo%2C_Norway.jpg" alt="Parque de esculturas de Vigeland" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Parque Vigeland</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Holmenkollbakken%2C_Ski_Jump%2C_Holmenkollen%2C_Oslo_2010.jpg/960px-Holmenkollbakken%2C_Ski_Jump%2C_Holmenkollen%2C_Oslo_2010.jpg" alt="Pista de saltos de esqui de Holmenkollen" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Holmenkollen</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Aker_Brygge_Oslo_R%C3%A5dhus_Pipervika_Oslo_Norway_%282022.09.28%29.jpg/960px-Aker_Brygge_Oslo_R%C3%A5dhus_Pipervika_Oslo_Norway_%282022.09.28%29.jpg" alt="Aker Brygge e a Câmara Municipal de Oslo, zona de largada e meta" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Aker Brygge (largada)</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/00_7731_Oslo_-_Karl_Johans_gate.jpg/960px-00_7731_Oslo_-_Karl_Johans_gate.jpg" alt="Karl Johans gate, a avenida principal de Oslo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Karl Johans gate</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Oslofjord_-_view_from_beach_in_Oslo.jpg/960px-Oslofjord_-_view_from_beach_in_Oslo.jpg" alt="Oslofjord visto de uma praia de Oslo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Oslofjord</figcaption>
+            </figure>
+            <figure class="photo-tile">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Downtown_Oslo_Norway_skyline.png/960px-Downtown_Oslo_Norway_skyline.png" alt="Skyline moderna do centro de Oslo" width="960" height="640" loading="lazy" decoding="async" />
+              <figcaption class="photo-label">Oslo moderna</figcaption>
+            </figure>
+            <div class="dest-col-info">
+              <div class="dest-col-stat">
+                <strong>Data da prova</strong>
+                2027 a confirmar <span class="pill blue">Setembro</span>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Custo estimado</strong>
+                3 noites: <b>743–1 337 €</b><br>10 noites: <b>1 960–3 454 €</b>
+              </div>
+              <div class="dest-col-stat">
+                <strong>Pontos fortes</strong>
+                Fiorde · 4 distâncias · Custo diário mais alto
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h3><span class="rank">6</span>Oslo — a experiência nórdica</h3>
+            <div class="meta"><span class="pill good">4 distâncias</span><span class="pill blue">Setembro</span><span class="pill warn">Custo elevado</span></div>
+            <p>Maratona com tradição desde 1981, corrida ao sábado junto ao Oslofjord, com partida e meta no coração da cidade. O programa com 42 km, meia, 10 km («10 for Grete», em homenagem a Grete Waitz) e 3 km encaixa bem no modelo do clube — o travão é o orçamento diário norueguês, o mais alto das seis.</p>
+            <div class="info-grid">
+              <div class="info"><strong>Prova</strong><span class="date-badge a-confirmar">A confirmar</span>Setembro 2027 (2026: sáb 12 set).<a href="#ref-5" class="ref">[5]</a> Maratona (duas voltas junto ao fiorde), meia-maratona, 10 km e 3 km; partida/meta no centro, junto à Câmara Municipal.<a href="#ref-6" class="ref">[6]</a></div>
+              <div class="info"><strong>Voos</strong>Diretos TAP/Norwegian, ~3h45. Datas indicativas: <strong>sex 10 set</strong> → <strong>seg 13 set</strong> (curta) ou <strong>seg 20 set</strong> (longa). <a href="https://www.kayak.pt/flights/LIS-OSL/2027-09-10/2027-09-13" target="_blank" rel="noopener">↗ 10–13 set</a> · <a href="https://www.kayak.pt/flights/LIS-OSL/2027-09-10/2027-09-20" target="_blank" rel="noopener">↗ 10–20 set</a></div>
+              <div class="info"><strong>Estadia</strong>Sentrum/Karl Johans gate ou Aker Brygge, tudo a pé da prova. Apart-hotéis com cozinha ajudam muito a controlar o custo das refeições.</div>
+              <div class="info"><strong>Acompanhantes</strong>Ópera, Fortaleza de Akershus, Parque Vigeland, museus de Bygdøy (Fram, Kon-Tiki), Holmenkollen e ilhas do fiorde de ferry urbano.<a href="#ref-27" class="ref">[27]</a></div>
+              <div class="info" style="grid-column:1/-1"><strong>Passes e bilhetes</strong>
+                <ul style="margin:6px 0 0;padding-left:18px;line-height:1.8">
+                  <li><strong>Ruter 24h</strong> (transportes urbanos, inclui ferries do fiorde): ≈ <strong>€11</strong>.</li>
+                  <li><strong>Oslo Pass</strong>:<a href="#ref-27" class="ref">[27]</a> transportes + 30 museus/atrações; ≈ <strong>€45–50 (24h)</strong> — compensa facilmente com 2 museus + ferry.</li>
+                </ul>
+                <p style="margin:6px 0 0;font-size:.85em">Setembro tem dias ainda longos e temperatura ideal para correr (10–15 °C).</p>
+              </div>
+            </div>
+          </div>
+          <div id="map-oslo" class="race-map" aria-label="Mapa de Oslo com largada e meta junto à Câmara Municipal"></div>
+        </article>
+      </div>
+      <p class="note mt-12">Nota de imagem: para uma página pública do clube, recomenda-se substituir as imagens por fotografias próprias do RUN 4 FUN. Enquanto isso, são usadas imagens da Wikimedia Commons com a respetiva atribuição na secção de créditos.</p>
+    </section>
+
+    <section id="viagens" aria-labelledby="t-viagens">
+      <div class="section-title">
+        <div>
+          <h2 id="t-viagens">Modelos de viagem possíveis</h2>
+          <p class="note">A mesma prova deve permitir diferentes compromissos de tempo e orçamento.</p>
+        </div>
+      </div>
+      <div class="plan-grid">
+        <article class="plan">
+          <h3><span class="num">A</span>Fim de semana curto — 2/3 noites</h3>
+          <ul>
+            <li>Chegada sexta ou sábado.</li>
+            <li>Levantamento de dorsais e jantar de grupo.</li>
+            <li>Prova no domingo (ou sábado à noite no Luxemburgo e sábado em Oslo) e regresso segunda.</li>
+            <li>Funciona em todas as seis — os voos diretos tornam este modelo muito mais viável do que na shortlist anterior.</li>
+          </ul>
+        </article>
+        <article class="plan">
+          <h3><span class="num">B</span>Viagem intermédia — 4/5 noites</h3>
+          <ul>
+            <li>Permite turismo antes/depois da prova.</li>
+            <li>Menos stress com horários e dorsais.</li>
+            <li>Boa para acompanhantes.</li>
+            <li>Melhor equilíbrio para Praga, Munique e Amesterdão.</li>
+          </ul>
+        </article>
+        <article class="plan">
+          <h3><span class="num">C</span>Semana longa — 9/10 noites</h3>
+          <ul>
+            <li>Combina maratona e férias.</li>
+            <li>Requer apartamentos ou hotéis com boa política de grupo.</li>
+            <li>Ideal para Nice (toda a Riviera de comboio), Munique (Baviera e Alpes) e Oslo (fiordes); no Luxemburgo pede carro/excursões.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="recomendacao" aria-labelledby="t-recomendacao">
+      <div class="decision">
+        <div class="winner">
+          <h2 id="t-recomendacao">Leitura desta lista</h2>
+          <p class="note">As seis sugestões do Fernando são todas defensáveis — e todas com voo direto de Lisboa. Para votação interna, sugerem-se as leituras seguintes, a fechar quando as <span class="date-badge">Datas</span> 2027 estiverem confirmadas.</p>
+          <div class="quote"><strong>Escolha racional:</strong> Munique — o único fim de semana com 42 km + meia + 10 km + estafeta, meta no Estádio Olímpico e custos médios controláveis.</div>
+          <div class="quote"><strong>Escolha mais memorável:</strong> Nice–Cannes (correr de uma cidade para outra ao longo do Mediterrâneo) ou Luxemburgo (maratona noturna, única já confirmada).</div>
+          <div class="matrix">
+            <div><strong>Melhor cidade turística + custo</strong><br>Praga</div>
+            <div><strong>Programa mais completo</strong><br>Munique</div>
+            <div><strong>Prova de maior prestígio</strong><br>Amesterdão</div>
+            <div><strong>Mais originais</strong><br>Luxemburgo (noturna) e Nice–Cannes</div>
+          </div>
+        </div>
+        <div class="checklist">
+          <h2>Próximos passos</h2>
+          <ol>
+            <li>Confirmar <span class="date-badge">Datas</span> oficiais 2027 de Praga, Oslo, Munique, Amesterdão e Nice–Cannes (só o Luxemburgo está confirmado: 8 mai).</li>
+            <li>Atenção às provas que esgotam: Amesterdão (inscrições abrem ~dezembro) e Nice–Cannes (a edição 2026 já está esgotada) — a decisão do clube tem de anteceder a abertura.</li>
+            <li>Validar a restrição de Praga: sem meia/10 km no fim de semana da maratona — pesa no modelo inclusivo do clube.</li>
+            <li>Simular voos para 25–40 pessoas nas rotas diretas (LIS–PRG/LUX/OSL/MUC/AMS/NCE).</li>
+            <li>Pedir propostas de alojamento com cancelamento flexível nas 2-3 cidades finalistas.</li>
+            <li>Cruzar esta lista com a shortlist principal (Ljubljana, Salzburg, Belgrado, Limassol) e levar uma votação única ao clube.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section id="fontes" class="sources" aria-labelledby="t-fontes">
+      <div class="section-title">
+        <div>
+          <h2 id="t-fontes">Fontes consultadas</h2>
+          <p class="note">Ligações úteis para confirmar datas, distâncias, transportes e turismo antes de reservas.</p>
+        </div>
+      </div>
+      <ol>
+        <li id="ref-1"><a href="https://www.ing-night-marathon.lu/en.html" target="_blank" rel="noopener noreferrer">ING Night Marathon Luxembourg — site oficial (data 2027: 8 de maio)</a></li>
+        <li id="ref-2"><a href="https://www.ing-night-marathon.lu/en/disciplines/team-run.html" target="_blank" rel="noopener noreferrer">ING Night Marathon — Team Run (estafeta de 4, distâncias e preço)</a></li>
+        <li id="ref-3"><a href="https://www.runczech.com/en/" target="_blank" rel="noopener noreferrer">RunCzech — organizador da Prague Marathon (programa do fim de semana)</a></li>
+        <li id="ref-4"><a href="https://aims-worldrunning.org/races/730.html" target="_blank" rel="noopener noreferrer">AIMS — Prague International Marathon (ficha da prova)</a></li>
+        <li id="ref-5"><a href="https://oslomaraton.no/en/" target="_blank" rel="noopener noreferrer">DNB Oslo Marathon — site oficial</a></li>
+        <li id="ref-6"><a href="https://oslomaraton.no/en/distanser/" target="_blank" rel="noopener noreferrer">Oslo Marathon — distâncias (42 km, meia, 10 km, 3 km)</a></li>
+        <li id="ref-7"><a href="https://marathonmuenchen.org/en/" target="_blank" rel="noopener noreferrer">Marathon München by Brooks — site oficial (2026: 11 out)</a></li>
+        <li id="ref-8"><a href="https://www.muenchenmarathon.de/en/competitions/marathon/" target="_blank" rel="noopener noreferrer">Munich Marathon — competições e percurso</a></li>
+        <li id="ref-9"><a href="https://www.tcsamsterdammarathon.eu/" target="_blank" rel="noopener noreferrer">TCS Amsterdam Marathon — site oficial</a></li>
+        <li id="ref-10"><a href="https://www.tcsamsterdammarathon.eu/frequently-asked-questions" target="_blank" rel="noopener noreferrer">TCS Amsterdam Marathon — FAQ (2026: 18 out; distâncias; inscrições esgotam)</a></li>
+        <li id="ref-11"><a href="https://www.marathon06.com/2026/" target="_blank" rel="noopener noreferrer">Marathon des Alpes-Maritimes Nice–Cannes — site oficial (2026: 8 nov)</a></li>
+        <li id="ref-12"><a href="https://www.marathon06.com/2026/epreuves/marathon/" target="_blank" rel="noopener noreferrer">Marathon06 — provas, percurso Nice→Cannes e inscrições (desde €66)</a></li>
+        <li id="ref-13"><a href="https://www.prg.aero/en/getting-airport" target="_blank" rel="noopener noreferrer">Aeroporto de Praga — transporte público</a></li>
+        <li id="ref-14"><a href="https://www.mobiliteit.lu/en/" target="_blank" rel="noopener noreferrer">mobiliteit.lu — transportes públicos gratuitos no Luxemburgo</a></li>
+        <li id="ref-15"><a href="https://flytoget.no/en/" target="_blank" rel="noopener noreferrer">Flytoget — comboio aeroporto de Oslo–centro</a></li>
+        <li id="ref-16"><a href="https://www.munich-airport.com/" target="_blank" rel="noopener noreferrer">Aeroporto de Munique — acessos (S-Bahn S1/S8)</a></li>
+        <li id="ref-17"><a href="https://www.schiphol.nl/en/" target="_blank" rel="noopener noreferrer">Schiphol — comboio para o centro de Amesterdão</a></li>
+        <li id="ref-18"><a href="https://www.lignesdazur.com/" target="_blank" rel="noopener noreferrer">Lignes d'Azur — tram e autocarros de Nice</a></li>
+        <li id="ref-19"><a href="https://pid.cz/en/" target="_blank" rel="noopener noreferrer">PID — tarifas de transportes de Praga (24h/72h)</a></li>
+        <li id="ref-20"><a href="https://www.prague.eu/en" target="_blank" rel="noopener noreferrer">Prague.eu — guia oficial de turismo de Praga</a></li>
+        <li id="ref-21"><a href="https://www.iamsterdam.com/en" target="_blank" rel="noopener noreferrer">I amsterdam — guia oficial de Amesterdão</a></li>
+        <li id="ref-22"><a href="https://www.iamsterdam.com/en/tickets/i-amsterdam-city-card" target="_blank" rel="noopener noreferrer">I amsterdam City Card — preços e atrações incluídas</a></li>
+        <li id="ref-23"><a href="https://www.munich.travel/en" target="_blank" rel="noopener noreferrer">Munich.travel — guia oficial de Munique</a></li>
+        <li id="ref-24"><a href="https://www.explorenicecotedazur.com/en/" target="_blank" rel="noopener noreferrer">Explore Nice Côte d'Azur — guia oficial de Nice</a></li>
+        <li id="ref-25"><a href="https://www.visitluxembourg.com/" target="_blank" rel="noopener noreferrer">Visit Luxembourg — guia oficial</a></li>
+        <li id="ref-26"><a href="https://www.visitluxembourg.com/en/luxembourg-card" target="_blank" rel="noopener noreferrer">Luxembourg Card — preços e atrações incluídas</a></li>
+        <li id="ref-27"><a href="https://www.visitoslo.com/en/" target="_blank" rel="noopener noreferrer">Visit Oslo — guia oficial e Oslo Pass</a></li>
+        <li id="ref-28"><a href="https://cotedazurfrance.com/discover/major-events/marathon-des-alpes-maritimes-nice-cannes/" target="_blank" rel="noopener noreferrer">Côte d'Azur France — Marathon des Alpes-Maritimes (contexto turístico)</a></li>
+        <li id="ref-29"><a href="https://en.wikipedia.org/wiki/Oslo_Marathon" target="_blank" rel="noopener noreferrer">Wikipedia — Oslo Marathon (histórico desde 1981)</a></li>
+        <li id="ref-30"><a href="https://en.wikipedia.org/wiki/Munich_Marathon" target="_blank" rel="noopener noreferrer">Wikipedia — Munich Marathon (histórico desde 1983)</a></li>
+      </ol>
+
+      <div class="credits" aria-labelledby="t-creditos">
+        <h3 id="t-creditos">Créditos fotográficos (Wikimedia Commons)</h3>
+        <p>As fotografias usadas na secção “As seis candidatas em detalhe” provêm da Wikimedia Commons sob licenças Creative Commons (CC BY / CC BY-SA) ou domínio público. Atribuição:</p>
+        <ul>
+          <li><strong>Amesterdão</strong></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Amsterdam_Canals_-_July_2006.jpg" target="_blank" rel="noopener noreferrer">Canais de Amesterdão</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Rijksmuseum_winter_7441.jpg" target="_blank" rel="noopener noreferrer">Rijksmuseum</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Olympic_Stadium_Amsterdam.jpg" target="_blank" rel="noopener noreferrer">Estádio Olímpico de Amesterdão</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Vondelpark_amsterdam.jpg" target="_blank" rel="noopener noreferrer">Vondelpark</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Dam_Amsterdam_7308.jpg" target="_blank" rel="noopener noreferrer">Praça Dam</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:White_sunset_over_Jordaan,_Amsterdam.jpg" target="_blank" rel="noopener noreferrer">Jordaan</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Magere_Brug.jpg" target="_blank" rel="noopener noreferrer">Magere Brug</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Windmills_at_Zaanse_Schans,_Zaanstad,_2022.jpg" target="_blank" rel="noopener noreferrer">Zaanse Schans</a> — Wikimedia Commons.</li>
+          <li><strong>Munique</strong></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Rathaus_and_Marienplatz_from_Peterskirche_-_August_2006.jpg" target="_blank" rel="noopener noreferrer">Marienplatz e Rathaus</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Frauenkirche_Munich,_March_2018.jpg" target="_blank" rel="noopener noreferrer">Frauenkirche</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:M%C3%BCnchen_-_Olympische_Bauten.jpg" target="_blank" rel="noopener noreferrer">Olympiapark</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Monopteros_in_the_English_Garden_in_Munich,_seen_from_across_the_Schwabinger_Bach,_20251110_0900_6057.jpg" target="_blank" rel="noopener noreferrer">Englischer Garten (Monopteros)</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Image-Schloss_Nymphenburg_Munich_CC.jpg" target="_blank" rel="noopener noreferrer">Palácio de Nymphenburg</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:M%C3%BCnchen,_Viktualienmarkt,_Ladenzeile_--_2011_--_1.jpg" target="_blank" rel="noopener noreferrer">Viktualienmarkt</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:BMW_Welt_Night.jpg" target="_blank" rel="noopener noreferrer">BMW Welt</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Olympiastadion_at_dusk.JPG" target="_blank" rel="noopener noreferrer">Olympiastadion</a> — Wikimedia Commons.</li>
+          <li><strong>Praga</strong></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:North_view_of_Charles_Bridge_from_M%C3%A1nes%C5%AFv_most,_Prague_20160808_1.jpg" target="_blank" rel="noopener noreferrer">Ponte Carlos</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Prague_Old_Town_Square,_Czech_Republic_-_Oct_2010.jpg" target="_blank" rel="noopener noreferrer">Praça da Cidade Velha</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Praha_-_Vltava_-_View_ENE_on_Prague_Castle_-_Hrad%C4%8Dany.jpg" target="_blank" rel="noopener noreferrer">Castelo de Praga</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Czech-2013-Prague-Astronomical_clock_face.jpg" target="_blank" rel="noopener noreferrer">Relógio Astronómico</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Vltava_river_in_Prague.jpg" target="_blank" rel="noopener noreferrer">Rio Vltava</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Prague_07-2016_Wenceslas_Square_img1.jpg" target="_blank" rel="noopener noreferrer">Praça Venceslau</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Casa_Danzante,_Praga,_Rep%C3%BAblica_Checa,_2022-07-01,_DD_01.jpg" target="_blank" rel="noopener noreferrer">Casa Dançante</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Praha_Panorama_from_Pet%C5%99%C3%ADn_20170430.jpg" target="_blank" rel="noopener noreferrer">Panorama de Petřín</a> — Wikimedia Commons.</li>
+          <li><strong>Nice e Cannes</strong></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Promenade_des_Anglais_(Nice),_France.jpg" target="_blank" rel="noopener noreferrer">Promenade des Anglais</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Nice_from_Castle_Hill_01.jpg" target="_blank" rel="noopener noreferrer">Nice da Colina do Castelo</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Beaches_along_the_Promenade_des_Anglais_(53535057603).jpg" target="_blank" rel="noopener noreferrer">Praias da Baie des Anges</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Dscn0062-nice-port-castle-hill_crop_1200x600.jpg" target="_blank" rel="noopener noreferrer">Porto de Nice</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Cannes_-_Boulevard_de_la_Croisette_-_View_NNE_%26_Up.jpg" target="_blank" rel="noopener noreferrer">Boulevard de la Croisette</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Cannes_Palais_des_Festivals_et_des_Congr%C3%A8s.jpg" target="_blank" rel="noopener noreferrer">Palais des Festivals</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Villefranche-sur-Mer.jpg" target="_blank" rel="noopener noreferrer">Villefranche-sur-Mer</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:EZE_Village_and_Sea.JPG" target="_blank" rel="noopener noreferrer">Èze</a> — Wikimedia Commons.</li>
+          <li><strong>Luxemburgo</strong></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg_City_from_Adolphe_Bridge_01.jpg" target="_blank" rel="noopener noreferrer">Vista da Ponte Adolphe</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg_Grund_Alzette_P%C3%A9trusse.jpg" target="_blank" rel="noopener noreferrer">Grund e rio Alzette</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg_(LU),_Plateau_du_Rham_--_2023_--_8135.jpg" target="_blank" rel="noopener noreferrer">Cidade-fortaleza (Plateau du Rham)</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg_pl_Guillaume_II_vers_rue_de_la_Reine_wide.jpg" target="_blank" rel="noopener noreferrer">Place Guillaume II</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg_Notre-Dame_Cathedral_roof_01.jpg" target="_blank" rel="noopener noreferrer">Catedral Notre-Dame</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg-ville_%E2%80%93Corniche.jpg" target="_blank" rel="noopener noreferrer">Chemin de la Corniche</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Luxembourg_Philharmonie_S%C3%A4ulen-20080530-RM-195346.jpg" target="_blank" rel="noopener noreferrer">Philharmonie (Kirchberg)</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Vianden_chateau1.jpg" target="_blank" rel="noopener noreferrer">Castelo de Vianden</a> — Wikimedia Commons.</li>
+          <li><strong>Oslo</strong></li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Oslo_Opera_House_2023_1.jpg" target="_blank" rel="noopener noreferrer">Ópera de Oslo</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Akershus_Fortress,_2023.jpg" target="_blank" rel="noopener noreferrer">Fortaleza de Akershus</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Vigeland_Sculpture_Park_-_Panoramic_view_towards_the_Monolith,_Oslo,_Norway.jpg" target="_blank" rel="noopener noreferrer">Parque Vigeland</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Holmenkollbakken,_Ski_Jump,_Holmenkollen,_Oslo_2010.jpg" target="_blank" rel="noopener noreferrer">Holmenkollen</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Aker_Brygge_Oslo_R%C3%A5dhus_Pipervika_Oslo_Norway_(2022.09.28).jpg" target="_blank" rel="noopener noreferrer">Aker Brygge e Câmara Municipal</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:00_7731_Oslo_-_Karl_Johans_gate.jpg" target="_blank" rel="noopener noreferrer">Karl Johans gate</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Oslofjord_-_view_from_beach_in_Oslo.jpg" target="_blank" rel="noopener noreferrer">Oslofjord</a> — Wikimedia Commons.</li>
+          <li><a href="https://commons.wikimedia.org/wiki/File:Downtown_Oslo_Norway_skyline.png" target="_blank" rel="noopener noreferrer">Skyline de Oslo</a> — Wikimedia Commons.</li>
+        </ul>
+        <p>É necessário confirmar a licença exata de cada ficheiro (algumas exigem nome do autor + indicação da licença).</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>RUN 4 FUN — Maratona Internacional 2027 · Sugestões de Fernando Rosete</strong></p>
+    <p>Página complementar à <a href="index.html">página principal de apoio à decisão</a>. Organização: Carla Rebelo · Fernando Rosete · Luís Matos Ferreira.</p>
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script>
+  (function () {
+    function mkIcon(color, label) {
+      return L.divIcon({
+        html: '<div style="background:' + color + ';width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:800;color:#fff;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.35);white-space:nowrap">' + label + '</div>',
+        className: '', iconSize: [28, 28], iconAnchor: [14, 14], popupAnchor: [0, -17]
+      });
+    }
+    var tiles = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+    var attr = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+    /* ---- Amesterdão ---- */
+    var am = L.map('map-amsterdao', {scrollWheelZoom: false}).setView([52.3431, 4.853], 14);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(am);
+    L.marker([52.3431, 4.853], {icon: mkIcon('#ef4444', 'S/M')}).addTo(am).bindPopup('<b>Largada e Meta</b> — Estádio Olímpico de 1928 (Olympisch Stadion)');
+    L.marker([52.36, 4.8852], {icon: mkIcon('#2563eb', 'i')}).addTo(am).bindPopup('<b>Museumkwartier</b> — zona sugerida de estadia, entre o estádio e o centro');
+
+    /* ---- Munique ---- */
+    var mu = L.map('map-munique', {scrollWheelZoom: false}).setView([48.1731, 11.5466], 14);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(mu);
+    L.marker([48.1758, 11.5532], {icon: mkIcon('#ef4444', 'S')}).addTo(mu).bindPopup('<b>Largada</b> — Olympiapark');
+    L.marker([48.1739, 11.5469], {icon: mkIcon('#22c55e', 'M')}).addTo(mu).bindPopup('<b>Meta</b> — dentro do Olympiastadion (Estádio Olímpico de 1972)');
+    L.marker([48.1663, 11.5683], {icon: mkIcon('#2563eb', 'i')}).addTo(mu).bindPopup('<b>Schwabing</b> — zona sugerida de estadia, com metro U3 direto ao Olympiazentrum');
+
+    /* ---- Praga ---- */
+    var pr = L.map('map-praga', {scrollWheelZoom: false}).setView([50.0875, 14.4213], 15);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(pr);
+    L.marker([50.0875, 14.4213], {icon: mkIcon('#ef4444', 'S/M')}).addTo(pr).bindPopup('<b>Largada e Meta</b> — Praça da Cidade Velha (Staroměstské náměstí)');
+    L.marker([50.0865, 14.4114], {icon: mkIcon('#22c55e', '★')}).addTo(pr).bindPopup('<b>Ponte Carlos</b> — o percurso atravessa o Vltava várias vezes');
+
+    /* ---- Nice–Cannes ---- */
+    var ni = L.map('map-nice', {scrollWheelZoom: false});
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(ni);
+    var niceStart = L.marker([43.6951, 7.2658], {icon: mkIcon('#ef4444', 'S')}).addTo(ni).bindPopup('<b>Largada</b> — Promenade des Anglais, Nice (8h00)');
+    var cannesFinish = L.marker([43.5505, 7.0228], {icon: mkIcon('#22c55e', 'M')}).addTo(ni).bindPopup('<b>Meta</b> — Boulevard de la Croisette, Cannes (junto ao Palais des Festivals)');
+    L.marker([43.5808, 7.1239], {icon: mkIcon('#2563eb', '½')}).addTo(ni).bindPopup('<b>Antibes</b> — zona intermédia do percurso costeiro');
+    ni.fitBounds(L.latLngBounds([43.6951, 7.2658], [43.5505, 7.0228]).pad(0.18));
+
+    /* ---- Luxemburgo ---- */
+    var lu = L.map('map-luxemburgo', {scrollWheelZoom: false}).setView([49.6286, 6.1557], 13);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(lu);
+    L.marker([49.6336, 6.1696], {icon: mkIcon('#ef4444', 'S/M')}).addTo(lu).bindPopup('<b>Largada e Meta</b> — Luxexpo The Box, Kirchberg (partida 19h00)');
+    L.marker([49.6116, 6.1319], {icon: mkIcon('#2563eb', 'i')}).addTo(lu).bindPopup('<b>Ville Haute</b> — centro histórico; tram gratuito até Kirchberg');
+
+    /* ---- Oslo ---- */
+    var os = L.map('map-oslo', {scrollWheelZoom: false}).setView([59.9117, 10.734], 14);
+    L.tileLayer(tiles, {attribution: attr, maxZoom: 19}).addTo(os);
+    L.marker([59.9117, 10.734], {icon: mkIcon('#ef4444', 'S/M')}).addTo(os).bindPopup('<b>Largada e Meta</b> — centro de Oslo, junto à Câmara Municipal (Rådhusplassen)');
+    L.marker([59.9075, 10.7224], {icon: mkIcon('#2563eb', 'i')}).addTo(os).bindPopup('<b>Aker Brygge</b> — frente ribeirinha; zona sugerida de estadia');
+  })();
+  </script>
+  <script defer>
+    (function () {
+      const buttons = document.querySelectorAll('.filters button');
+      const rows = document.querySelectorAll('#shortlist-table tbody tr');
+      buttons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          buttons.forEach(b => {
+            b.classList.remove('active');
+            b.setAttribute('aria-pressed', 'false');
+          });
+          btn.classList.add('active');
+          btn.setAttribute('aria-pressed', 'true');
+          const filter = btn.dataset.filter;
+          rows.forEach(row => {
+            const tags = row.dataset.tags || '';
+            row.hidden = !(filter === 'all' || tags.includes(filter));
+          });
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

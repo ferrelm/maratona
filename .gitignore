@@ -1,0 +1,15 @@
+# Archives produced by scripts/create_clean_tar.sh
+dumps/
+
+# Logs and temporary files
+*.log
+tmp/
+temp/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.idea/
+.vscode/

@@ -4,14 +4,13 @@
 
 set -euo pipefail
 
-# This copy lives at repository root; use its directory as project root.
+# This script lives in scripts/; project root is its parent directory.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$SCRIPT_DIR"
+PROJECT_ROOT="$(dirname "$SCRIPT_DIR")"
 cd "$PROJECT_ROOT"
 
-
-# Get version from pom.xml
-VERSION=$(grep -m 1 '<version>' "$PROJECT_ROOT/pom.xml" | sed -E 's/.*<version>([^<]+)<\/version>.*/\1/')
+# Version: short git hash if available, otherwise "snapshot"
+VERSION=$(git -C "$PROJECT_ROOT" rev-parse --short HEAD 2>/dev/null || echo "snapshot")
 
 DUMPS_DIR="$PROJECT_ROOT/dumps"
 mkdir -p "$DUMPS_DIR"
